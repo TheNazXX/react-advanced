@@ -1,3 +1,3 @@
 import {someFunc} from './test';
 
-console.log(someFunc(124));
+console.log(someFunc(1254));
