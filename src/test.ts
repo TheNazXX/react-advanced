@@ -1,5 +1,5 @@
 function someFunc(args: number){
-  return args;
+  document.getElementById("foo").innerHTML = args.toString();
 }
 
 export {someFunc};

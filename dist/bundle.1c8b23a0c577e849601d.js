@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ \"./src/test.ts\");\n\nconsole.log((0,_test__WEBPACK_IMPORTED_MODULE_0__.someFunc)(223));\n\n\n//# sourceURL=webpack://react/./src/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ \"./src/test.ts\");\n\nconsole.log((0,_test__WEBPACK_IMPORTED_MODULE_0__.someFunc)(124));\n\n\n//# sourceURL=webpack://react/./src/index.ts?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tes
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   someFunc: () => (/* binding */ someFunc)\n/* harmony export */ });\nfunction someFunc(args) {\n    return args;\n}\n\n\n\n//# sourceURL=webpack://react/./src/test.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   someFunc: () => (/* binding */ someFunc)\n/* harmony export */ });\nfunction someFunc(args) {\n    document.getElementById(\"foo\").innerHTML = args.toString();\n}\n\n\n\n//# sourceURL=webpack://react/./src/test.ts?");
 
 /***/ })
 
