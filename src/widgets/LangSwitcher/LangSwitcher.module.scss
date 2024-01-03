@@ -1,0 +1,30 @@
+.LangSwitcher{
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+
+  button{
+    display: flex;
+    align-items: center;
+    transition: all .3s;
+  
+    &:hover{
+      color: var(--red-color);
+    }
+
+    svg{
+      margin-right: 5px;
+    }
+
+    &.active{
+      cursor: default;
+      color: var(--red-color);
+    }
+  }
+
+  span.line{
+    width: 1px;
+    height: 16px;
+    background-color: var(--inverted-primary-color);
+  }
+}

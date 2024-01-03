@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact=self.webpackChunkreact||[]).push([[196],{196:(e,a,r)=>{r.r(a),r.d(a,{default:()=>n});var t=r(893),c=r(72);const n=function(){var e=(0,c.$G)().t;return(0,t.jsx)("div",{children:e("MainPage")})}}}]);

@@ -1,16 +1,28 @@
 {
+  "include": [
+    "src/**/*.ts", 
+    "src/**/*.tsx", 
+    ".eslintrc.js",
+    "webpack.config.ts",
+    "config/jest/jest.config.ts"
+  ],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "es2022",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
-    // "baseUrl": "."
+    "baseUrl": ".",
+
+    "paths": { 
+      "*": ["./src/*"]
+    }
 
   },
   "ts-node": {

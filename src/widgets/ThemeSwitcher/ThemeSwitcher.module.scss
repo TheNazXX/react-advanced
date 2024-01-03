@@ -1,0 +1,42 @@
+.btn{ 
+  position: relative;
+  padding: 5px;
+  display: flex;
+  width: 45px;
+
+
+  &::after{
+    content: '';
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 75%;
+    height: 10px;
+    border-radius: 8px;
+    background-color: grey;
+  }
+
+}
+
+.btn.light{
+  color: orange;
+}
+
+.btn.dark{
+  color: white;
+  border-color: white;
+}
+
+.btn.light svg{
+  transform: translateX(calc(90%));
+}
+
+.svg{
+  position: relative;
+  z-index: 2;
+  transition: transform .4s;
+  font-size: 20px;
+}

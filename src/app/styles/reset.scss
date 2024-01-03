@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ 
+input,
+button,
+textarea,
+select{
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+button{
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--inverted-primary-color);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}

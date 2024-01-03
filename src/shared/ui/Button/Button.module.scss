@@ -1,0 +1,15 @@
+.Button{
+  font: var(--font-m)
+}
+
+.primary{
+  padding: 10px 7.5px;
+  background-color: var(--green-color);
+  border-radius: 5px;
+  transition: background-color .4s;
+  color: white;
+
+  &:hover{
+    background-color: var(--green-dark-color);
+  }
+}

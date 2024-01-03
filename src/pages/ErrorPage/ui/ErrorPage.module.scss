@@ -1,0 +1,12 @@
+.ErrorPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 0;
+
+  font: var(--font-l);
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  color: white;
+}

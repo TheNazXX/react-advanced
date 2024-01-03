@@ -1,0 +1,29 @@
+.CloseBtn{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+
+
+  span{
+    position: absolute;
+    width: 85%;
+    height: 2px;
+    background-color: var(--inverted-primary-color);
+    transform: rotate(45deg);
+    border-radius: 2px;
+    transition: all .2s;
+  }
+
+  span + span{
+    transform: rotate(135deg);
+  }
+
+  &:hover{
+    span{
+      background-color: white;
+    }
+  }
+}

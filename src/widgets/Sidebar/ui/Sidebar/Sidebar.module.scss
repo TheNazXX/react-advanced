@@ -1,0 +1,42 @@
+.sidebar{
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  background-color: var(--secondary-color);
+  height: 100%;
+  overflow: hidden;
+  transition: transform .1s;
+}
+
+.sidebar.collapsed{
+  transform: translateX(-200px);
+}
+
+.themeSwitch{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+  span{
+    font-size: 14px;
+  }
+}
+
+.closeBtnWrap{
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--inverted-primary-color);
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.bugButton{
+  display: block;
+  margin: auto auto 0;
+}
