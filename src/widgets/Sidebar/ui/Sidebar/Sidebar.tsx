@@ -17,7 +17,7 @@ export const Sidebar: FC<SidebarProps> = ({ className, collapsed, toggleSidebar 
   const { t } = useTranslation()
 
   return (
-    <div className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
+    <div data-testid="sidebar" className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [className])}>
       <div className={cls.closeBtnWrap}>
         <CloseBtn onClick={toggleSidebar}/>
       </div>

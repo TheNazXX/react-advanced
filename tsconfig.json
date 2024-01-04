@@ -4,7 +4,9 @@
     "src/**/*.tsx", 
     ".eslintrc.js",
     "webpack.config.ts",
-    "config/jest/jest.config.ts"
+    "config/jest/jest.config.ts",
+    "config/jest/setupTests.ts",
+    "config/jest/jestMockComponent.tsx"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
@@ -29,5 +31,6 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "types": ["node", "jest", "@testing-library/jest-dom"],
 }
