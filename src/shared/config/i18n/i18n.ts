@@ -3,11 +3,9 @@ import { initReactI18next } from 'react-i18next'
 
 import Backend from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import { type Langs } from 'widgets/LangSwitcher/LangSwitcher'
+import { Langs, LOCAL_STORAGE_LANG_KEY } from 'widgets/LangSwitcher/LangSwitcher'
 
-export const LOCAL_STORAGE_LANG_KEY = 'lang'
-
-const defaultLang = localStorage.getItem(LOCAL_STORAGE_LANG_KEY) as Langs || 'ua'
+const defaultLang = localStorage.getItem(LOCAL_STORAGE_LANG_KEY) as Langs || Langs.Ua
 
 i18n
   .use(Backend)
@@ -15,11 +13,13 @@ i18n
   .use(initReactI18next)
   .init({
     lng: defaultLang,
-    debug: true,
+    debug: __IS_DEV__,
 
     interpolation: {
       escapeValue: false
-    }
+    },
+
+    resources: { ua: { translationsNS: {} } }
   })
 
 export default i18n

@@ -1,4 +1,5 @@
 import type { Config } from 'jest'
+import path from 'path'
 
 const config: Config = {
 
@@ -39,9 +40,8 @@ const config: Config = {
 
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
-    '^.+\\.svg$': '<rootDir>config/jest/jestMockComponent.tsx'
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
   }
-
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
