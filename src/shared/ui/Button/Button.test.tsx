@@ -3,12 +3,12 @@ import { Button, TypeButton } from './Button'
 
 describe('Button', () => {
   test('Render Button', () => {
-    render(<Button>123</Button>)
-    expect(screen.getByText('123')).toBeInTheDocument()
+    render(<Button>test</Button>)
+    expect(screen.getByText('test')).toBeInTheDocument()
   })
 
   test('Render Button with type', () => {
     render(<Button typeBtn={TypeButton.PRIMARY}>123</Button>)
-    expect(screen.getByText('123')).toHaveClass('primary')
+    expect(screen.getByText('test')).toHaveClass('primary')
   })
 })
