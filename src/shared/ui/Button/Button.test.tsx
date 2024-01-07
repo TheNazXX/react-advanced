@@ -8,7 +8,7 @@ describe('Button', () => {
   })
 
   test('Render Button with type', () => {
-    render(<Button typeBtn={TypeButton.PRIMARY}>123</Button>)
+    render(<Button typeBtn={TypeButton.PRIMARY}>test</Button>)
     expect(screen.getByText('test')).toHaveClass('primary')
   })
 })

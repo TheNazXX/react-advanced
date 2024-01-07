@@ -17,9 +17,7 @@ i18n
 
     interpolation: {
       escapeValue: false
-    },
-
-    resources: { ua: { translationsNS: {} } }
+    }
   })
 
 export default i18n

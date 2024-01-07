@@ -6,7 +6,9 @@
     "webpack.config.ts",
     "config/jest/jest.config.ts",
     "config/jest/setupTests.ts",
-    "config/jest/jestEmptyComponent.tsx"
+    "config/jest/jestEmptyComponent.tsx",
+    "config/storybook/**/*.ts",
+    "config/build/**/*.ts"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {

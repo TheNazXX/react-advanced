@@ -11,7 +11,8 @@ module.exports = {
       },
       files: [
         '.eslintrc.{js,cjs}',
-        '**/src/**/*.test.{ts,tsx}'
+        '**/src/**/*.test.{ts,tsx}',
+        '**/src/**/*.stories.{ts,tsx}'
       ],
       rules: {
         'i18next/no-literal-string': 'off'
