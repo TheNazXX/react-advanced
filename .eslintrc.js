@@ -36,6 +36,10 @@ module.exports = {
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
-    'i18next/no-literal-string': ['error', { murkupOnly: true }]
+    'i18next/no-literal-string': ['error', { murkupOnly: true }],
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/display-name': 'off',
+    '@typescript-eslint/prefer-includes': 'off'
+
   }
 }

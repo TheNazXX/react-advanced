@@ -9,7 +9,7 @@
     "config/jest/jestEmptyComponent.tsx",
     "config/storybook/**/*.ts",
     "config/build/**/*.ts"
-  ],
+, "src/shared/config/storybook/themeDecorator/themeDecorator.tss"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",

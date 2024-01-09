@@ -1,6 +1,6 @@
 import { buildSassLoader } from './loaders/buildSassLoader'
 
-export function buildSassLoaders (isDev: boolean): any[] {
+export function buildLoaders (isDev: boolean): any[] {
   const SvgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack']

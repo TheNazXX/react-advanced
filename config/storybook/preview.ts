@@ -12,7 +12,7 @@ const preview: Preview = {
     }
   },
   decorators: [
-    (Story) => StyleDecorator(Story)
+    StyleDecorator
   ]
 }
 
