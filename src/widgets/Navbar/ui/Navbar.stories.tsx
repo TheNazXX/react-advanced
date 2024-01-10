@@ -1,7 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 import { Navbar } from './Navbar'
-import { ThemeDecorator } from 'shared/config/storybook/themeDecorator/themeDecorator'
+import { ThemeDecorator } from 'shared/config/storybook/Decorators/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
+import { BrowswerRouterDecorator } from 'shared/config/storybook/Decorators/BrowserRouterDecorator/BrowserRouterDecorator'
 
 const meta: Meta<typeof Navbar> = {
   title: 'widget/Navbar',
@@ -21,5 +22,6 @@ NavbarDark.args = {
 }
 
 NavbarDark.decorators = [
+  BrowswerRouterDecorator,
   ThemeDecorator(Theme.DARK)
 ]

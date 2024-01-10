@@ -1,10 +1,9 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './CloseBtn.module.scss'
-import { type ButtonHTMLAttributes, type FC, type ReactNode } from 'react'
+import { type ButtonHTMLAttributes, type FC } from 'react'
 
 interface CloseBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  children?: ReactNode
 }
 
 export const CloseBtn: FC<CloseBtnProps> = ({ className, onClick }) => {
