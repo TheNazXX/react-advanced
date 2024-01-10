@@ -9,7 +9,9 @@ const MainPage: FC = () => {
       {
         t('MainPage')
       }
+
     </div>
+
   )
 }
 
