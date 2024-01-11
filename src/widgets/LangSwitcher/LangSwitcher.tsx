@@ -13,9 +13,10 @@ export const enum Langs {
 
 interface LangSwitcherProps {
   className?: string
+  isCollapsed?: boolean
 }
 
-export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
+export const LangSwitcher: FC<LangSwitcherProps> = ({ className, isCollapsed = false }) => {
   const { t, i18n } = useTranslation()
 
   const toggleLang = (lang: Langs): void => {
@@ -24,12 +25,12 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
   }
 
   return (
-  <div className={classNames(cls.LangSwitcher, {}, [className])}>
-    <button className={classNames('', { [cls.active]: i18n.language === Langs.Eu }, [])} onClick={() => { toggleLang(Langs.Eu) }}>{t('en')}</button>
+  <div className={classNames(cls.LangSwitcher, { [cls.collapsed]: isCollapsed }, [className])}>
+    <button className={classNames(cls.Button, { [cls.active]: i18n.language === Langs.Eu }, [])} onClick={() => { toggleLang(Langs.Eu) }}>{t('en')}</button>
 
-    <span className={cls.line}></span>
+    <span className={classNames(cls.line, {}, [])}></span>
 
-    <button className={classNames('', { [cls.active]: i18n.language === Langs.Ua }, [])} onClick={() => { toggleLang(Langs.Ua) }}>
+    <button className={classNames(cls.Button, { [cls.active]: i18n.language === Langs.Ua }, [])} onClick={() => { toggleLang(Langs.Ua) }}>
       <UaSvg />
       {t('ua')}</button>
   </div>
