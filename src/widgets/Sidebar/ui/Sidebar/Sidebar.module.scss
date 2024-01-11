@@ -1,41 +1,103 @@
 .sidebar{
+  width: 200px;
+  padding: 15px 0;
   display: flex;
   flex-direction: column;
-  padding: 15px;
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--sidebar-width);
   background-color: var(--secondary-color);
   height: 100%;
   overflow: hidden;
-  transition: transform .1s;
+  transition: all .2s linear;
+
+  &.collapsed{
+    width: 80px;
+    transition: all .4s;
+    .closeBtnWrap{
+      justify-content: center;
+    }
+
+    .links{
+      margin-top: 2em;
+    }
+
+    .themeSwitch{
+      justify-content: center;
+    }
+  }
 }
 
-.sidebar.collapsed{
-  transform: translateX(-200px);
-}
+
 
 .themeSwitch{
+  padding: 0 15px;
   display: flex;
+  gap: 0 15px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 
   span{
+    white-space: nowrap;
     font-size: 14px;
   }
 }
 
 .closeBtnWrap{
-  padding-bottom: 15px;
+  padding: 0px 15px 15px;
+
   border-bottom: 1px solid var(--inverted-primary-color);
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
+
 }
 
+
 .bugButton{
+  margin-bottom: 15px;
   display: block;
   margin: auto auto 0;
+}
+
+.LangSwitcher{
+  padding: 0 15px;
+}
+
+.links{
+  margin-top: 5em;
+  text-align: center;
+}
+
+.link{
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-top: 1px solid var(--inverted-primary-color);
+  transition: all .2s;
+
+  &:last-child{
+    border-bottom: 1px solid var(--inverted-primary-color);
+  }
+
+  svg{
+    color: var(--green-color);
+    transition: all .2s;
+  }
+
+  &:hover{
+    background-color: var(--green-dark-color);
+    color: white;
+
+    svg{
+      color: white;
+    }
+  }
+
+
 }

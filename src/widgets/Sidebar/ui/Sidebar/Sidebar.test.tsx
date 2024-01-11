@@ -6,7 +6,7 @@ import { renderWithTranslation } from 'shared/libs/tests/renderWithTranslation/r
 describe('Sidebar', () => {
   test('Render Sidebar', () => {
     const SidebarWithTranslation = withTranslation()(Sidebar)
-    renderWithTranslation(<SidebarWithTranslation collapsed={true} toggleSidebar={() => {}}/>)
+    renderWithTranslation(<SidebarWithTranslation/>)
     screen.debug()
   })
 })

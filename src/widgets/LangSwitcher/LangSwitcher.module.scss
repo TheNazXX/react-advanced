@@ -3,28 +3,49 @@
   align-items: center;
   gap: 0 10px;
 
-  button{
-    display: flex;
-    align-items: center;
-    transition: all .3s;
-  
-    &:hover{
-      color: var(--red-color);
-    }
-
-    svg{
-      margin-right: 5px;
-    }
-
-    &.active{
-      cursor: default;
-      color: var(--red-color);
-    }
-  }
-
   span.line{
     width: 1px;
     height: 16px;
     background-color: var(--inverted-primary-color);
   }
+
+  &.collapsed{
+    justify-content: center;
+
+    .Button{
+      display: none;
+
+      &.active{
+        display: block;
+      }
+    }
+
+    span.line{
+      display: none;
+    }
+  }
 }
+
+.Button{
+  display: flex;
+  align-items: center;
+  transition: all .3s;
+  font-weight: 600;
+
+  &:hover{
+    color: var(--green-dark-color);
+  }
+
+  svg{
+    margin-right: 5px;
+  }
+
+  &.active{
+    cursor: default;
+    color: var(--green-dark-color);
+  }
+
+}
+
+
+
