@@ -9,25 +9,9 @@
   background-color: var(--secondary-color);
   height: 100%;
   overflow: hidden;
-  transition: all .2s linear;
-
-  &.collapsed{
-    width: 80px;
-    transition: all .4s;
-    .closeBtnWrap{
-      justify-content: center;
-    }
-
-    .links{
-      margin-top: 2em;
-    }
-
-    .themeSwitch{
-      justify-content: center;
-    }
-  }
+  transition: all .1s ease-out;
+  z-index: 20;
 }
-
 
 
 .themeSwitch{
@@ -45,8 +29,7 @@
 }
 
 .closeBtnWrap{
-  padding: 0px 15px 15px;
-
+  padding: 0 15px 15px;
   border-bottom: 1px solid var(--inverted-primary-color);
   display: flex;
   justify-content: flex-end;
@@ -56,9 +39,9 @@
 
 
 .bugButton{
+  margin: auto auto 0;
   margin-bottom: 15px;
   display: block;
-  margin: auto auto 0;
 }
 
 .LangSwitcher{
@@ -72,12 +55,10 @@
 
 .link{
   padding: 10px 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-
   border-top: 1px solid var(--inverted-primary-color);
   transition: all .2s;
 
@@ -98,6 +79,21 @@
       color: white;
     }
   }
+}
 
 
+.collapsed{
+  width: 80px;
+
+  .closeBtnWrap{
+    justify-content: center;
+  }
+
+  .links{
+    margin-top: 2em;
+  }
+
+  .themeSwitch{
+    justify-content: center;
+  }
 }

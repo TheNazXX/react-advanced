@@ -8,7 +8,8 @@
     "config/jest/setupTests.ts",
     "config/jest/jestEmptyComponent.tsx",
     "config/storybook/**/*.ts",
-    "config/build/**/*.ts"
+    "config/build/**/*.ts",
+    "scripts/**/*.js"
 , "src/shared/config/storybook/Decorators/ThemeDecorator/themeDecorator.tss"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {

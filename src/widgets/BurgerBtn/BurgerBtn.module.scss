@@ -23,7 +23,6 @@
   }
 
   &.active{
-
     span{
       display: none;
       transition: all .2s;
@@ -41,7 +40,6 @@
 
       &:last-child{
         top: 50%;
-
         transform: rotate(45deg);
       }
     }

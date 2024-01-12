@@ -8,9 +8,9 @@ interface BurgerBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void
 }
 
-export const BurgerBtn: FC<BurgerBtnProps> = ({ className, onClick, isOpen }) => {
+export const BurgerBtn: FC<BurgerBtnProps> = ({ className, onClick, isOpen, ...props }) => {
   return (
-    <button className={classNames(cls.burgerBtn, { [cls.active]: !isOpen }, [className])} onClick={onClick}>
+    <button className={classNames(cls.burgerBtn, { [cls.active]: !isOpen }, [className])} onClick={onClick} {...props}>
       <span />
       <span />
       <span />

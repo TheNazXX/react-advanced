@@ -8,23 +8,8 @@
     height: 16px;
     background-color: var(--inverted-primary-color);
   }
-
-  &.collapsed{
-    justify-content: center;
-
-    .Button{
-      display: none;
-
-      &.active{
-        display: block;
-      }
-    }
-
-    span.line{
-      display: none;
-    }
-  }
 }
+
 
 .Button{
   display: flex;
@@ -47,5 +32,20 @@
 
 }
 
+.collapsed{
+  justify-content: center;
+
+  .Button{
+    display: none;
+
+    &.active{
+      display: block;
+    }
+  }
+
+  span.line{
+    display: none;
+  }
+}
 
 

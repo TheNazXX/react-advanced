@@ -39,7 +39,9 @@ module.exports = {
     'i18next/no-literal-string': ['error', { murkupOnly: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/display-name': 'off',
-    '@typescript-eslint/prefer-includes': 'off'
+    '@typescript-eslint/prefer-includes': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/unbound-method': 'off'
 
   }
 }
