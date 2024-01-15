@@ -6,6 +6,6 @@ describe('classNames', () => {
   })
 
   test('With classes', () => {
-    expect(classNames('class1', { hover: true, active: false }, ['class2'])).toBe('class1 class2 hover')
+    expect(classNames('class1', { hover: true, active: false, closing: true }, ['class2'])).toBe('class1 class2 hover closing')
   })
 })
