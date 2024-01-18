@@ -20,10 +20,7 @@
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
-
     "tests": "npm run lint:ts:fix && npm run lint:style:fix"
-
-    
   },
   "keywords": [],
   "author": "",
@@ -95,12 +92,14 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "i18next": "^23.7.12",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.0",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.0"
   },
   "loki": {

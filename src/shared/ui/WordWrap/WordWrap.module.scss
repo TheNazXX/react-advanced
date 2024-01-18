@@ -1,0 +1,12 @@
+.WordWrap{
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--green-dark-color);
+  transition: opacity .3s;
+  color: white;
+
+  &:hover{
+    opacity: .7;
+  }
+}

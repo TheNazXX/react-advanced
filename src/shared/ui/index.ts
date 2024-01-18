@@ -1,3 +1,4 @@
+export { WordWrap } from './WordWrap/WordWrap'
 export { Portal } from './Portal/Portal'
 export { Loader } from './Loader/Loader'
 export { AppLink } from './AppLink/AppLink'
