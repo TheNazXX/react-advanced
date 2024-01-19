@@ -3,7 +3,7 @@ import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { counterActions } from '../model/slice/counterSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { type StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
+import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue'
 
 interface CounterProps {
   className?: string
@@ -12,7 +12,7 @@ interface CounterProps {
 
 export const Counter: FC<CounterProps> = ({ className }) => {
   const dispatch = useDispatch()
-  const counterValue = useSelector((state: StateSchema) => state.counter.value)
+  const counterValue = useSelector(getCounterValue)
 
   const inc = () => {
     dispatch(counterActions.increment())
@@ -25,8 +25,8 @@ export const Counter: FC<CounterProps> = ({ className }) => {
   return (
     <div>
       <h1>{counterValue}</h1>
-      <Button typeBtn={TypeButton.PRIMARY} onClick={inc}>inc</Button>
-      <Button typeBtn={TypeButton.PRIMARY} onClick={dec}>dec</Button>
+      <Button typeBtn={TypeButton.PRIMARY} onClick={inc}>+</Button>
+      <Button typeBtn={TypeButton.PRIMARY} onClick={dec}>-</Button>
     </div>
   )
 }

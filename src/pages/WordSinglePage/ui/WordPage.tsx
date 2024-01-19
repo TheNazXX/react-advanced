@@ -6,7 +6,7 @@ interface WordPageProps {
   children?: ReactNode
 }
 
-export const WordPage: FC<WordPageProps> = ({ className }) => {
+export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const { word } = useParams()
 
   return (

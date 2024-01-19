@@ -9,7 +9,7 @@ import { AppLink } from 'shared/ui'
 import { RoutePathes } from 'shared/config/routeConfig/routeConfig'
 import { BurgerBtn } from 'widgets/BurgerBtn/BurgerBtn'
 
-import { faHouse, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faLayerGroup, faBook } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface SidebarProps {
@@ -52,9 +52,13 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
           {!collapsed && t('MainPage')}
         </AppLink>
         <AppLink className={cls.link} to={RoutePathes.about}>
-        <FontAwesomeIcon icon={faLayerGroup} />
-        {!collapsed && t('AboutPage')}
-          </AppLink>
+          <FontAwesomeIcon icon={faLayerGroup} />
+          {!collapsed && t('AboutPage')}
+        </AppLink>
+        <AppLink className={cls.link} to={RoutePathes.words}>
+          <FontAwesomeIcon icon={faBook} />
+          {!collapsed && t('WordsPage')}
+        </AppLink>
       </div>
 
       <BugButton className={cls.bugButton}/>

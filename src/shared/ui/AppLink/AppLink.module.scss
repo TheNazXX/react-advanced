@@ -1,3 +1,16 @@
 .AppLink{
   color: var(--text-color-primary);
+
+  &.active{
+    color: white;
+  }
 }
+
+.active{
+  background-color: var(--green-dark-color);
+
+  svg{
+    color: white !important; 
+  }
+}
+

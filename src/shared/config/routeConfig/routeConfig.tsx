@@ -1,20 +1,23 @@
 import { AboutPage } from 'pages/AboutPage'
 import { MainPage } from 'pages/MainPage'
 import { PageNotFound } from 'pages/NotFoundPage'
-import { WordPage } from 'pages/WordPage'
+import { WordSinglePage } from 'pages/WordSinglePage'
+import { WordsPage } from 'pages/WordsPage'
 
 import { type RouteProps } from 'react-router-dom'
 
 export enum AppRoutes {
   MAIN = 'main',
   ABOUT = 'about',
-  WORD = 'words',
+  WORDS = 'words',
+  WORD = 'word',
   PAGE_NOT_FOUND = 'not_found'
 }
 
 export const RoutePathes: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
+  [AppRoutes.WORDS]: '/words',
   [AppRoutes.WORD]: '/words/:word',
   [AppRoutes.PAGE_NOT_FOUND]: '*'
 }
@@ -28,9 +31,13 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     path: RoutePathes.about,
     element: <AboutPage />
   },
-  [AppRoutes.WORD]: {
+  [AppRoutes.WORDS]: {
     path: RoutePathes.words,
-    element: <WordPage />
+    element: <WordsPage />
+  },
+  [AppRoutes.WORD]: {
+    path: RoutePathes.word,
+    element: <WordSinglePage />
   },
   [AppRoutes.PAGE_NOT_FOUND]: {
     path: RoutePathes.not_found,
