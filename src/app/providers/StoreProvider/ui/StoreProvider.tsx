@@ -3,13 +3,17 @@ import { Provider } from 'react-redux'
 import { createReduxStore } from '../config/store'
 import { type StateSchema } from '../config/StateSchema'
 
+export type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K]
+}
+
 interface StoreProviderProps {
   children?: ReactNode
-  initialState?: StateSchema
+  initialState?: DeepPartial<StateSchema>
 }
 
 export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }) => {
-  const store = createReduxStore(initialState)
+  const store = createReduxStore(initialState as StateSchema)
 
   return (
     <Provider store={store}>

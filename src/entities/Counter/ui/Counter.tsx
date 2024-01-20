@@ -24,9 +24,9 @@ export const Counter: FC<CounterProps> = ({ className }) => {
 
   return (
     <div>
-      <h1>{counterValue}</h1>
-      <Button typeBtn={TypeButton.PRIMARY} onClick={inc}>+</Button>
-      <Button typeBtn={TypeButton.PRIMARY} onClick={dec}>-</Button>
+      <h1 data-testid='value-title'>{counterValue}</h1>
+      <Button data-testid='increment-btn' typeBtn={TypeButton.PRIMARY} onClick={inc}>+</Button>
+      <Button data-testid='decrement-btn' typeBtn={TypeButton.PRIMARY} onClick={dec}>-</Button>
     </div>
   )
 }
