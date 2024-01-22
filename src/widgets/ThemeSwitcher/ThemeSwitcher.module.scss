@@ -5,6 +5,7 @@
   width: 45px;
 
 
+
   &::after{
     content: '';
     position: absolute;
@@ -21,16 +22,16 @@
 
 }
 
-.btn.light{
+.btn.app_light_theme{
   color: orange;
 }
 
-.btn.dark{
+.btn.app_dark_theme{
   color: white;
   border-color: white;
 }
 
-.btn.light svg{
+.btn.app_light_theme svg{
   transform: translateX(calc(90%));
 }
 

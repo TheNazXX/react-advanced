@@ -3,6 +3,7 @@ import cls from './Modal.module.scss'
 import { type FC, type ReactNode, useRef, useState, useEffect, type MouseEvent, useCallback } from 'react'
 import { CloseBtn } from 'widgets/CloseBtn/CloseBtn'
 import { Portal } from '../Portal/Portal'
+import { useTheme } from 'app/providers/ThemeProvider'
 
 interface ModalProps {
   className?: string
@@ -15,6 +16,7 @@ const CLOSE_ANIMATION_DELAY = 200
 
 export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState<boolean>(false)
+  const { theme } = useTheme()
 
   const timerRef = useRef <ReturnType<typeof setTimeout>>()
 
@@ -50,11 +52,10 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose }) 
   return (
     <Portal>
 
-<div className={classNames(cls.Modal, { [cls.opened]: isOpen, [cls.closing]: isClosing }, [className])}>
+    <div className={classNames(cls.Modal, { [cls.opened]: isOpen, [cls.closing]: isClosing }, [className, theme])}>
       <div className={cls.overlay} onClick={onCloseModal}>
         <div className={cls.content} onClick={onContentClick}>
           {children}
-
           <CloseBtn className={cls.closeBtn} onClick={onCloseModal}/>
         </div>
       </div>
