@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {"id": 1, "title": "title-1"},
+    {"id": 2, "title": "title-2"}
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    }
+  ]
+}
