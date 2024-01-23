@@ -1,10 +1,11 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import { type FC, useState, useCallback } from 'react'
-import { Button, Modal } from 'shared/ui'
+import { Button } from 'shared/ui'
 
 import cls from './Navbar.module.scss'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { t } from 'i18next'
+import { LoginModal } from 'features/AuthByUsername'
 
 interface NavbarProps {
   className?: string
@@ -29,7 +30,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         </Button>
       </div>
 
-    <Modal isOpen={isAuthModal} onClose={onToggleModal}>123</Modal>
+    <LoginModal isOpen={isAuthModal} onClose={onToggleModal} />
     </div>
   )
 }

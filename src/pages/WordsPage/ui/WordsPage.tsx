@@ -6,7 +6,7 @@ import { AppLink, WordWrap } from 'shared/ui'
 
 export interface Word {
   en: string
-  ua: string | string[]
+  ua: string[]
 }
 
 interface WordsPageProps {

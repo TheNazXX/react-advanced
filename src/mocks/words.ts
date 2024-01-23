@@ -1,7 +1,4 @@
-interface Word {
-  en: string
-  ua: string | string[]
-}
+import { type Word } from 'pages/WordsPage/ui/WordsPage'
 
 export const words: Word[] = [
   {
