@@ -1,0 +1,51 @@
+.AddWord{
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--third-color);
+  border: 1px solid var(--green-color);
+
+  h3{
+    color: var(--inverted-secondary-color);
+    padding-left: 5px;
+  }
+
+  label{
+    display: block;
+    padding-left: 2.5px;
+    margin-bottom: 5px;
+    color: var(--inverted-secondary-color);
+  }
+}
+
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  margin-bottom: 20px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--inverted-secondary-color);
+
+  .date{
+    color: var(--green-color)
+  }
+}
+
+.group{
+  margin-bottom: 25px;
+}
+
+.Input{
+  border: 1px solid var(--green-color) !important;
+}
+
+.btn{
+  display: block;
+  margin-left: auto;
+}

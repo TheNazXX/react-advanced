@@ -9,5 +9,12 @@
   "BugButton": "On Bug",
   "ua": "Ua",
   "en": "En",
-  "Login": "Login"
+  "Login": "Login",
+  "Enter": "Login",
+  "Auth": "Autorization",
+  "Password": "Password",
+  "AddNewWord": "Add new word",
+  "TypeWord": "Type the word",
+  "TypeTranslate": "Type the translation",
+  "AddWord": "Add Word"
 }

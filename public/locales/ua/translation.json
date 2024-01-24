@@ -9,5 +9,12 @@
   "BugButton": "Помилка",
   "ua": "Ua",
   "en": "En",
-  "Login": "Логін"
+  "Login": "Логін",
+  "Enter": "Увійти",
+  "Auth": "Вхід",
+  "Password": "Пароль",
+  "AddNewWord": "Додай нове слово",
+  "TypeWord": "Введіть слово",
+  "TypeTranslate": "Введіть переклад",
+  "AddWord": "Додати слово"
 }

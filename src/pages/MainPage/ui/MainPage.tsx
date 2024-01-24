@@ -1,17 +1,15 @@
 import { type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Counter } from 'entities/Counter'
+import { AddWord } from 'widgets/AddWord'
+import cls from './MainPage.module.scss'
 
 const MainPage: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <div>
-      {
-        t('Main')
-      }
-
-      <Counter />
+    <div className={cls.MainPage}>
+      <AddWord />
     </div>
 
   )
