@@ -1,5 +1,4 @@
 .AppLink{
-  color: var(--text-color-primary);
 
   &.active{
     color: white;
@@ -7,7 +6,8 @@
 }
 
 .active{
-  background-color: var(--green-dark-color);
+  cursor: default;
+  background-color: var(--color-300);
 
   svg{
     color: white !important; 

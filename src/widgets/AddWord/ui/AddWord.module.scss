@@ -3,11 +3,11 @@
   height: 400px;
   padding: 20px;
   border-radius: 8px;
-  background-color: var(--third-color);
-  border: 1px solid var(--green-color);
+  background-color: var(--theme-300);
+  border: 1px solid var(--color-200);
 
   h3{
-    color: var(--inverted-secondary-color);
+    color: var(--inverted-theme-300);
     padding-left: 5px;
   }
 
@@ -15,7 +15,7 @@
     display: block;
     padding-left: 2.5px;
     margin-bottom: 5px;
-    color: var(--inverted-secondary-color);
+    color: var(--inverted-theme-200);
   }
 }
 
@@ -30,10 +30,10 @@
   margin-bottom: 20px;
 
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--inverted-secondary-color);
+  border-bottom: 1px solid var(--inverted-theme-200);
 
   .date{
-    color: var(--green-color)
+    color: var(--color-100)
   }
 }
 
@@ -41,11 +41,7 @@
   margin-bottom: 25px;
 }
 
-.Input{
-  border: 1px solid var(--green-color) !important;
-}
 
 .btn{
-  display: block;
   margin-left: auto;
 }

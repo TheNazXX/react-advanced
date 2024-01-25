@@ -1,8 +1,11 @@
-.app_light_theme{
-  --primary-color:#e8e8ea; 
-  --secondary-color: lightgrey;
-  --third-color: lightgrey;
-  --inverted-primary-color: #29282e;
-  --inverted-secondary-color: #201c2b;
-  --hovered: white;
+.light_theme{
+  --theme-100: #f8f9fa;
+  --theme-200: #e9ecef;
+  --theme-300: #dee2e6;
+  --theme-400: #ced4da; 
+
+
+  --inverted-theme-100: #212529; 
+  --inverted-theme-200: #14171C; 
+  --inverted-theme-200: #0a0c0e;
 }

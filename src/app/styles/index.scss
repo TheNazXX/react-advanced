@@ -3,14 +3,14 @@
 @import "themes/dark";
 @import "themes/light";
 
+@import "colors/index";
 
-  
 
 body{
   margin: 0;
   font: var(--font-m);
-  color: var(--inverted-primary-color);
-  background-color: var(--primary-color);
+  color: var(--inverted-theme-200);
+  background-color: var(--theme-200);
 }
 
 .app{
@@ -24,7 +24,6 @@ body{
   padding-top: 15px;
   flex-grow: 1;
 }
-
 
 
 .container-l{

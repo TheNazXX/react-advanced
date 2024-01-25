@@ -26,7 +26,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   }
 
   const renderTranslateWord = (): string => {
-    return currentWord.ua.join(',')
+    return currentWord.ua.join(', ')
   }
 
   return (

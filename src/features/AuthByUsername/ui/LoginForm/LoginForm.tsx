@@ -3,6 +3,7 @@ import { type FC, type ReactNode } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
+import { Input } from 'shared/ui/Input/Input'
 
 interface LoginFormProps {
   className?: string
@@ -19,11 +20,12 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
         {t('Auth')}
       </h3>
      <label htmlFor="login">{t('Login')}</label>
-     <input type="text" name="login" id="login" placeholder='example_01'/>
+     <Input type="text" name="login" id="login" placeholder='Example_01'/>
 
      <label htmlFor="password">{t('Password')}</label>
-     <input type="password" name="password" id="password" placeholder='*********'/>
-     <Button typeBtn={TypeButton.OUTLINE}>{t('Enter')}</Button>
+     <Input type="password" name="password" id="password" placeholder='*********'/>
+
+     <Button className={cls.btn} typeBtn={TypeButton.PRIMARY}>{t('Enter')}</Button>
     </div>
   )
 }

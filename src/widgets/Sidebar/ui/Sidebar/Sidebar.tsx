@@ -11,6 +11,7 @@ import { BurgerBtn } from 'widgets/BurgerBtn/BurgerBtn'
 
 import { faHouse, faLayerGroup, faBook } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ThemeColorsSwitcher } from 'widgets/ThemeColorsSwitcher'
 
 interface SidebarProps {
   className?: string
@@ -46,6 +47,8 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         <LangSwitcher isCollapsed={collapsed}/>
       </div>
 
+ 
+
       <div className={classNames(cls.links, {}, [])}>
         <AppLink className={cls.link} to={RoutePathes.main}>
           <FontAwesomeIcon icon={faHouse} />
@@ -61,7 +64,11 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         </AppLink>
       </div>
 
-      <BugButton className={cls.bugButton}/>
+      {/* <BugButton className={cls.bugButton}/> */}
+
+      <div className={classNames(cls.themeColorsSwitcher, {}, [])}>
+        <ThemeColorsSwitcher isCollapsed={collapsed}/>
+      </div>
     </div>
   )
 }

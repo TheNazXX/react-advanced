@@ -4,12 +4,13 @@ import cls from './Button.module.scss'
 
 export enum TypeButton {
   PRIMARY = 'primary',
-  OUTLINE = 'outline'
+  OUTLINE = 'outline',
+  RESET = 'reset'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
-  children: ReactNode
+  children?: ReactNode
   typeBtn?: TypeButton
 };
 

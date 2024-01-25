@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--theme-400);
   height: 100%;
   overflow: hidden;
   transition: all .1s ease-out;
@@ -25,13 +25,19 @@
   span{
     white-space: nowrap;
     font-size: 14px;
-    color: var(--inverted-primary-color);
+    color: var(--inverted-theme-100);
   }
+}
+
+.themeColorsSwitcher{
+  margin-top: auto;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .closeBtnWrap{
   padding: 0 15px 15px;
-  border-bottom: 1px solid var(--inverted-primary-color);
+  border-bottom: 1px solid var(--inverted-theme-100);
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
@@ -46,6 +52,7 @@
 }
 
 .LangSwitcher{
+  margin-bottom: 15px;
   padding: 0 15px;
 }
 
@@ -60,21 +67,21 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border-top: 1px solid var(--inverted-primary-color);
+  border-top: 1px solid var(--inverted-theme-100);
   transition: all .2s;
-  color: var(--inverted-primary-color);
+  color: var(--inverted-color-100);
 
   &:last-child{
-    border-bottom: 1px solid var(--inverted-primary-color);
+    border-bottom: 1px solid var(--inverted-theme-100);
   }
 
   svg{
-    color: var(--green-color);
+    color: var(--color-300);
     transition: all .2s;
   }
 
   &:hover{
-    background-color: var(--green-dark-color);
+    background-color: var(--color-300);
     color: white;
 
     svg{

@@ -1,7 +1,11 @@
-.app_dark_theme{
-  --primary-color: #14171C; 
-  --secondary-color: #0a0c0e;
-  --third-color: #0d0f12;
-  --inverted-primary-color: #e8e8ea;
-  --inverted-secondary-color: lightgrey;
+.dark_theme{
+  --theme-100: #343a40; 
+  --theme-200: #212529; 
+  --theme-300: #14171C; 
+  --theme-400: #0a0c0e;
+
+
+  --inverted-theme-100: #f8f9fa;
+  --inverted-theme-200: #e9ecef;
+  --inverted-theme-300: #dee2e6;
 }

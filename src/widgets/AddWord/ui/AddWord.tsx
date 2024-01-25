@@ -40,7 +40,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
         <label htmlFor="en_word">
           {t("TypeTranslate")}
         </label>
-        <Input id="en_word" className={cls.Input} placeholder="For example: набір, комплект "/>
+        <Input id="en_word" placeholder="For example: набір, комплект "/>
       </div>
 
       <Button className={cls.btn} typeBtn={TypeButton.PRIMARY}>

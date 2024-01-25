@@ -6,7 +6,7 @@
   span.line{
     width: 1px;
     height: 16px;
-    background-color: var(--inverted-primary-color);
+    background-color: var(--inverted-theme-100);
   }
 }
 
@@ -18,7 +18,7 @@
   font-weight: 600;
 
   &:hover{
-    color: var(--green-dark-color);
+    color: var(--color-100);
   }
 
   svg{
@@ -27,7 +27,7 @@
 
   &.active{
     cursor: default;
-    color: var(--green-dark-color);
+    color: var(--color-100);
   }
 
 }

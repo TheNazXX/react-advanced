@@ -4,7 +4,8 @@
   justify-content: space-between;
   padding: 15px;
   width: 100%; 
-  background-color: var(--secondary-color);
+  background-color: var(--theme-400);
+  transition: all .1s ease-out;
 }
 
 .navbarInner{
