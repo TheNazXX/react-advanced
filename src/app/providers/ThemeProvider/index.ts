@@ -1,4 +1,4 @@
 export { ThemeProvider } from './ui/ThemeProvider'
 export { useTheme } from './lib/useTheme'
 export { Theme } from './lib/ThemeContext'
-export {ThemesColors} from './lib/ThemeContext'
+export { ThemesColors } from './lib/ThemeContext'

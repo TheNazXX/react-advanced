@@ -1,6 +1,5 @@
 import { classNames } from 'shared/libs/classNames/classNames'
-import cls from './LoginModal.module.scss'
-import { type FC, type ReactNode } from 'react'
+import { type FC } from 'react'
 import { Modal } from 'shared/ui'
 import { LoginForm } from '../LoginForm/LoginForm'
 
@@ -12,7 +11,7 @@ interface LoginModalProps {
 
 export const LoginModal: FC<LoginModalProps> = ({ className, isOpen, onClose }) => {
   return (
-    <Modal className={classNames(cls.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose}>
+    <Modal className={classNames('', {}, [className])} isOpen={isOpen} onClose={onClose} lazy={true}>
       <LoginForm />
     </Modal>
   )

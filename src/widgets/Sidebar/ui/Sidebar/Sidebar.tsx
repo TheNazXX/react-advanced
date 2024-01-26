@@ -47,8 +47,6 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         <LangSwitcher isCollapsed={collapsed}/>
       </div>
 
- 
-
       <div className={classNames(cls.links, {}, [])}>
         <AppLink className={cls.link} to={RoutePathes.main}>
           <FontAwesomeIcon icon={faHouse} />

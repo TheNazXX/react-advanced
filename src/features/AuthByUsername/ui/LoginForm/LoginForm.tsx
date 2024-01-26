@@ -1,31 +1,64 @@
 import cls from './LoginForm.module.scss'
-import { type FC, type ReactNode } from 'react'
+import { useCallback, type FC, type ReactNode, memo } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Input } from 'shared/ui/Input/Input'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginActions } from '../../model/slice/loginSlice'
+import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 
 interface LoginFormProps {
   className?: string
   children?: ReactNode
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ className }) => {
+export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
 
-  const {t} = useTranslation();
+  const { login, password } = useSelector(getLoginState)
+
+  const onChangeUserName = useCallback((value: string) => {
+    dispatch(loginActions.setUserName(value))
+  }, [dispatch])
+
+  const onChangeUserPassword = useCallback((value: string) => {
+    dispatch(loginActions.setUserPassword(value))
+  }, [dispatch])
+
+  const onLoadingClick = useCallback(() => {
+
+  }, [])
 
   return (
     <div className={cls.LoginForm}>
       <h3>
         {t('Auth')}
       </h3>
+
      <label htmlFor="login">{t('Login')}</label>
-     <Input type="text" name="login" id="login" placeholder='Example_01'/>
+     <Input
+        type="text"
+        name="login"
+        id="login"
+        placeholder='Example_01'
+        autofocus={true}
+        onChange={onChangeUserName}
+        value={login}
+      />
 
      <label htmlFor="password">{t('Password')}</label>
-     <Input type="password" name="password" id="password" placeholder='*********'/>
+     <Input
+        type="password"
+        name="password"
+        id="password"
+        placeholder='*********'
+        onChange={onChangeUserPassword}
+        value={password}
+      />
 
      <Button className={cls.btn} typeBtn={TypeButton.PRIMARY}>{t('Enter')}</Button>
     </div>
   )
-}
+})

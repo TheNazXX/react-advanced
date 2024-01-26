@@ -31,6 +31,7 @@ module.exports = {
     'i18next'
   ],
   rules: {
+    "react/prop-types": "off",
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
@@ -43,7 +44,8 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/unbound-method': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/no-empty-interface': 'off'
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off'
 
   }
 }

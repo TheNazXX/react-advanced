@@ -5,24 +5,24 @@ const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || T
 const defaultThemeColor = localStorage.getItem(LOCAL_STORAGE_THEME_COLOR_KEY) as ThemeColor || ThemeColor.INDIGO
 
 interface ThemeProviderProps {
-  children: ReactNode;
-  initialTheme?: Theme;
-  initialThemeColor?: ThemeColor;
+  children: ReactNode
+  initialTheme?: Theme
+  initialThemeColor?: ThemeColor
 }
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme, initialThemeColor }) => {
-  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
-  const [themeColor, setThemeColor] = useState<ThemeColor>(initialThemeColor || defaultThemeColor);
+  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme)
+  const [themeColor, setThemeColor] = useState<ThemeColor>(initialThemeColor || defaultThemeColor)
 
   useEffect(() => {
-    document.body.className = `${theme} ${themeColor}`;
+    document.body.className = `${theme} ${themeColor}`
   }, [])
 
   const defaultProps = useMemo(() => ({
     theme,
     themeColor,
     setTheme,
-    setThemeColor,
+    setThemeColor
   }), [theme, themeColor])
 
   return (

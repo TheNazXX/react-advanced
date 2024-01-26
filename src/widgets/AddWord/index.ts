@@ -1,1 +1,1 @@
-export {AddWord} from './ui/AddWord';
+export { AddWord } from './ui/AddWord'

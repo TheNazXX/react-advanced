@@ -21,13 +21,13 @@ export const ThemesColors = [
   ThemeColor.ORANGE,
   ThemeColor.TEAL,
   ThemeColor.YELLOW
-];
+]
 
 export interface ThemeContextProps {
-  theme?: Theme;
-  themeColor?: ThemeColor;
-  setTheme?: (theme: Theme) => void;
-  setThemeColor?: (color: ThemeColor) => void;
+  theme?: Theme
+  themeColor?: ThemeColor
+  setTheme?: (theme: Theme) => void
+  setThemeColor?: (color: ThemeColor) => void
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({})

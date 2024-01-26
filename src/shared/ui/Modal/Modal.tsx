@@ -10,21 +10,32 @@ interface ModalProps {
   children?: ReactNode
   isOpen: boolean
   onClose: () => void
+  lazy?: boolean
 }
 
+const OPEN_ANIMATION_DELAY = 10
 const CLOSE_ANIMATION_DELAY = 200
 
-export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose }) => {
+export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose, lazy }) => {
+  const [isOpening, setIsOpening] = useState<boolean>(false)
   const [isClosing, setIsClosing] = useState<boolean>(false)
+
+  const [isMounted, setIsMounted] = useState<boolean>(false)
+
   const { theme } = useTheme()
 
   const timerRef = useRef <ReturnType<typeof setTimeout>>()
+  const openingDelayRef = useRef <ReturnType<typeof setTimeout>>()
 
   const onCloseModal = useCallback(() => {
+    setIsOpening(false)
     setIsClosing(true)
+
     timerRef.current = setTimeout(() => {
       onClose()
+
       setIsClosing(false)
+      setIsMounted(false)
     }, CLOSE_ANIMATION_DELAY)
   }, [onClose])
 
@@ -40,6 +51,16 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose }) 
 
   useEffect(() => {
     if (isOpen) {
+      setIsMounted(true)
+
+      openingDelayRef.current = setTimeout(() => {
+        setIsOpening(true)
+      }, OPEN_ANIMATION_DELAY)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
       window.addEventListener('keydown', onKeyDown)
     }
 
@@ -49,17 +70,20 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose }) 
     }
   }, [isOpen, onKeyDown])
 
+  if (lazy && !isMounted) {
+    return null
+  };
+
   return (
     <Portal>
-
-    <div className={classNames(cls.Modal, { [cls.opened]: isOpen, [cls.closing]: isClosing }, [className, theme])}>
-      <div className={cls.overlay} onClick={onCloseModal}>
-        <div className={cls.content} onClick={onContentClick}>
-          {children}
-          <CloseBtn className={cls.closeBtn} onClick={onCloseModal}/>
+      <div className={classNames(cls.Modal, { [cls.opened]: isOpening, [cls.closing]: isClosing }, [className, theme])}>
+        <div className={cls.overlay} onClick={onCloseModal}>
+          <div className={cls.content} onClick={onContentClick}>
+            {children}
+            <CloseBtn className={cls.closeBtn} onClick={onCloseModal}/>
+          </div>
         </div>
       </div>
-    </div>
     </Portal>
   )
 }

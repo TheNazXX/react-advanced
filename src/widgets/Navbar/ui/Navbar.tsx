@@ -23,7 +23,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
       className={classNames(cls.navbar, {}, [])}
     >
       <div className="container-l">
-        <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onToggleModal}>
+        <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onToggleModal} disabled={isAuthModal}>
           {
             t('Login')
           }
