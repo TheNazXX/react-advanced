@@ -7,7 +7,7 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 server.use(async (req, res, next) => {
   await new Promise((res) => {
-    setTimeout(res, 800)
+    setTimeout(res, 1000)
   });
   next();
 })
@@ -37,13 +37,37 @@ server.post('/login', (req, res) => {
     }
 })
 
-server.use((req, res, next) => {
-  if(!req.headers.authorization){
-    return res.status(403).json({message: 'AUTH ERROR'});
-  }
+// server.use((req, res, next) => {
+//   if(!req.headers.authorization){
+//     return res.status(403).json({message: 'AUTH ERROR'});
+//   }
 
-  next();
+//   next();
+// })
+
+
+server.get('/words', (req, res) => {
+  try {
+      
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+        const { words = [] } = db;
+
+        const response = words.flatMap(elem => elem.words);
+
+        console.log(response);
+
+
+        if (response) {
+            return res.json(response);
+        }
+
+        return res.status(403).json({ message: 'Words not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
 })
+
 
 
 server.use(router);

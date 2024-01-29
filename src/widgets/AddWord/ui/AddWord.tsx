@@ -25,6 +25,10 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
     return format(new Date(), 'dd.MM.yyyy')
   }
 
+  const addWord = () => {
+
+  };
+
   return (
     <div className={classNames(cls.AddWord, {}, [className])}>
       <div className={cls.head}>
@@ -48,7 +52,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
         <Input id="en_word" placeholder="For example: набір, комплект "/>
       </div>
 
-      <Button className={cls.btn} typeBtn={TypeButton.PRIMARY}>
+      <Button className={cls.btn} typeBtn={TypeButton.PRIMARY} onClick={addWord}>
         {t('AddWord')}
       </Button>
 

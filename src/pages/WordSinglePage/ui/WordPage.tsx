@@ -15,25 +15,11 @@ const initialState: Word = {
 
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const [currentWord, setWord] = useState<Word>(initialState)
-  const { word } = useParams()
 
-  useEffect(() => {
-    setWord(findWord(words, word))
-  }, [])
 
-  const findWord = (words: Word[], searchWord: string): Word => {
-    return words.find(word => word.en === searchWord)
-  }
-
-  const renderTranslateWord = (): string => {
-    return currentWord.ua.join(', ')
-  }
 
   return (
     <div>
-      {currentWord?.en}
-      <br/>
-      {renderTranslateWord()}
     </div>
   )
 }
