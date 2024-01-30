@@ -4,6 +4,7 @@ import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { loginReducer } from 'features/AuthByUsername'
 
+
 export function createReduxStore (initialState?: StateSchema) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     user: userReducer,
@@ -14,6 +15,6 @@ export function createReduxStore (initialState?: StateSchema) {
   return configureStore({
     reducer: rootReducer,
     devTools: __IS_DEV__,
-    preloadedState: initialState
+    preloadedState: initialState,
   })
 }

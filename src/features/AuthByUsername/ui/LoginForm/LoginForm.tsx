@@ -1,5 +1,5 @@
 import cls from './LoginForm.module.scss'
-import { useCallback, type FC, type ReactNode, memo, useEffect } from 'react'
+import { useCallback, type FC, type ReactNode, memo } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
@@ -16,9 +16,9 @@ interface LoginFormProps {
 
 export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation()
-  const dispatch = useDispatch() // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction"
+  const dispatch = useDispatch() 
 
-  const { login, password } = useSelector(getLoginState)
+  const { login, password, isLoading, error } = useSelector(getLoginState)
   
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
@@ -28,12 +28,9 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
     dispatch(loginActions.setUserPassword(value))
   }, [dispatch])
 
-  const onLoadingClick = useCallback(() => {
-
-    console.log(login, password)
-
-    // dispatch(loginByUsername({login, password}));
-  }, [dispatch]);
+  const onLoadingClick = useCallback(async () => {
+    dispatch(loginByUsername({login, password}) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction"
+  }, [dispatch, login, password])
 
   return (
     <div className={cls.LoginForm}>

@@ -12,6 +12,7 @@ interface StoreProviderProps {
   initialState?: DeepPartial<StateSchema>
 }
 
+
 export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }) => {
   const store = createReduxStore(initialState as StateSchema)
 
