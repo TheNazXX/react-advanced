@@ -1,5 +1,5 @@
 import cls from './LoginForm.module.scss'
-import { useCallback, type FC, type ReactNode, memo } from 'react'
+import { useCallback, type FC, type ReactNode, memo, useEffect } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
@@ -7,6 +7,7 @@ import { Input } from 'shared/ui/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginActions } from '../../model/slice/loginSlice'
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 
 interface LoginFormProps {
   className?: string
@@ -15,10 +16,10 @@ interface LoginFormProps {
 
 export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction"
 
   const { login, password } = useSelector(getLoginState)
-
+  
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
   }, [dispatch])
@@ -29,7 +30,10 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
 
   const onLoadingClick = useCallback(() => {
 
-  }, [])
+    console.log(login, password)
+
+    // dispatch(loginByUsername({login, password}));
+  }, [dispatch]);
 
   return (
     <div className={cls.LoginForm}>
@@ -58,7 +62,7 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         value={password}
       />
 
-     <Button className={cls.btn} typeBtn={TypeButton.PRIMARY}>{t('Enter')}</Button>
+     <Button onClick={onLoadingClick} className={cls.btn} typeBtn={TypeButton.PRIMARY}>{t('Enter')}</Button>
     </div>
   )
 })

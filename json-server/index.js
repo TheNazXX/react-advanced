@@ -18,12 +18,16 @@ server.use(jsonServer.bodyParser);
 
 server.post('/login', (req, res) => {
   try {
-        const { username, password } = req.body;
+        const { login, password } = req.body;
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users = [] } = db;
 
+        console.log(login)
+        console.log(password)
+        console.log('1')
+
         const userFromBd = users.find(
-            (user) => user.username === username && user.password === password,
+            (user) => user.login === login && user.password === password,
         );
 
         if (userFromBd) {
@@ -53,9 +57,6 @@ server.get('/words', (req, res) => {
         const { words = [] } = db;
 
         const response = words.flatMap(elem => elem.words);
-
-        console.log(response);
-
 
         if (response) {
             return res.json(response);

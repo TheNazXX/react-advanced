@@ -9,6 +9,7 @@ const MainPage: FC = () => {
 
   return (
     <div className={cls.MainPage}>
+      <Counter />
       <AddWord />
     </div>
 
