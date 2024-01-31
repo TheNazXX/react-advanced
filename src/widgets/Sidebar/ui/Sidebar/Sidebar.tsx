@@ -52,9 +52,9 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
           <FontAwesomeIcon icon={faHouse} />
           {!collapsed && t('MainPage')}
         </AppLink>
-        <AppLink className={cls.link} to={RoutePathes.about}>
+        <AppLink className={cls.link} to={RoutePathes.repeat}>
           <FontAwesomeIcon icon={faLayerGroup} />
-          {!collapsed && t('AboutPage')}
+          {!collapsed && t('RepeatPage')}
         </AppLink>
         <AppLink className={cls.link} to={RoutePathes.words}>
           <FontAwesomeIcon icon={faBook} />

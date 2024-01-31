@@ -2,7 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export function buildSassLoader (isDev: boolean): Record<string, any> {
   return {
-    test: /\.s[ac]ss$/i,
+    test: /\.s?css$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       {

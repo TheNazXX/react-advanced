@@ -1,10 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react'
-import AboutPage from './AboutPage'
+import AboutPage from './RepeatPage'
 import { ThemeDecorator } from 'shared/config/storybook/Decorators'
 import { Theme } from 'app/providers/ThemeProvider'
 
 const meta: Meta<typeof AboutPage> = {
-  title: 'pages/AboutPage',
+  title: 'pages/RepeatPage',
   component: AboutPage
 }
 

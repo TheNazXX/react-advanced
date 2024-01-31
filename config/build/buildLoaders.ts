@@ -37,6 +37,7 @@ export function buildLoaders (isDev: boolean): any[] {
     SvgLoader,
     BabelLoader,
     TSLoader,
+
     buildSassLoader(isDev)
   ]
 };

@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Counter } from 'entities/Counter'
-import { AddWord } from 'widgets/AddWord'
+import { AddWord } from 'features/AddWord'
 import cls from './MainPage.module.scss'
 
 const MainPage: FC = () => {
@@ -9,7 +9,6 @@ const MainPage: FC = () => {
 
   return (
     <div className={cls.MainPage}>
-      <Counter />
       <AddWord />
     </div>
 

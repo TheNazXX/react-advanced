@@ -1,7 +1,7 @@
 const jsonServer = require('json-server');
 const fs = require('fs');
 const path = require('path');
-
+const {format} = require('date-fns');
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
@@ -22,10 +22,7 @@ server.post('/login', (req, res) => {
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users = [] } = db;
 
-        console.log(login)
-        console.log(password)
-        console.log('1')
-
+      
         const userFromBd = users.find(
             (user) => user.login === login && user.password === password,
         );
@@ -68,6 +65,41 @@ server.get('/words', (req, res) => {
         return res.status(500).json({ message: e.message });
     }
 })
+
+server.post('/word', (req, res) => {
+
+  const getDate = () => {
+    return format(new Date(), 'dd.MM.yyyy')
+  }
+
+  try {
+    
+    const {word} = req.body;
+
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+    const { words = [] } = db;
+
+    if(words[0].date === getDate()){
+      words[0].words.push(word);
+    }else{
+      words.push({
+        date: getDate,
+        words: [word]
+      })
+    };
+
+    fs.writeFileSync(path.resolve(__dirname, 'db.json'), JSON.stringify(db, null, 2), 'utf-8');
+
+
+    return res.json({statusCode: 200, message: 'success'});
+
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+})
+
+
 
 
 

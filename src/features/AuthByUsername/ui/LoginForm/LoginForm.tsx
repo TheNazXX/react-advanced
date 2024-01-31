@@ -16,10 +16,10 @@ interface LoginFormProps {
 
 export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   const { t } = useTranslation()
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
 
   const { login, password, isLoading, error } = useSelector(getLoginState)
-  
+
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
   }, [dispatch])
@@ -29,7 +29,7 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
   }, [dispatch])
 
   const onLoadingClick = useCallback(async () => {
-    dispatch(loginByUsername({login, password}) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction"
+    dispatch(loginByUsername({ login, password }) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction"
   }, [dispatch, login, password])
 
   return (

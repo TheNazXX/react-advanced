@@ -14,24 +14,24 @@ interface WordsPageProps {
 }
 
 export const WordsPage: FC<WordsPageProps> = ({ className }) => {
-  const [words, setWords] = useState<Word[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [words, setWords] = useState<Word[]>([])
+  const [loading, setLoading] = useState(true)
 
   const fetchData = async () => {
-    const response = await fetch('http://localhost:8000/words');
+    const response = await fetch('http://localhost:8000/words')
 
-    if(response.ok){
-      let data = await response.json();
-      return data;
+    if (response.ok) {
+      const data = await response.json()
+      return data
     };
 
-    return new Error("Could not fetch");
+    return new Error('Could not fetch')
   }
 
   useEffect(() => {
-    fetchData().then(data => setWords(data));
-    setLoading(false);
-  }, []);
+    fetchData().then(data => { setWords(data) })
+    setLoading(false)
+  }, [])
 
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
@@ -45,8 +45,8 @@ export const WordsPage: FC<WordsPageProps> = ({ className }) => {
     <div className={classNames(cls.WordsPage, {}, [className])}>
       {
         !words.length
-        ? <Loader/>
-        : renderWords(words) 
+          ? <Loader/>
+          : renderWords(words)
       }
     </div>
   )
