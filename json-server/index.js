@@ -59,7 +59,7 @@ server.get('/words', (req, res) => {
             return res.json(response);
         }
 
-        return res.status(403).json({ message: 'Words not found' });
+        return res.status(404).json({ message: 'Words not found' });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
@@ -74,16 +74,24 @@ server.post('/word', (req, res) => {
 
   try {
     
-    const {word} = req.body;
+    let word = req.body;
 
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
     const { words = [] } = db;
 
-    if(words[0].date === getDate()){
-      words[0].words.push(word);
+    const lastWords = words[words.length - 1];
+    
+    if(lastWords.date === getDate()){
+
+      word = {
+        ...word,
+        ua: word.ua.map(elem => elem.trim())
+      }
+
+      lastWords.words.push(word);
     }else{
       words.push({
-        date: getDate,
+        date: getDate(),
         words: [word]
       })
     };
@@ -98,7 +106,6 @@ server.post('/word', (req, res) => {
         return res.status(500).json({ message: e.message });
     }
 })
-
 
 
 

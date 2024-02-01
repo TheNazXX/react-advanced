@@ -22,7 +22,7 @@ const WordRules = {
   [Rules.REQUIRED]: true,
   [Rules.STRING]: true,
   [Rules.MIN]: 3,
-  [Rules.MAX]: 15
+  [Rules.MAX]: 25
 }
 
 export const EnWordRules = {
@@ -78,10 +78,10 @@ function match (value: string, rule: string, ruleValue: string | number): boolea
       return false
     }
     case Rules.IS_EN: {
-      return /^[a-zA-Z]+$/.test(value)
+      return /^[a-zA-Z\s]+$/.test(value)
     }
     case Rules.IS_UA: {
-      return /^[\u0400-\u04FF]+$/.test(value)
+      return /^[\u0400-\u04FF\s,]+$/u.test(value)
     }
     default: return false
   }
