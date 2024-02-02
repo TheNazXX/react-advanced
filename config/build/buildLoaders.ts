@@ -7,7 +7,7 @@ export function buildLoaders (isDev: boolean): any[] {
   }
 
   const FileLoader = {
-    test: /\.(png|jpe?g|gif)$/i,
+    test: /\.(png|jpe?g|gif|woff|woff2|eot|ttf|otf)$/i,
     use: [
       {
         loader: 'file-loader'

@@ -16,5 +16,8 @@
   "AddNewWord": "Add new word",
   "TypeWord": "Type the word",
   "TypeTranslate": "Type the translation",
-  "AddWord": "Add Word"
+  "AddWord": "Add Word",
+  "Delete": "Delete",
+  "Edit": "Edit",
+  "AddRepeat": "Repeat"
 }

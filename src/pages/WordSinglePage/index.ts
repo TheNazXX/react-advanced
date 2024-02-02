@@ -1,1 +1,1 @@
-export { WordSinglePage } from './ui/WordPage'
+export { WordSinglePage } from './ui/WordSinglePage'

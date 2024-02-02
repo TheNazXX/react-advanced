@@ -124,7 +124,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
   }, [])
 
   return (
-    <div className={classNames(cls.AddWord, {[cls.border]: isSuccess}, [className, "animate__animated animate__fadeIn"])}>
+    <div className={classNames(cls.AddWord, {[cls.success]: isSuccess}, [className, "animate__animated animate__fadeIn"])}>
       <div className={cls.head}>
         <span>
           {t('AddNewWord')}

@@ -20,10 +20,9 @@
     color: var(--inverted-theme-200);
   }
 
-  &.border{
+  &.success{
     border: 1px solid var(--color-green);
-    
-    transition: all .2s;
+    animation: blink 1s 1;
   }
 }
 
@@ -56,4 +55,17 @@
 
 .btn{
   margin-left: auto;
+}
+
+@keyframes blink{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+  100%{
+    opacity: 1;
+  }
+  
 }
