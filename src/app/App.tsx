@@ -8,6 +8,10 @@ import { Navbar } from 'widgets/Navbar'
 
 import { Sidebar } from 'widgets/Sidebar'
 
+import 'animate.css'
+
+
+
 const App: FC = () => {
   const { theme } = useTheme()
 

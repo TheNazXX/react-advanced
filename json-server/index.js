@@ -175,6 +175,26 @@ server.post('/word', (req, res) => {
     }
 })
 
+server.get('/repeat', (req, res) => {
+  try {
+      
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'repeat.json'), 'UTF-8'));
+    const { repeatWords = [] } = db;
+
+    const response = [...repeatWords];
+
+    if (response) {
+        return res.json(response);
+    }
+
+    return res.status(404).json({ message: 'Words not found' });
+} catch (e) {
+    return res.status(500).json({ message: e.message });
+}
+})
+
+
+
 
 
 
