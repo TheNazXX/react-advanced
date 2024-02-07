@@ -30,7 +30,7 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose, la
   const onCloseModal = useCallback(() => {
     setIsOpening(false)
     setIsClosing(true)
-
+    
     timerRef.current = setTimeout(() => {
       onClose()
 
@@ -76,8 +76,8 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose, la
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, { [cls.opened]: isOpening, [cls.closing]: isClosing }, [className, theme])}>
-        <div className={cls.overlay} onClick={onCloseModal}>
+      <div className={classNames(cls.Modal, { [cls.opened]: isOpening && isOpen, [cls.closing]: isClosing }, [className, theme])}>
+        <div className={cls.overlay}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
             <CloseBtn className={cls.closeBtn} onClick={onCloseModal}/>

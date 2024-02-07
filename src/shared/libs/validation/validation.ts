@@ -22,7 +22,7 @@ const WordRules = {
   [Rules.REQUIRED]: true,
   [Rules.STRING]: true,
   [Rules.MIN]: 3,
-  [Rules.MAX]: 25
+  [Rules.MAX]: 50
 }
 
 export const EnWordRules = {
@@ -33,7 +33,6 @@ export const EnWordRules = {
 export const UaWordRules = {
   ...WordRules,
   [Rules.IS_UA]: true,
-  [Rules.MAX]: 50
 }
 
 const Errors: ErrorsProps = {

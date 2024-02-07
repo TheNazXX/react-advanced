@@ -18,13 +18,7 @@ const RepeatPage: FC = () => {
 
   const { t } = useTranslation()
 
-  const checkWord = () => {
 
-  }
-  
-  const randomWord = () => {
-
-  }
 
   const onRequest = async () => {
     setLoading(true);
@@ -81,7 +75,7 @@ const RepeatPage: FC = () => {
       </div>
 
       <Modal isOpen={byOneModal} onClose={() => setByOneModal(false)}>
-        <RepeatWordByOne words={initialWords}/>
+        <RepeatWordByOne words={initialWords} onClose={() => setByOneModal(false)}/>
       </Modal>
     </div>
   )

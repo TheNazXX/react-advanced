@@ -145,26 +145,31 @@ server.post('/word', (req, res) => {
     let word = req.body;
 
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+    const db_repeat = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'repeat.json'), 'UTF-8'));
+
     const { words = [] } = db;
+    const { repeatWords = [] } = db_repeat;
 
     const lastWords = words[words.length - 1];
+
+    let correctWord = {
+      ...word,
+      ua: word.ua.map(elem => elem.trim().toLowerCase())
+    }
     
     if(lastWords.date === getDate()){
-
-      word = {
-        ...word,
-        ua: word.ua.map(elem => elem.trim().toLowerCase())
-      }
-
-      lastWords.words.push(word);
+      lastWords.words.push(correctWord);
     }else{
       words.push({
         date: getDate(),
-        words: [word]
+        words: [correctWord]
       })
     };
 
+    repeatWords.push(correctWord)
+
     fs.writeFileSync(path.resolve(__dirname, 'db.json'), JSON.stringify(db, null, 2), 'utf-8');
+    fs.writeFileSync(path.resolve(__dirname, 'repeat.json'), JSON.stringify(db_repeat, null, 2), 'utf-8');
 
 
     return res.json({statusCode: 200, message: 'success'});
@@ -193,6 +198,25 @@ server.get('/repeat', (req, res) => {
 }
 })
 
+
+server.post('/repeatWords', (req, res) => {
+  try {      
+    let {repeatWords} = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'repeat.json'), 'UTF-8'));
+    repeatWords = [...req.body];
+    dayRepeating = format(new Date(), 'dd.MM.yyyy');
+
+
+    fs.writeFileSync(path.resolve(__dirname, 'repeat.json'), JSON.stringify({
+      dayRepeating,
+      repeatWords,
+    }, null, 2), 'utf-8');
+
+    
+    return res.status(200).json({message: 'success'})
+} catch (e) {
+    return res.status(500).json({ message: e.message });
+}
+})
 
 
 

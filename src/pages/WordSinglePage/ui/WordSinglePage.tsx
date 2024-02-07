@@ -5,7 +5,7 @@ import { Button, Loader, TypeButton } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import cls from './WordSinglePage.module.scss';
 import { classNames } from 'shared/libs/classNames/classNames'
-import { lowerFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
+import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 
 interface WordPageProps {
   className?: string
@@ -59,13 +59,17 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
       isLoading ? <Loader />
       :  <div className={cls.wrapper}>
             <div className={cls.head}>
-              <span className={classNames(cls.word, {}, ["animate__animated animate__fadeIn"])}>{lowerFirstLetter(currentWord.en)}</span>
+              <span className={classNames(cls.word, {}, ["animate__animated animate__fadeIn"])}>{upperFirstLetter(currentWord.en)}</span>
               <div className={cls.btns}>
                 <Button typeBtn={TypeButton.PRIMARY}>{t('Edit')}</Button>
                 <Button typeBtn={TypeButton.PRIMARY}>{t('AddRepeat')}</Button>
                 <Button typeBtn={TypeButton.PRIMARY}>{t('Delete')}</Button>
               </div>
             </div>
+
+            {
+              currentWord.ua.join(',')
+            }
           </div>
     }
     </>
