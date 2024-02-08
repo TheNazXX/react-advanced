@@ -20,6 +20,7 @@ const initialState: Word = {
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const [currentWord, setWord] = useState<Word>(initialState);
   const [isLoading, setIsLoading] = useState(true);
+  const [onReviseLoading, setOnReviseLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const {t} = useTranslation();
@@ -44,6 +45,24 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
     }
   }
 
+  const reviseRequest = async () => {
+    setOnReviseLoading(true);
+
+    try{
+      const response = await fetch(`http://localhost:8000/repeatWord`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(currentWord)});
+
+      if(!response.ok){
+        setIsError(true);
+      }
+
+      return await response.json();
+
+    }catch($e){
+      setIsError(true);
+    }
+  };
+
+
   useEffect(() => {
     onRequest().then((data) => {
       setIsLoading(false);
@@ -51,7 +70,11 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
     }).catch(() => setIsError(true))
   }, [])
 
-
+  const onAddReviseRequest = () => {
+    reviseRequest().then(data => {
+      setOnReviseLoading(false);
+    })
+  };
 
   return (
     <>
@@ -62,7 +85,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
               <span className={classNames(cls.word, {}, ["animate__animated animate__fadeIn"])}>{upperFirstLetter(currentWord.en)}</span>
               <div className={cls.btns}>
                 <Button typeBtn={TypeButton.PRIMARY}>{t('Edit')}</Button>
-                <Button typeBtn={TypeButton.PRIMARY}>{t('AddRepeat')}</Button>
+                <Button typeBtn={TypeButton.PRIMARY} onClick={onAddReviseRequest}>{t('AddRepeat')}</Button>
                 <Button typeBtn={TypeButton.PRIMARY}>{t('Delete')}</Button>
               </div>
             </div>

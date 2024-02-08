@@ -53,6 +53,20 @@ const RepeatPage: FC = () => {
  
   }, [])
 
+  let content;
+
+  if(loading){
+    content = <Loader />;
+  }
+
+  if(initialWords.length > 0 && !loading){
+    content = renderWords(initialWords)
+  }
+
+  if(initialWords.length === 0 && !loading){
+    content = <div className={cls.text}>Everything is revised: <AppLink to={'/words'}><Button typeBtn={TypeButton.PRIMARY}>{t('AddToRevise')}</Button></AppLink></div>
+  }
+
   return (
     <div className={cls.page}>
       <div className={cls.head}>
@@ -68,15 +82,19 @@ const RepeatPage: FC = () => {
 
       <div className={cls.inner}>
         {
-          loading 
-          ? <Loader />
-          : renderWords(initialWords)
+          content
         }
       </div>
 
       <Modal isOpen={byOneModal} onClose={() => setByOneModal(false)}>
-        <RepeatWordByOne words={initialWords} onClose={() => setByOneModal(false)}/>
+        {
+        initialWords.length !== 0
+        ? <RepeatWordByOne words={initialWords} onClose={() => setByOneModal(false)}/>
+        : <div className={cls.modal_text}>Nothing to revise</div>
+        }
+    
       </Modal>
+
     </div>
   )
 }

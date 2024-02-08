@@ -180,6 +180,25 @@ server.post('/word', (req, res) => {
     }
 })
 
+server.post('/repeatWord', (req, res) => {
+  try {
+    const db_repeat = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'repeat.json'), 'UTF-8'));
+
+    const {repeatWords} = db_repeat;
+    const word = req.body;
+
+    repeatWords.push(word);
+
+
+    fs.writeFileSync(path.resolve(__dirname, 'repeat.json'), JSON.stringify(db_repeat, null, 2), 'utf-8');
+    return res.json({statusCode: 200, message: 'success'});
+
+} catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+}
+})
+
 server.get('/repeat', (req, res) => {
   try {
       

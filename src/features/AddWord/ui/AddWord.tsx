@@ -46,7 +46,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
     try{
       const response = await fetch('http://localhost:8000/word', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
         en: enValue.toLowerCase().trim(),
-        ua: uaValue.toLowerCase().trim().split(',')
+        ua: uaValue.toLowerCase().trim().split(',').filter(elem => elem !== '') // Fix this
       })});
 
       if(!response.ok){

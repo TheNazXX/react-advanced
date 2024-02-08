@@ -1,10 +1,11 @@
 {
-  "dayRepeating": "07.02.2024",
+  "dayRepeating": "08.02.2024",
   "repeatWords": [
     {
-      "en": "temporary",
+      "en": "ensure",
       "ua": [
-        "временно"
+        "забезпечувати",
+        "гарантувати"
       ]
     }
   ]

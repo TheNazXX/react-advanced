@@ -80,7 +80,7 @@ function match (value: string, rule: string, ruleValue: string | number): boolea
       return /^[a-zA-Z\s]+$/.test(value)
     }
     case Rules.IS_UA: {
-      return /^[\u0400-\u04FF\s,]+$/u.test(value)
+      return /^[\u0400-\u04FF\s,'-]+$/u.test(value)
     }
     default: return false
   }
