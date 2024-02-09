@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginActions } from '../../model/slice/loginSlice'
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { classNames } from 'shared/libs/classNames/classNames'
+
+import 'animate.css'
+
 
 interface LoginFormProps {
   className?: string
@@ -59,7 +63,9 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         value={password}
       />
 
-     <Button onClick={onLoadingClick} className={cls.btn} typeBtn={TypeButton.PRIMARY}>{t('Enter')}</Button>
+     <Button onClick={onLoadingClick} className={cls.btn} typeBtn={TypeButton.PRIMARY} disabled={isLoading}>{t('Enter')}</Button>
+
+     {error && <i className={classNames(cls.error, {}, ['animate__animated animate__headShake'])}>{error}</i>}
     </div>
   )
 })

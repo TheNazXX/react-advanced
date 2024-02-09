@@ -53,6 +53,9 @@ server.post('/login', (req, res) => {
             (user) => user.login === login && user.password === password,
         );
 
+        console.log(userFromBd);
+        console.log(login, password);
+
         if (userFromBd) {
             return res.json(userFromBd);
         }

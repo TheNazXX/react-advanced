@@ -37,3 +37,18 @@ Outline.args = {
 Outline.decorators = [
   ThemeDecorator(Theme.LIGHT)
 ]
+
+export const Disabled: Story = {
+  render: (args) => <Button {...args}/>
+}
+
+Disabled.args = {
+  children: 'Text',
+  typeBtn: TypeButton.PRIMARY,
+  disabled: true
+}
+
+Disabled.decorators = [
+  ThemeDecorator(Theme.DARK)
+]
+

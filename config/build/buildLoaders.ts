@@ -23,7 +23,7 @@ export function buildLoaders (isDev: boolean): any[] {
 
   const BabelLoader = {
     test: /\.(js|jsx|tsx)$/,
-    exclude: /(node_modules|bower_components)/,
+    exclude: /(bower_components)/,
     use: {
       loader: 'babel-loader',
       options: {

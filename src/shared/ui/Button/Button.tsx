@@ -9,14 +9,15 @@ export enum TypeButton {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string
-  children?: ReactNode
-  typeBtn?: TypeButton
+  className?: string;
+  children?: ReactNode;
+  typeBtn?: TypeButton;
+  disabled?: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ className, children, typeBtn, ...props }) => {
+const Button: FC<ButtonProps> = ({ className, children, typeBtn, disabled,  ...props }) => {
   return (
-    <button className={classNames(cls.Button, {}, [className, cls[typeBtn]])} {...props}>
+    <button className={classNames(cls.Button, {[cls.disabled]: disabled}, [className, cls[typeBtn]])} disabled={disabled} {...props}>
       {children}
     </button>
   )

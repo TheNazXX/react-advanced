@@ -25,6 +25,17 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     return rule
   })
 
+  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+    if (/css/.test(rule.test as string)) {
+      return {
+        ...rule, use: []
+      }
+    }
+
+    return rule
+  })
+
+ 
   config.module.rules.push({
     test: /\.svg$/,
     use: ['@svgr/webpack']
