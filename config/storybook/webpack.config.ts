@@ -2,7 +2,7 @@ import path from 'path'
 import { type BuildPaths } from '../build/types/config'
 import type webpack from 'webpack'
 import { buildSassLoader } from '../build/loaders/buildSassLoader'
-import { type RuleSetRule } from 'webpack'
+import { DefinePlugin, type RuleSetRule } from 'webpack'
 
 export default ({ config }: { config: webpack.Configuration }): webpack.Configuration => {
   const paths: BuildPaths = {
@@ -40,6 +40,10 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     test: /\.svg$/,
     use: ['@svgr/webpack']
   })
+
+  config.plugins.push(new DefinePlugin({
+    __IS_DEV__: true
+  }))
 
   config.module.rules.push(buildSassLoader(true))
 

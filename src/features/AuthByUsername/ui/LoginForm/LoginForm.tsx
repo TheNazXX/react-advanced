@@ -47,7 +47,7 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className }) => {
         type="text"
         name="login"
         id="login"
-        placeholder='Example_01'
+        placeholder='NazarXx'
         autofocus={true}
         onChange={onChangeUserName}
         value={login}
