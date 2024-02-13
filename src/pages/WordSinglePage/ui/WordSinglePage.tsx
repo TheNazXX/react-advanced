@@ -1,6 +1,6 @@
 import { useEffect, type FC, type ReactNode, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { type Word } from 'pages/WordsPage/ui/WordsPage'
+import { Word } from 'entities/Words'
 import { Button, Loader, TypeButton } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import cls from './WordSinglePage.module.scss';

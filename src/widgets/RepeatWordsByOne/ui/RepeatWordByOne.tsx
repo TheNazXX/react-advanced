@@ -2,11 +2,12 @@ import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './RepeatWordByOne.module.scss'
 import {type FC, type ReactNode, useState, useEffect, useRef} from 'react'
 import {useTranslation} from 'react-i18next'
-import { Word } from 'pages/WordsPage/ui/WordsPage'
+import { Word } from 'entities/Words'
 import { Button, TypeButton, AppLink, WordWrap, Loader } from 'shared/ui'
 import { lowerFirstLetter, upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 import { Input } from 'shared/ui/Input/Input'
 import { UaWordRules, validation } from 'shared/libs/validation/validation'
+import { correctTranslate } from '../helpers/helpers'
 
 
 interface RepeatWordByOneProps {
@@ -62,6 +63,12 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
     return;
   }
 
+  const skip = () => {
+    failedWords.push(randomWord);
+    reset();
+    replaceWord();
+  }
+
   const reset = () => {
     setTranslationValue('');
     setTranslationErrorsValidation([]);
@@ -97,23 +104,6 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
 
   const {t} = useTranslation()
 
-  const correctTranslate = () => {
-    let length = randomWord?.ua?.length;
-
-    if(length <= 1){
-      return 'Option'
-    }
-
-    if(length > 1 && length <= 4){
-      return 'Options'
-    }
-
-    if(length > 4){
-      return 'OptionsForUa'
-    }
-
-    return '';
-  }
 
   const onComplete = () => {
 
@@ -177,11 +167,14 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
             ? <small className="animate__animated animate__fadeIn animate__faster">{translationErrorsValidation[0]}</small>
             : null}
 
-            <span className={cls.hint}>{t('Possibly')} {randomWord?.ua?.length} {lowerFirstLetter(t(correctTranslate()))}</span>
+            <span className={cls.hint}>{t('Possibly')} {randomWord?.ua?.length} {lowerFirstLetter(t(correctTranslate(randomWord?.ua?.length)))}</span>
           </label>
 
 
-          <Button className={cls.btn} typeBtn={TypeButton.OUTLINE} onClick={check}>{t('Next')}</Button>
+          <div className={cls.btns}>
+            <Button typeBtn={TypeButton.OUTLINE} onClick={check}>{t('Next')}</Button>
+            <Button typeBtn={TypeButton.PRIMARY} onClick={skip}>{t('Skip')}</Button>
+          </div>
         </>
         : <> 
           <h2 className={cls.title}>{t('NeedInRevising')}</h2>

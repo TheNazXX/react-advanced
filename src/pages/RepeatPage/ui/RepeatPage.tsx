@@ -2,8 +2,8 @@ import { useState, useEffect, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import cls from './RepeatPage.module.scss'
 import { AppLink, Button, Loader, Modal, TypeButton, WordWrap } from 'shared/ui'
-import { Word } from 'pages/WordsPage/ui/WordsPage'
-import { RepeatWordByOne } from 'features/RepeatWordsByOne'
+import { Word } from 'entities/Words'
+import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
 
 const RepeatPage: FC = () => {
   const [loading, setLoading] = useState(true);
