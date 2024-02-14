@@ -4,31 +4,41 @@ import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Input } from 'shared/ui/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginActions } from '../../model/slice/loginSlice'
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import { useDispatch, useSelector, useStore } from 'react-redux'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { classNames } from 'shared/libs/classNames/classNames'
+import { ReduxStoreWithManager } from 'app/providers/StoreProvider'
+
+import { getLoginState } from '../../model/selectors/getLoginState'
+import { getPasswordState } from '../../model/selectors/getPasswordState'
+import { getIsLoadingState } from '../../model/selectors/getIsLoadingState'
+import { getErrorState } from '../../model/selectors/getErrorState'
 
 import 'animate.css'
 
 
-
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
   children?: ReactNode;
   onClose?: () => void;
 }
 
-export const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
+const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
+
+  const login = useSelector(getLoginState);
+  const password = useSelector(getPasswordState);
+  const isLoading = useSelector(getIsLoadingState);
+  const error = useSelector(getErrorState);
 
   const [isFetched, setIsFetched] = useState(false);
 
   const { t } = useTranslation()
   const dispatch = useDispatch()
 
-  const { login, password, isLoading, error } = useSelector(getLoginState)
+  const store = useStore() as ReduxStoreWithManager;
 
+  
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
   }, [dispatch])
@@ -43,6 +53,15 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
     dispatch(loginByUsername({ login, password }) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
 
   }, [dispatch, login, password]);
+
+  useEffect(() => {
+    store.reducerManager.add('loginForm', loginReducer);
+    dispatch({type: '@INITY'})
+    return () => {
+      store.reducerManager.remove('loginForm');
+      dispatch({type: '@DESTROY'})
+    }
+  }, [])
 
   useEffect(() => { 
 
@@ -89,3 +108,5 @@ export const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
     </div>
   )
 })
+
+export default LoginForm;
