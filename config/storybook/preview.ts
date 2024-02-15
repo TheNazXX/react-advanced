@@ -13,7 +13,7 @@ const preview: Preview = {
     }
   },
   decorators: [
-    StyleDecorator, 
+    StyleDecorator,
     TranslationDecorator
   ]
 }

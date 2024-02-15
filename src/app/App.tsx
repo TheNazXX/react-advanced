@@ -2,25 +2,21 @@ import { useEffect, type FC } from 'react'
 import { useTheme } from 'app/providers/ThemeProvider/lib/useTheme'
 import { classNames } from 'shared/libs/classNames/classNames'
 import { Suspense } from 'react'
-
 import { AppRouter } from './providers/router'
 import { Navbar } from 'widgets/Navbar'
-
 import { Sidebar } from 'widgets/Sidebar'
-
-import 'animate.css'
 import { useDispatch } from 'react-redux'
 import { userActions } from 'entities/User'
 
-
+import 'animate.css'
 
 const App: FC = () => {
-  const { theme } = useTheme();
-  const dispatch = useDispatch();
+  const { theme } = useTheme()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(userActions.initAuthData());
-  }, [dispatch]);
+    dispatch(userActions.initAuthData())
+  }, [dispatch])
 
   return (
     <div className={classNames('app', {}, [theme])}>

@@ -1,5 +1,5 @@
-import { Word } from "entities/Words";
+import { type Word } from 'entities/Words'
 
 export interface FailedWordsSchema {
-  failedWords: Word[];
+  failedWords: Word[]
 }

@@ -2,10 +2,8 @@ import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './WordsPage.module.scss'
 import { type FC, type ReactNode, useState, useEffect } from 'react'
 import { AppLink, Loader, WordWrap } from 'shared/ui'
-import { Word, getWords } from 'entities/Words'
+import { type Word, getWords, RequestWords } from 'entities/Words'
 import { useDispatch, useSelector } from 'react-redux'
-import { RequestWords } from 'entities/Words'
-
 
 interface WordsPageProps {
   className?: string
@@ -13,12 +11,11 @@ interface WordsPageProps {
 }
 
 export const WordsPage: FC<WordsPageProps> = ({ className }) => {
-
-  const dispatch = useDispatch();
-  const {words, isLoading} = useSelector(getWords);
+  const dispatch = useDispatch()
+  const { words, isLoading } = useSelector(getWords)
 
   useEffect(() => {
-    dispatch(RequestWords() as any);
+    dispatch(RequestWords() as any)
   }, [])
 
   const renderWords = (words: Word[]) => {

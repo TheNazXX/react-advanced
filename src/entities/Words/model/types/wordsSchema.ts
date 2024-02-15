@@ -1,11 +1,10 @@
 export interface Word {
-  en: string;
-  ua: string[];
+  en: string
+  ua: string[]
 }
 
-
 export interface WordsSchema {
-  words: Word[];
-  isLoading: boolean;
-  error: string;
+  words: Word[]
+  isLoading: boolean
+  error: string
 }

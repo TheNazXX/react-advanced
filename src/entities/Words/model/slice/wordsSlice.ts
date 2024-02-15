@@ -1,20 +1,20 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { WordsSchema } from "../types/wordsSchema";
-import { Word } from "../types/wordsSchema";
-import { RequestWords } from "../services/RequestWords";
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { type WordsSchema, type Word } from '../types/wordsSchema'
+
+import { RequestWords } from '../services/RequestWords'
 
 const initialState: WordsSchema = {
   words: [],
   isLoading: false,
-  error: '',
-};
+  error: ''
+}
 
 export const wordsSlice = createSlice({
   name: 'words',
   initialState,
   reducers: {
     setWords: (state, action: PayloadAction<Word[]>) => {
-      state.words = action.payload;
+      state.words = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -27,8 +27,7 @@ export const wordsSlice = createSlice({
         state.isLoading = false
       })
   }
-});
+})
 
-
-export const { actions: wordsActions } = wordsSlice;
-export const { reducer: wordsReducer } = wordsSlice;
+export const { actions: wordsActions } = wordsSlice
+export const { reducer: wordsReducer } = wordsSlice

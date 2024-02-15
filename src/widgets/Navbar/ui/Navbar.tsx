@@ -15,19 +15,15 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const [isAuthModal, setAuthModal] = useState<boolean>(false)
-  const authData = useSelector(getUserAuthData);
-  const dispatch = useDispatch();
-
-  if(authData){
-
-  }
+  const authData = useSelector(getUserAuthData)
+  const dispatch = useDispatch()
 
   const onToggleModal = useCallback(() => {
     setAuthModal(state => !state)
   }, [])
 
   const onLogout = useCallback(() => {
-    dispatch(userActions.onLogout());
+    dispatch(userActions.onLogout())
   }, [])
 
   return (
@@ -37,21 +33,21 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
       <div className="container-l">
         {
           !authData
-          ? <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onToggleModal} disabled={isAuthModal}>
+            ? <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onToggleModal} disabled={isAuthModal}>
               {
                 t('Login')
               }
-            </Button> 
-          : <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onLogout}>
+            </Button>
+            : <Button className={cls.loginBtn} typeBtn={TypeButton.OUTLINE} onClick={onLogout}>
               {
                 t('Exit')
               }
-            </Button> 
+            </Button>
         }
       </div>
 
     {
-      isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onToggleModal} />  
+      isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onToggleModal} />
     }
     </div>
   )

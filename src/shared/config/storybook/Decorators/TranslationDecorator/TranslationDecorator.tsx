@@ -11,4 +11,3 @@ export const TranslationDecorator = (StoryComponent: any) => {
     </Suspense>
   )
 }
-

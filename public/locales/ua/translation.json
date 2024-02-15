@@ -30,5 +30,8 @@
   "OptionsForUa": "Варіантів",
   "NeedInRevising": "Потрібно повторити",
   "Done": "Завершити",
-  "Exit": "Вийти"
+  "Exit": "Вийти",
+  "EverythingIsRevised": "Все переглянуто",
+  "NothingToRevise": "Все переглянуто"
+  
 }

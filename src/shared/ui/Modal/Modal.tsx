@@ -30,7 +30,7 @@ export const Modal: FC<ModalProps> = ({ className, children, isOpen, onClose, la
   const onCloseModal = useCallback(() => {
     setIsOpening(false)
     setIsClosing(true)
-    
+
     timerRef.current = setTimeout(() => {
       onClose()
 

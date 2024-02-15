@@ -31,5 +31,7 @@
   "NeedInRevising": "Needs in revising",
   "Done": "Done",
   "AddToRevise": "Add revise words",
-  "Exit": "Exit"
+  "Exit": "Exit",
+  "EverythingIsRevised": "Everything is revised",
+  "NothingToRevise": "Nothing to revise"
 }

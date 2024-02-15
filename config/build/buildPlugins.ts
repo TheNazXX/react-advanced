@@ -18,13 +18,12 @@ export function buildPlugins (path: string, isDev: boolean): webpack.WebpackPlug
     })
   ]
 
-  
   plugins.push(new BundleAnalyzerPlugin({
     openAnalyzer: true,
     analyzerHost: '127.0.0.2',
-    excludeAssets: /node_modules/,
+    excludeAssets: /node_modules/
   }))
-  
+
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
   }

@@ -45,7 +45,11 @@ module.exports = {
     '@typescript-eslint/unbound-method': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/no-unused-expressions': 'off'
+    '@typescript-eslint/no-unused-expressions': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-dynamic-delete': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-misused-promises': 'off'
 
   }
 }

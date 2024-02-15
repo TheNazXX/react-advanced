@@ -18,7 +18,6 @@ export const Template: Story = {
 
 Template.decorators = [
   StoreDecorator({
-    loginForm: {login: '123', password: 'abs'}
+    loginForm: { login: '123', password: 'abs' }
   })
-];
-
+]

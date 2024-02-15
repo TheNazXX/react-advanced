@@ -9,7 +9,7 @@ import { TypeButton } from 'shared/ui/Button/Button'
 import { type RulesProps, validation, EnWordRules, UaWordRules } from 'shared/libs/validation/validation'
 
 import 'animate.css'
-import { ResponseAddWord } from '../model/types/ResponseShema'
+import { type ResponseAddWord } from '../model/types/ResponseShema'
 
 interface AddWordProps {
   className?: string
@@ -22,47 +22,48 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
   const [enValue, setEnValue] = useState<string>('')
   const [uaValue, setUaValue] = useState<string>('')
 
-  const [fetchError, setFetchError] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSucces] = useState(false);
+  const [fetchError, setFetchError] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSuccess, setIsSucces] = useState(false)
 
   const [enValueErrors, setEnValueErrors] = useState<string[]>([])
   const [uaValueErrors, setUaValueErrors] = useState<string[]>([])
 
-  
   const successTimer = useRef<ReturnType<typeof setTimeout>>()
 
   const onSuccess = () => {
-    setIsSucces(true);
+    setIsSucces(true)
     successTimer.current = setTimeout(() => {
-      setIsSucces(false);
-    }, 1000);
+      setIsSucces(false)
+    }, 1000)
   }
 
   const onRequest = async () => {
+    setIsLoading(true)
 
-    setIsLoading(true);
+    try {
+      const response = await fetch('http://localhost:8000/word', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          en: enValue.toLowerCase().trim(),
+          ua: uaValue.toLowerCase().trim().split(',').filter(elem => elem !== '') // Fix this
+        })
+      })
 
-    try{
-      const response = await fetch('http://localhost:8000/word', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
-        en: enValue.toLowerCase().trim(),
-        ua: uaValue.toLowerCase().trim().split(',').filter(elem => elem !== '') // Fix this
-      })});
-
-      if(!response.ok){
-        setFetchError(true);
-        setIsLoading(false);
-        return;
+      if (!response.ok) {
+        setFetchError(true)
+        setIsLoading(false)
+        return
       }
 
-      setIsLoading(false);
-      return await response.json();
-
-    }catch(e){
-      setIsLoading(false);
-      setFetchError(true);
+      setIsLoading(false)
+      return await response.json()
+    } catch (e) {
+      setIsLoading(false)
+      setFetchError(true)
     };
-  };
+  }
 
   const onChangeEnValue = (value: string) => {
     setEnValue(value)
@@ -78,57 +79,50 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
     return format(new Date(), 'dd.MM.yyyy')
   }
 
-  const onLoaded = ({statusCode, message}: ResponseAddWord) => {
+  const onLoaded = ({ statusCode, message }: ResponseAddWord) => {
+    setIsLoading(false)
 
-    setIsLoading(false);
+    if (statusCode === 200) {
+      onSuccess()
 
-    if(statusCode === 200){
+      setEnValue('')
+      setUaValue('')
 
-      onSuccess();
-
-      setEnValue('');
-      setUaValue('');
-
-      return;
+      return
     }
 
-    setFetchError(true);
+    setFetchError(true)
   }
 
   const onSubmit = () => {
-
-    
-    if(checkValidation(enValue, EnWordRules).length){
+    if (checkValidation(enValue, EnWordRules).length) {
       setEnValueErrors(checkValidation(enValue, EnWordRules))
-      return;
+      return
     }
 
-
-    if(checkValidation(uaValue, UaWordRules).length){
+    if (checkValidation(uaValue, UaWordRules).length) {
       setUaValueErrors(checkValidation(uaValue, UaWordRules))
-      return;
+      return
     }
-    onRequest().then(onLoaded);
+    onRequest().then(onLoaded)
   }
-
 
   const checkValidation = (value: string, rules: RulesProps): string[] => {
     return validation(value, rules)
   }
 
-  
   useEffect(() => {
     return () => {
-      clearTimeout(successTimer.current);
+      clearTimeout(successTimer.current)
     }
   }, [])
 
   return (
-    <div className={classNames(cls.AddWord, {[cls.success]: isSuccess}, [className])}>
+    <div className={classNames(cls.AddWord, { [cls.success]: isSuccess }, [className])}>
       <div className={cls.head}>
         <span>
           {t('AddNewWord')}
-        </span> 
+        </span>
         <span className={cls.date}>{getDate()}</span>
       </div>
 
@@ -154,13 +148,13 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
       </div>
 
       {
-        isLoading ?  <Loader />
-        : <Button className={cls.btn} typeBtn={TypeButton.PRIMARY} onClick={onSubmit} disabled={isLoading}>
+        isLoading
+          ? <Loader />
+          : <Button className={cls.btn} typeBtn={TypeButton.PRIMARY} onClick={onSubmit} disabled={isLoading}>
             {t('AddWord')}
           </Button>
       }
 
-  
     </div>
   )
 }

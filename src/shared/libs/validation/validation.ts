@@ -32,7 +32,7 @@ export const EnWordRules = {
 
 export const UaWordRules = {
   ...WordRules,
-  [Rules.IS_UA]: true,
+  [Rules.IS_UA]: true
 }
 
 const Errors: ErrorsProps = {
@@ -42,7 +42,7 @@ const Errors: ErrorsProps = {
   [Rules.MIN]: 'Word is too short!',
   [Rules.IS_EN]: 'Non english word!',
   [Rules.IS_UA]: 'Non ua word!'
-}
+} as const
 
 export function validation (value: string, rules: RulesProps): string[] {
   const errors: string[] = []
