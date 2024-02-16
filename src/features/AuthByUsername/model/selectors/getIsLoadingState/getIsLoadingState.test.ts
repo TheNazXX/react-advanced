@@ -1,7 +1,6 @@
-import { StateSchema } from "app/providers/StoreProvider"
-import { DeepPartial } from "app/providers/StoreProvider/ui/StoreProvider"
-import { getIsLoadingState } from "./getIsLoadingState"
-
+import { type StateSchema } from 'app/providers/StoreProvider'
+import { type DeepPartial } from 'app/providers/StoreProvider/ui/StoreProvider'
+import { getIsLoadingState } from './getIsLoadingState'
 
 describe('getLoginIsLoadingState', () => {
   test('should return true', () => {
@@ -11,12 +10,11 @@ describe('getLoginIsLoadingState', () => {
       }
     }
 
-    expect(getIsLoadingState(state as StateSchema)).toEqual(true);
+    expect(getIsLoadingState(state as StateSchema)).toEqual(true)
   })
-
 
   test('should return false', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(getIsLoadingState(state as StateSchema)).toEqual(false);
+    expect(getIsLoadingState(state as StateSchema)).toEqual(false)
   })
 })

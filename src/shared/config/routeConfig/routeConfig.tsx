@@ -5,8 +5,10 @@ import { WordSinglePage } from 'pages/WordSinglePage'
 import { WordsPage } from 'pages/WordsPage'
 
 import { type RouteProps } from 'react-router-dom'
+import { ProfilePage } from 'pages/ProfilePage'
 
 export enum AppRoutes {
+  PROFILE = 'profile',
   MAIN = 'main',
   REPEAT = 'repeat',
   WORDS = 'words',
@@ -15,6 +17,7 @@ export enum AppRoutes {
 }
 
 export const RoutePathes: Record<AppRoutes, string> = {
+  [AppRoutes.PROFILE]: '/profile',
   [AppRoutes.MAIN]: '/',
   [AppRoutes.REPEAT]: '/repeat',
   [AppRoutes.WORDS]: '/words',
@@ -23,6 +26,10 @@ export const RoutePathes: Record<AppRoutes, string> = {
 }
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
+  [AppRoutes.PROFILE]: {
+    path: RoutePathes.profile,
+    element: <ProfilePage />
+  },
   [AppRoutes.MAIN]: {
     path: RoutePathes.main,
     element: <MainPage />

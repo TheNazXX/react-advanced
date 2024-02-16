@@ -61,36 +61,6 @@
   text-align: center;
 }
 
-.link{
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-top: 1px solid var(--inverted-theme-100);
-  transition: all .2s;
-  color: var(--inverted-color-100);
-
-  &:last-child{
-    border-bottom: 1px solid var(--inverted-theme-100);
-  }
-
-  svg{
-    color: var(--color-300);
-    transition: all .2s;
-  }
-
-  &:hover{
-    background-color: var(--color-300);
-    color: white;
-
-    svg{
-      color: white;
-    }
-  }
-
-}
-
 
 
 
@@ -100,12 +70,8 @@
   .closeBtnWrap{
     justify-content: center;
   }
-
-  .links{
-    margin-top: 2em;
-  }
-
-  .themeSwitch{
+  
+  s.themeSwitch{
     justify-content: center;
   }
 }

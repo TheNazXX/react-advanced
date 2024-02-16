@@ -4,33 +4,19 @@ import cls from './RepeatPage.module.scss'
 import { AppLink, Button, Loader, Modal, TypeButton, WordWrap } from 'shared/ui'
 import { type Word } from 'entities/Words'
 import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
+import { requestRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords } from 'entities/RepeatWords'
+import { useDispatch, useSelector } from 'react-redux'
+import { type ThunkDispatch } from '@reduxjs/toolkit'
 
 const RepeatPage: FC = () => {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-
-  const [initialWords, setInitialWords] = useState([])
+  const isLoading = useSelector(getIsLoadingGetRepeatWords)
+  const repeatWords = useSelector(getRepeatWords)
 
   const [revisingType, setRevisingType] = useState('')
   const [byOneModal, setByOneModal] = useState(false)
 
   const { t } = useTranslation()
-
-  const onRequest = async () => {
-    setLoading(true)
-
-    try {
-      const response = await fetch('http://localhost:8000/repeat')
-
-      if (!response.ok) {
-        setError(true)
-      }
-
-      return await response.json()
-    } catch (e) {
-      setError(true)
-    }
-  }
+  const dispatch = useDispatch<ThunkDispatch<Word[], null, any>>()
 
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
@@ -41,23 +27,20 @@ const RepeatPage: FC = () => {
   }
 
   useEffect(() => {
-    onRequest().then(data => {
-      setLoading(false)
-      setInitialWords(data as Word[])
-    }).catch(() => { setError(true) })
+    dispatch(requestRepeatWords())
   }, [])
 
   let content
 
-  if (loading) {
+  if (isLoading) {
     content = <Loader />
   }
 
-  if (initialWords.length > 0 && !loading) {
-    content = renderWords(initialWords as Word[])
+  if (repeatWords.length > 0 && !isLoading) {
+    content = renderWords(repeatWords)
   }
 
-  if (initialWords.length === 0 && !loading) {
+  if (repeatWords.length === 0 && !isLoading) {
     content = <div className={cls.text}>{t('EverythingIsRevised')}: <AppLink to={'/words'}><Button typeBtn={TypeButton.PRIMARY}>{t('AddToRevise')}</Button></AppLink></div>
   }
 
@@ -82,8 +65,8 @@ const RepeatPage: FC = () => {
 
       <Modal isOpen={byOneModal} onClose={() => { setByOneModal(false) }}>
         {
-        initialWords.length !== 0
-          ? <RepeatWordByOne words={initialWords} onClose={() => { setByOneModal(false) }}/>
+        renderWords.length !== 0
+          ? <RepeatWordByOne words={repeatWords} onClose={() => { setByOneModal(false) }}/>
           : <div className={cls.modal_text}>{t('NothingToRevise')}</div>
         }
 

@@ -1,6 +1,7 @@
+import axios from 'axios'
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type Word } from '../types/wordsSchema'
-import axios from 'axios'
 import { wordsActions } from '../slice/wordsSlice'
 
 export const RequestWords = createAsyncThunk<Word[], null>(

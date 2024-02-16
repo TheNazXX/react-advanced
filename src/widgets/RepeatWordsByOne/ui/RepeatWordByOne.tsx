@@ -8,6 +8,9 @@ import { lowerFirstLetter, upperFirstLetter } from 'shared/libs/actionsWithFirst
 import { Input } from 'shared/ui/Input/Input'
 import { UaWordRules, validation } from 'shared/libs/validation/validation'
 import { correctTranslate } from '../helpers/helpers'
+import { useDispatch, useSelector } from 'react-redux'
+import { type ThunkDispatch } from 'redux-thunk'
+import { sendRepeatWords, getIsLoadingSendRepeatWords } from 'entities/RepeatWords'
 
 interface RepeatWordByOneProps {
   className?: string
@@ -26,10 +29,11 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const [translationValue, setTranslationValue] = useState('')
   const [translationErrorsValidation, setTranslationErrorsValidation] = useState([])
 
-  const [fetchError, setFetchError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const isLoading = useSelector(getIsLoadingSendRepeatWords)
 
+  const { t } = useTranslation()
   const delayHideLoading = useRef <ReturnType<typeof setTimeout>>()
+  const dispatch = useDispatch<ThunkDispatch<any, Word[], any>>()
 
   const replaceWord = () => {
     const currentArr = [...revisingWords]
@@ -69,7 +73,6 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
 
   const checkByCorrectWord = () => {
     const result = translationValue.trim().split(',').map(elem => elem.trim())
-    console.log(result)
 
     if (result.length !== randomWord.ua.length) {
       return false
@@ -89,25 +92,9 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
     setCurrentIdxWord(rdm)
   }, [revisingWords])
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(delayHideLoading.current)
-    }
-  }, [loading])
-
-  const { t } = useTranslation()
-
   const onComplete = () => {
-    onRequest().then(() => {
-      onClose()
-
-      delayHideLoading.current = setTimeout(() => {
-        setLoading(false)
-      }, 1000)
-
-      setRevisingWords([...failedWords])
-      setFailedWords([])
-    })
+    dispatch(sendRepeatWords(failedWords))
+    setFailedWords([])
   }
 
   const renderWords = (words: Word[]) => {
@@ -118,35 +105,10 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
     ))
   }
 
-  const onRequest = async () => {
-    setLoading(true)
-
-    try {
-      const response = await fetch('http://localhost:8000/repeatWords', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([
-          ...failedWords
-        ])
-      })
-
-      if (!response.ok) {
-        setFetchError(true)
-        setLoading(false)
-      }
-
-      return await response.json()
-    } catch (e) {
-      setFetchError(true)
-      setLoading(false)
-    }
-  }
-
   return (
     <div key={randomWord?.en} className={classNames(cls.RepeatWordByOne, {}, [className, 'animate__animated animate__fadeIn animate__faster'])}>
 
         {revisingWords.length !== 0
-
           ? <>
           <h2 className={cls.title}>{t('WordsToRevise')}</h2>
           <span className={cls.en_word}>{upperFirstLetter(randomWord?.en)}</span>
@@ -171,12 +133,12 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
           <h2 className={cls.title}>{t('NeedInRevising')}</h2>
           <div className={cls.inner}>
             {
-              loading ? <Loader className={cls.loader}/> : renderWords(failedWords)
+              isLoading ? <Loader className={cls.loader}/> : renderWords(failedWords)
             }
           </div>
 
           {
-            !loading && <Button className={cls.btn} typeBtn={TypeButton.OUTLINE} onClick={onComplete}>{t('Done')}</Button>
+            !isLoading && <Button className={cls.btn} typeBtn={TypeButton.OUTLINE} onClick={onComplete}>{t('Done')}</Button>
           }
         </>
 

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './BurgerBtn.module.scss'
-import { type ButtonHTMLAttributes, type FC } from 'react'
+import { type ButtonHTMLAttributes, type FC, memo } from 'react'
 
 interface BurgerBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
@@ -8,7 +8,7 @@ interface BurgerBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void
 }
 
-export const BurgerBtn: FC<BurgerBtnProps> = ({ className, onClick, isOpen, ...props }) => {
+export const BurgerBtn: FC<BurgerBtnProps> = memo(({ className, onClick, isOpen, ...props }) => {
   return (
     <button className={classNames(cls.burgerBtn, { [cls.active]: !isOpen }, [className])} onClick={onClick} {...props}>
       <span />
@@ -16,4 +16,4 @@ export const BurgerBtn: FC<BurgerBtnProps> = ({ className, onClick, isOpen, ...p
       <span />
     </button>
   )
-}
+})

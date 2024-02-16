@@ -14,6 +14,7 @@ import { getPasswordState } from '../../model/selectors/getPasswordState/getPass
 import { getIsLoadingState } from '../../model/selectors/getIsLoadingState/getIsLoadingState'
 import { getErrorState } from '../../model/selectors/getErrorState/getErrorState'
 import { DynamicModuleLoader, type ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 
 export interface LoginFormProps {
   className?: string
@@ -31,10 +32,8 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
   const isLoading = useSelector(getIsLoadingState)
   const error = useSelector(getErrorState)
 
-  const [isFetched, setIsFetched] = useState(false)
-
   const { t } = useTranslation()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
@@ -45,27 +44,19 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
   }, [dispatch])
 
   const onLoadingClick = useCallback(async () => {
-    setIsFetched(true)
-
     try {
-      await dispatch(loginByUsername({ login, password }) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
+      const result = await dispatch(loginByUsername({ login, password })) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
+
+      if (result.meta.requestStatus === 'fulfilled') {
+        onClose()
+      }
     } catch (err) {
       console.log(err)
     }
   }, [dispatch, login, password])
 
-  useEffect(() => {
-    if (!isFetched) {
-      return
-    }
-
-    if (!(error || isLoading)) {
-      onClose()
-    }
-  }, [isLoading, error])
-
   return (
-    <DynamicModuleLoader name='loginForm' reducers={initialReducers} removeAfterUnmount={true}>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
       <div className={cls.LoginForm}>
         <h3>
           {t('Auth')}

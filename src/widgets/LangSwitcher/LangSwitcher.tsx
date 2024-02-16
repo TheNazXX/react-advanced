@@ -1,6 +1,6 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './LangSwitcher.module.scss'
-import { type FC } from 'react'
+import { type FC, memo } from 'react'
 import UaSvg from 'shared/assets/icons/ua-flag.svg'
 import { useTranslation } from 'react-i18next'
 
@@ -16,7 +16,7 @@ interface LangSwitcherProps {
   isCollapsed?: boolean
 }
 
-export const LangSwitcher: FC<LangSwitcherProps> = ({ className, isCollapsed = false }) => {
+export const LangSwitcher: FC<LangSwitcherProps> = memo(({ className, isCollapsed = false }) => {
   const { t, i18n } = useTranslation()
 
   const toggleLang = (lang: Langs): void => {
@@ -35,4 +35,4 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className, isCollapsed = f
       {t('ua')}</button>
   </div>
   )
-}
+})

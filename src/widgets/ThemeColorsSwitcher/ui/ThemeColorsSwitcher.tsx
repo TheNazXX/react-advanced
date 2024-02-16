@@ -1,6 +1,6 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './ThemeColorsSwitcher.module.scss'
-import { type FC, type ReactNode } from 'react'
+import { memo, type FC, type ReactNode } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { ThemesColors, useTheme } from 'app/providers/ThemeProvider'
@@ -11,7 +11,7 @@ interface ThemeColorsSwitcherProps {
   isCollapsed?: boolean
 }
 
-export const ThemeColorsSwitcher: FC<ThemeColorsSwitcherProps> = ({ className, isCollapsed = false }) => {
+export const ThemeColorsSwitcher: FC<ThemeColorsSwitcherProps> = memo(({ className, isCollapsed = false }) => {
   const { themeColor, toggleThemeColor } = useTheme()
 
   const renderItems = () => {
@@ -28,4 +28,4 @@ export const ThemeColorsSwitcher: FC<ThemeColorsSwitcherProps> = ({ className, i
       <>{renderItems()}</>
     </div>
   )
-}
+})

@@ -6,14 +6,14 @@ import { Button } from 'shared/ui'
 
 import cls from './ThemeSwitcher.module.scss'
 import { useTheme } from 'app/providers/ThemeProvider/lib/useTheme'
-import { type FC } from 'react'
+import { memo, type FC } from 'react'
 import { classNames } from 'shared/libs/classNames/classNames'
 
 interface ThemeSwitcherProps {
   className?: string
 }
 
-const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
+const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({ className }) => {
   const { theme, toggleTheme } = useTheme()
 
   return (
@@ -21,6 +21,6 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
       <FontAwesomeIcon className={cls.svg} icon={theme === Theme.DARK ? faMoon : faSun} />
     </Button>
   )
-}
+})
 
 export { ThemeSwitcher }

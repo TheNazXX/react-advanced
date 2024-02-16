@@ -1,9 +1,10 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './WordsPage.module.scss'
-import { type FC, type ReactNode, useState, useEffect } from 'react'
+import { type FC, type ReactNode, useEffect } from 'react'
 import { AppLink, Loader, WordWrap } from 'shared/ui'
 import { type Word, getWords, RequestWords } from 'entities/Words'
 import { useDispatch, useSelector } from 'react-redux'
+import { type ThunkDispatch } from 'redux-thunk'
 
 interface WordsPageProps {
   className?: string
@@ -11,11 +12,11 @@ interface WordsPageProps {
 }
 
 export const WordsPage: FC<WordsPageProps> = ({ className }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<Word[], null, any>>()
   const { words, isLoading } = useSelector(getWords)
 
   useEffect(() => {
-    dispatch(RequestWords() as any)
+    dispatch(RequestWords())
   }, [])
 
   const renderWords = (words: Word[]) => {

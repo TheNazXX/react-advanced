@@ -2,15 +2,15 @@ import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { type StateSchema } from './StateSchema'
 import { userReducer } from 'entities/User'
 import { wordsReducer } from 'entities/Words'
-import { failedWordsReducer } from 'widgets/RepeatWordsByOne'
 import { createReducerManager } from './reducerManager'
+import { repeatWordsReducer } from 'entities/RepeatWords/model/slice/repeatWordsSlice'
 
 export function createReduxStore (initialState?: StateSchema, asyncRedusers?: ReducersMapObject<StateSchema>) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncRedusers,
     user: userReducer,
     words: wordsReducer,
-    failedWords: failedWordsReducer
+    repeatWords: repeatWordsReducer
   }
 
   const reducerManager = createReducerManager(rootReducers)
@@ -26,3 +26,5 @@ export function createReduxStore (initialState?: StateSchema, asyncRedusers?: Re
 
   return store
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

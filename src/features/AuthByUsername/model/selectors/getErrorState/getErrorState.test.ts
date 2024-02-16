@@ -1,6 +1,6 @@
-import { StateSchema } from "app/providers/StoreProvider"
-import { DeepPartial } from "app/providers/StoreProvider/ui/StoreProvider"
-import { getErrorState } from "./getErrorState"
+import { type StateSchema } from 'app/providers/StoreProvider'
+import { type DeepPartial } from 'app/providers/StoreProvider/ui/StoreProvider'
+import { getErrorState } from './getErrorState'
 
 describe('getLoginErrorState', () => {
   test('should return error', () => {
@@ -10,12 +10,11 @@ describe('getLoginErrorState', () => {
       }
     }
 
-    expect(getErrorState(state as StateSchema)).toEqual('error');
+    expect(getErrorState(state as StateSchema)).toEqual('error')
   })
-
 
   test('should return error', () => {
     const state: DeepPartial<StateSchema> = {}
-    expect(getErrorState(state as StateSchema)).toEqual('');
+    expect(getErrorState(state as StateSchema)).toEqual('')
   })
 })
