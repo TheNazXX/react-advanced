@@ -41,7 +41,8 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
   })
 
   config.plugins.push(new DefinePlugin({
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: JSON.stringify('')
   }))
 
   config.module.rules.push(buildSassLoader(true))

@@ -1,7 +1,7 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { type WordsSchema, type Word } from '../types/wordsSchema'
 
-import { RequestWords } from '../services/RequestWords'
+import { requestWords } from '../services/RequestWords'
 
 const initialState: WordsSchema = {
   words: [],
@@ -19,11 +19,11 @@ export const wordsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(RequestWords.pending, (state, action) => {
+      .addCase(requestWords.pending, (state, action) => {
         state.isLoading = true
         state.error = ''
       })
-      .addCase(RequestWords.fulfilled, (state, action) => {
+      .addCase(requestWords.fulfilled, (state, action) => {
         state.isLoading = false
       })
   }

@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type Word } from '../types/wordsSchema'
 import { wordsActions } from '../slice/wordsSlice'
 
-export const RequestWords = createAsyncThunk<Word[], null>(
+export const requestWords = createAsyncThunk<Word[], null>(
   'words/RequestWords',
   async (_, thunkAPI) => {
     try {

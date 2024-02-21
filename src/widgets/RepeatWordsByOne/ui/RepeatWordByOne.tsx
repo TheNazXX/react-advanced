@@ -10,7 +10,10 @@ import { UaWordRules, validation } from 'shared/libs/validation/validation'
 import { correctTranslate } from '../helpers/helpers'
 import { useDispatch, useSelector } from 'react-redux'
 import { type ThunkDispatch } from 'redux-thunk'
-import { sendRepeatWords, getIsLoadingSendRepeatWords } from 'entities/RepeatWords'
+import { sendRepeatWords, getIsLoadingSendRepeatWords, getIsErrorSendRepeatWords } from 'entities/RepeatWords'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
 
 interface RepeatWordByOneProps {
   className?: string
@@ -20,8 +23,12 @@ interface RepeatWordByOneProps {
 }
 
 export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, onClose }) => {
+
   const [revisingWords, setRevisingWords] = useState<Word[]>(words)
   const [failedWords, setFailedWords] = useState([])
+
+  const [isMistake, setIsMistake] = useState(false);
+  const [isHint, setIsHint] = useState(false);
 
   const [currentIdxWord, setCurrentIdxWord] = useState<number>(0)
   const [randomWord, setRandomWord] = useState<Word>({ en: '', ua: [] })
@@ -29,39 +36,49 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const [translationValue, setTranslationValue] = useState('')
   const [translationErrorsValidation, setTranslationErrorsValidation] = useState([])
 
-  const isLoading = useSelector(getIsLoadingSendRepeatWords)
+  const isLoading = useSelector(getIsLoadingSendRepeatWords);
+  const errorMessage = useSelector(getIsErrorSendRepeatWords);
 
   const { t } = useTranslation()
   const delayHideLoading = useRef <ReturnType<typeof setTimeout>>()
   const dispatch = useDispatch<ThunkDispatch<any, Word[], any>>()
 
   const replaceWord = () => {
-    const currentArr = [...revisingWords]
-    currentArr.splice(currentIdxWord, 1)
-    setRevisingWords(currentArr)
+    const currentArr = [...revisingWords];
+    currentArr.splice(currentIdxWord, 1);
+    setRevisingWords(currentArr);
   }
 
   const onChangeTransltationValue = (value: string) => {
     setTranslationValue(value)
   }
 
-  const check = () => {
-    const errors = validation(translationValue, UaWordRules)
+  const changeWord = () => {
+    setIsHint(false);
 
-    if (!errors.length) {
-      if (!checkByCorrectWord()) {
-        failedWords.push(randomWord)
-      }
+    if(!checkValidation()){
+      return;
+    }
 
-      reset()
-      replaceWord()
-    } else {
-      setTranslationErrorsValidation(errors)
-    };
+    if(checkByCorrectWord()){
+      reset();
+      replaceWord();
+      return;
+    }
+
+    setIsMistake(true);
+  }
+
+  const checkValidation = () => {
+    const errors = validation(translationValue, UaWordRules);
+    setTranslationErrorsValidation(errors)
+    return errors.length === 0;
   }
 
   const skip = () => {
     failedWords.push(randomWord)
+
+    setIsMistake(false);
     reset()
     replaceWord()
   }
@@ -69,6 +86,10 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const reset = () => {
     setTranslationValue('')
     setTranslationErrorsValidation([])
+  }
+
+  const showHint = () => {
+    setIsHint(true);
   }
 
   const checkByCorrectWord = () => {
@@ -85,22 +106,27 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
     setRevisingWords(words)
   }, [words])
 
-  useEffect(() => {
+  useEffect(() => { // Переключение слов
     const rdm = Math.floor(0 + Math.random() * revisingWords.length)
-
     setRandomWord(revisingWords[rdm])
     setCurrentIdxWord(rdm)
+
   }, [revisingWords])
 
-  const onComplete = () => {
-    dispatch(sendRepeatWords(failedWords))
-    setFailedWords([])
+  const onSuccess = () => {
+    onClose();
+    setFailedWords([]);
   }
 
+  const onComplete = () => {
+    dispatch(sendRepeatWords({words: [...failedWords], onSuccess}));
+  }
+
+ 
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
       <AppLink key={idx} to={`/words/${en}`}>
-        <WordWrap>{en}</WordWrap>
+        <WordWrap className='animate__animated animate__fadeIn'>{en}</WordWrap>
       </AppLink>
     ))
   }
@@ -115,25 +141,60 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
 
           <label className={cls.group}>
             <span>{t('TypeTranslate')}:</span>
-            <Input value={translationValue} onChange={onChangeTransltationValue}/>
+            <Input className={classNames('', {[cls.error]: isMistake}, [])} value={translationValue} onChange={onChangeTransltationValue}/>
 
-            {translationErrorsValidation.length
-              ? <small className="animate__animated animate__fadeIn animate__faster">{translationErrorsValidation[0]}</small>
+            {translationErrorsValidation.length !== 0
+              ? <small key={translationErrorsValidation[0]} className="animate__animated animate__fadeIn animate__faster">{translationErrorsValidation[0]}</small>
               : null}
 
             <span className={cls.hint}>{t('Possibly')} {randomWord?.ua?.length} {lowerFirstLetter(t(correctTranslate(randomWord?.ua?.length)))}</span>
           </label>
 
-          <div className={cls.btns}>
-            <Button typeBtn={TypeButton.OUTLINE} onClick={check}>{t('Next')}</Button>
-            <Button typeBtn={TypeButton.PRIMARY} onClick={skip}>{t('Skip')}</Button>
-          </div>
+          {
+            isMistake || isHint
+            ? <div className={classNames(cls.correct, {}, ['animate__animated animate__fadeIn'])}>{t("CorrectVersion")}&nbsp;-&nbsp; 
+                <div className={classNames(cls.correct_elems, {}, [])}>
+                  {randomWord?.ua.map((elem) => {
+                    return <span key={elem}>{elem}</span>
+                  })}
+                </div>
+              </div> 
+            : null
+          }
+
+
+
+                <div className={cls.btns}>
+                  {
+                  isMistake 
+                  ? <Button typeBtn={TypeButton.OUTLINE} onClick={skip}>{t('Ok')}</Button>
+                  : 
+                  <>
+                    <Button typeBtn={TypeButton.OUTLINE} onClick={changeWord}>{t('Next')}</Button>
+                    <Button typeBtn={TypeButton.PRIMARY} onClick={skip}>{t('Skip')}</Button>
+                  </>
+                  }
+  
+                  <span className={cls.info}>{words.length - revisingWords.length + 1}/{words.length}</span>
+                  <Button className={cls.bulb} onClick={showHint}>
+                    <FontAwesomeIcon icon={faLightbulb}/>
+                  </Button>
+                </div>
+
+   
+      
+
         </>
           : <>
           <h2 className={cls.title}>{t('NeedInRevising')}</h2>
           <div className={cls.inner}>
             {
-              isLoading ? <Loader className={cls.loader}/> : renderWords(failedWords)
+              isLoading ? <Loader className={cls.loader}/> : failedWords.length !== 0 
+    
+              ? renderWords(failedWords)
+              : <div className={cls.info_text}>All the words are learned.</div>
+            
+
             }
           </div>
 

@@ -37,6 +37,10 @@ export const RepeatWordsSlice = createSlice({
       .addCase(sendRepeatWords.fulfilled, (state, action) => {
         state.sendIsLoading = false
       })
+      .addCase(sendRepeatWords.rejected, (state, action) => {
+        state.sendIsLoading = false
+        state.sendIsError = action.payload as string
+      })
   }
 
 })

@@ -2,7 +2,7 @@ import { useState, useEffect, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import cls from './RepeatPage.module.scss'
 import { AppLink, Button, Loader, Modal, TypeButton, WordWrap } from 'shared/ui'
-import { type Word } from 'entities/Words'
+import { getWords, type Word } from 'entities/Words'
 import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
 import { requestRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords } from 'entities/RepeatWords'
 import { useDispatch, useSelector } from 'react-redux'
@@ -51,7 +51,7 @@ const RepeatPage: FC = () => {
 
         <div className={cls.btns}>
           <span>{t('TypeRevising')}:</span>
-          <Button className={cls.btn} typeBtn={TypeButton.OUTLINE} onClick={() => { setByOneModal(true) }}>{t('OneByOne')}</Button>
+          <Button className={cls.btn} typeBtn={TypeButton.OUTLINE} onClick={() => { setByOneModal(true) }} disabled={isLoading || repeatWords.length === 0}>{t('OneByOne')}</Button>
           <Button className={cls.btn} typeBtn={TypeButton.OUTLINE}>{t('List')}</Button>
         </div>
 
@@ -65,9 +65,9 @@ const RepeatPage: FC = () => {
 
       <Modal isOpen={byOneModal} onClose={() => { setByOneModal(false) }}>
         {
-        renderWords.length !== 0
-          ? <RepeatWordByOne words={repeatWords} onClose={() => { setByOneModal(false) }}/>
-          : <div className={cls.modal_text}>{t('NothingToRevise')}</div>
+          renderWords.length !== 0
+            ? <RepeatWordByOne words={repeatWords} onClose={() => { setByOneModal(false) }}/>
+            : <div className={cls.modal_text}>{t('NothingToRevise')}</div>
         }
 
       </Modal>

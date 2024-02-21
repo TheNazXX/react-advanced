@@ -24,7 +24,9 @@ const App: FC = () => {
         <Navbar />
         <div className="content-page">
           <div className="container-l">
-            <AppRouter />
+            <div className="page">
+              <AppRouter />
+            </div>
           </div>
         </div>
         <Sidebar />

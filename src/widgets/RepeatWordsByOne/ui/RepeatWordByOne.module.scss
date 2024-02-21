@@ -60,8 +60,54 @@
 }
 
 .btns{
+  position: relative;
   margin-top: auto;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.info{
+  position: absolute;
+  right: 0;
+}
+
+.bulb{
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  color: var(--color-100);
+  transition: scale .2s;
+
+
+  &:hover{
+    scale: 1.1;
+  }
+}
+
+.error{
+  border: 1px solid var(--danger-color) !important;
+}
+
+.correct{
+  display: flex;
+  align-items: center;
+}
+
+.correct_elems{
+  display: flex;
+  gap: 5px;
+
+  span{
+    font-weight: 500;
+    color: var(--color-100);
+  }
+}
+
+.info_text{
+  margin: 0 auto;
+  color: var(--color-100);
+  font-size: 28px;
+  font-weight: 500;
 }

@@ -1,4 +1,4 @@
-export interface Profile {
+export interface ProfileInterface {
   firstname: string
   lastname: string
   age: number
@@ -9,7 +9,7 @@ export interface Profile {
 }
 
 export interface ProfileSchema {
-  data?: Profile
+  data?: ProfileInterface
   isLoading: boolean
   error?: string
   readonly: boolean

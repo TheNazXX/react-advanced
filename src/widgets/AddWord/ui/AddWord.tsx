@@ -72,7 +72,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
 
   const onChangeUaValue = (value: string) => {
     setUaValue(value)
-    setEnValueErrors([])
+    setUaValueErrors([])
   }
 
   const getDate = () => {
@@ -104,12 +104,14 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
       setUaValueErrors(checkValidation(uaValue, UaWordRules))
       return
     }
+
     onRequest().then(onLoaded)
   }
 
   const checkValidation = (value: string, rules: RulesProps): string[] => {
     return validation(value, rules)
   }
+
 
   useEffect(() => {
     return () => {

@@ -33,7 +33,6 @@ server.use(async (req, res, next) => {
 
   }
 
-
   next();
 })
 
@@ -53,14 +52,28 @@ server.post('/login', (req, res) => {
             (user) => user.login === login && user.password === password,
         );
 
-        console.log(userFromBd);
-        console.log(login, password);
 
         if (userFromBd) {
             return res.json(userFromBd);
         }
 
         return res.status(403).json({ message: 'User not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+})
+
+server.get('/profile', (_, res) => {
+  try {
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'profile.json'), 'UTF-8'));
+        const { profile } = db;
+
+        if (profile) {
+            return res.json(profile);
+        }
+
+        return res.status(403).json({ message: 'Something went wrong' });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
@@ -95,7 +108,7 @@ server.get('/words', (req, res) => {
 })
 
 
-server.get('/word/:word', (req, res) => {
+server.get('/words/:word', (req, res) => {
 
   const findWords = (all_words, searchValue, index = 0) => {
     if (index < all_words.length) {

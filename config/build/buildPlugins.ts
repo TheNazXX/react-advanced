@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-export function buildPlugins (path: string, isDev: boolean): webpack.WebpackPluginInstance[] {
+export function buildPlugins (path: string, isDev: boolean, apiUrl: string): webpack.WebpackPluginInstance[] {
   const plugins = [
     new HtmlWebpackPlugin({
       template: path
@@ -14,19 +14,20 @@ export function buildPlugins (path: string, isDev: boolean): webpack.WebpackPlug
       chunkFilename: 'css/[name].[contenthash:8].css'
     }),
     new webpack.DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev)
+      __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl)
     })
   ]
 
 
   if (isDev) {
-    plugins.push(new webpack.HotModuleReplacementPlugin()),
+    plugins.push(new webpack.HotModuleReplacementPlugin())
 
-    plugins.push(new BundleAnalyzerPlugin({
-      openAnalyzer: true,
-      analyzerHost: '127.0.0.2',
-      excludeAssets: /node_modules/
-    }))
+    // plugins.push(new BundleAnalyzerPlugin({
+    //   openAnalyzer: true,
+    //   analyzerHost: '127.0.0.2',
+    //   excludeAssets: /node_modules/
+    // }))
   }
 
   return plugins

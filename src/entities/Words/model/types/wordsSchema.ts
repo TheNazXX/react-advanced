@@ -4,7 +4,7 @@ export interface Word {
 }
 
 export interface WordsSchema {
-  words: Word[]
+  words: Array<Word>
   isLoading: boolean
   error: string
 }

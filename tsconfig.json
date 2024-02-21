@@ -10,7 +10,7 @@
     "config/storybook/**/*.ts",
     "config/build/**/*.ts",
     "scripts/**/*.js"
-, "src/shared/config/storybook/Decorators/ThemeDecorator/themeDecorator.tss"  ],
+, "src/shared/config/storybook/Decorators/ThemeDecorator/themeDecorator.tss", "src/entities/Profile/model/selectors/getProfileIsLoading"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",
@@ -19,6 +19,7 @@
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
+    "strict": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

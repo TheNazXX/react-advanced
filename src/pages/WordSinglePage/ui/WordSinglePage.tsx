@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'
 import cls from './WordSinglePage.module.scss'
 import { classNames } from 'shared/libs/classNames/classNames'
 import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
+import { requestWord } from 'entities/Words'
+
 
 interface WordPageProps {
   className?: string
@@ -18,33 +20,27 @@ const initialState: Word = {
 }
 
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
-  const [currentWord, setWord] = useState<Word>(initialState)
-  const [isLoading, setIsLoading] = useState(true)
+  const [currentWord, setCurentWord] = useState(initialState);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setIsError] = useState(null);
+
   const [onReviseLoading, setOnReviseLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
   const { t } = useTranslation()
-
   const { word } = useParams()
 
-  const onRequest = async () => {
-    setIsLoading(true)
+  useEffect(() => {
+    setIsLoading(true);
+    requestWord(word).then(onLoaded).catch((e: string) => setIsError(e));
+  }, [])
 
-    try {
-      const response = await fetch(`http://localhost:8000/word/${word}`)
-
-      if (!response.ok) {
-        setIsError(true)
-      }
-
-      return await response.json()
-    } catch ($e) {
-      setIsError(true)
-    }
+  const onLoaded = (data: Word) => {
+    setIsLoading(false);
+    setCurentWord(data);
   }
 
   const reviseRequest = async () => {
-    setOnReviseLoading(true)
+    setOnReviseLoading(true)  
 
     try {
       const response = await fetch('http://localhost:8000/repeatWord', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(currentWord) })
@@ -60,11 +56,8 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   }
 
   useEffect(() => {
-    onRequest().then((data) => {
-      setIsLoading(false)
-      setWord(data as Word)
-    }).catch(() => { setIsError(true) })
-  }, [])
+    console.log(currentWord);
+  }, [currentWord])
 
   const onAddReviseRequest = () => {
     reviseRequest().then(data => {
