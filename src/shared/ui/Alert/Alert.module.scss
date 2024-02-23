@@ -6,11 +6,12 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 320px;
-  height: 100px;
+  height: auto;
   border-radius: 6px;
   background-color: var(--theme-300);
   border: 1px solid var(--color-green);
-  transition: all .4s;
+  transition: all .3s;
+  padding-right: 25px;
 
   -webkit-box-shadow: -1px 33px 48px 11px rgba(0,0,0,0.22);
   -moz-box-shadow: -1px 33px 48px 11px rgba(0,0,0,0.22);
@@ -27,6 +28,9 @@
 }
 
 .btn{
+  width: 20px;
+  height: 20px;
+  
   position: absolute;
   right: 0.5em;
   top: 0.5em;
@@ -36,3 +40,10 @@
   }
 }
 
+.error{
+  border-color: var(--danger-color);
+}
+
+.text{
+  font-size: 14px;
+}

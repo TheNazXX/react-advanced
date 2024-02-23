@@ -77,7 +77,7 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
 
   const skip = () => {
     failedWords.push(randomWord)
-
+    setIsHint(false);
     setIsMistake(false);
     reset()
     replaceWord()

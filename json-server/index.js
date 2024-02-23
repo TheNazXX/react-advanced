@@ -5,6 +5,9 @@ const {subDays, format} = require('date-fns');
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
+const DB_REPEAT = 'repeat';
+const DB = 'db';
+
 server.use(async (req, res, next) => {
   await new Promise((res) => {
     setTimeout(res, 500)
@@ -198,16 +201,23 @@ server.post('/word', (req, res) => {
 
 server.post('/repeatWord', (req, res) => {
   try {
-    const db_repeat = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'repeat.json'), 'UTF-8'));
+    const db = getDb(DB_REPEAT);
+    const {repeatWords} = db;
 
-    const {repeatWords} = db_repeat;
-    const word = req.body;
+    const {word} = req.body;
 
+
+    if(isInArray(word, repeatWords)){
+      return res.json({status: 400, message: 'Word already consist in reapiting'})
+    };
+
+    console.log(word);
+    
     repeatWords.push(word);
 
+    writeDb(DB_REPEAT, db);
 
-    fs.writeFileSync(path.resolve(__dirname, 'repeat.json'), JSON.stringify(db_repeat, null, 2), 'utf-8');
-    return res.json({statusCode: 200, message: 'success'});
+    return res.json({status: 200, message: 'success'});
 
 } catch (e) {
     console.log(e);
@@ -262,3 +272,17 @@ server.use(router);
 server.listen(8000, () => {
   console.log('Server is running on 8000 port');
 })
+
+// ----------------------------------------------------------------------- //
+
+function getDb(name){
+  return JSON.parse(fs.readFileSync(path.resolve(__dirname, `${name}.json`), 'UTF-8'));
+}
+
+function writeDb(target, body){
+  return fs.writeFileSync(path.resolve(__dirname, `${target}.json`), JSON.stringify(body, null, 2), 'utf-8');
+}
+
+function isInArray(elem, array){
+  return array.find(({en}) => en === elem.en);
+}
