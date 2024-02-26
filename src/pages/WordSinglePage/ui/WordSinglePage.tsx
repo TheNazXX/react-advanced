@@ -48,7 +48,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
   const [currentWord, setCurentWord] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setIsError] = useState(null);
+  const [error, setIsError] = useState<null | string>(null);
 
   const [addRepeatIsLoading, setRepeatIsLoading] = useState(false);
   const [addRepeatError, setRepeatError] = useState('');
@@ -58,7 +58,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    requestWord(word).then(onLoaded).catch((e: string) => setIsError(e));
+    requestWord(word as string).then(onLoaded).catch((e: string) => setIsError(e));
   }, [])
 
   const onLoaded = (data: Word) => {

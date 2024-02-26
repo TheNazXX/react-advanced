@@ -5,9 +5,7 @@ import { type StateSchema } from '../config/StateSchema'
 import { type ReducersMapObject } from '@reduxjs/toolkit'
 import { useNavigate } from 'react-router-dom'
 
-export type DeepPartial<T> = {
-  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K]
-}
+
 
 interface StoreProviderProps {
   children?: ReactNode

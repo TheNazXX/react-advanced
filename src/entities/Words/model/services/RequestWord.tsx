@@ -9,7 +9,7 @@ export const requestWord = async (word: string) => {
     }
 
     return response.data;
-  } catch (e) {
+  } catch (e: any) {
     return e.message;
   }
 }

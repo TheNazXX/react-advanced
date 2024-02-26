@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { DynamicModuleLoader, type ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
 import { Profile, fetchProfileData, profileReducer } from 'entities/Profile'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
+import { type ThunkDispatch } from '@reduxjs/toolkit'
 
 const reducers: ReducersList = {
   profile: profileReducer

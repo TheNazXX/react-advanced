@@ -1,10 +1,10 @@
 import cls from './LoginForm.module.scss'
-import { useCallback, type FC, type ReactNode, memo, useEffect, useState } from 'react'
+import { useCallback, type FC, type ReactNode, memo  } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Input } from 'shared/ui/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { classNames } from 'shared/libs/classNames/classNames'
@@ -45,10 +45,10 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
 
   const onLoadingClick = useCallback(async () => {
     try {
-      const result = await dispatch(loginByUsername({ login, password })) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
+      const result = await dispatch(loginByUsername({ login, password }) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
 
       if (result.meta.requestStatus === 'fulfilled') {
-        onClose()
+        onClose?.()
       }
     } catch (err) {
       console.log(err)

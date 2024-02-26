@@ -16,7 +16,7 @@ export const addRepeatWordRequest = async (word: Word) => {
     // if(response.data)
 
     return await response.data;
-  } catch (e) {
+  } catch (e: any) {
     console.log(e);
     throw Error(e);
   }

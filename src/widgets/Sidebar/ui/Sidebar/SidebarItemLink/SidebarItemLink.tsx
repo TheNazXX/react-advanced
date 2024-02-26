@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { type SidebarItemLinkType } from './model/items'
 
 import { AppLink } from 'shared/ui'
-import cls from './SidebarItemLink.module.scss'
 import { classNames } from 'shared/libs/classNames/classNames'
+import cls from './SidebarItemLink.module.scss';
 
 interface SidebarItemLinkProps {
-  item?: SidebarItemLinkType
+  item: SidebarItemLinkType;
   isCollapsed?: boolean
 }
 
-export const SidebarItemLink: FC<SidebarItemLinkProps> = memo(({ item, isCollapsed }) => {
+export const SidebarItemLink: FC<SidebarItemLinkProps> = memo(({ item, isCollapsed = false }) => {
   const { path, text, icon } = item
   const { t } = useTranslation()
 
