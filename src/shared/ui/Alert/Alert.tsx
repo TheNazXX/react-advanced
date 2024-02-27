@@ -5,18 +5,41 @@ import {useTranslation} from 'react-i18next'
 import { Portal } from '../Portal/Portal';
 import { CloseBtn } from 'widgets/CloseBtn/CloseBtn';
 import { useAnimation } from 'shared/libs/hooks/useAnimation/useAnimation';
+import { useState } from 'react';
 
 interface AlertProps {
   className?: string;
   children?: ReactNode;
-  text: string;
+  text?: string;
   isOpen: boolean;
   onClose: () => void;
-  isSuccess: boolean;
+  isSuccess?: boolean;
   autoClose?: boolean;
 }
 
-export const Alert: FC<AlertProps> = ({ className, text, isOpen, onClose, isSuccess = true, autoClose = false }) => {
+
+export const useAlert = () => {
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertText, setAlertText] = useState('');
+  const [alertSuccess, setAlertSuccess] = useState(true);
+
+
+  const showAlert = (message: string, success = false) => {
+    setIsAlert(true);
+    setAlertText(message);
+    setAlertSuccess(success);
+  }
+
+  const hideAlert = () => {
+    setIsAlert(false);
+  }
+
+  return {isAlert, setIsAlert, alertText, alertSuccess, showAlert, hideAlert};
+}
+
+
+
+export const Alert: FC<AlertProps> = ({ className, text = '', isOpen, onClose, isSuccess = true, autoClose = false }) => {
 
   const {isOpening, isClosing, onCloseElement} = useAnimation(isOpen, onClose);
   const {t} = useTranslation();
@@ -27,8 +50,8 @@ export const Alert: FC<AlertProps> = ({ className, text, isOpen, onClose, isSucc
     
     if(autoClose){
       closeDeley.current = setTimeout(() => {
-        onClose();
-      }, 3000)
+        onCloseElement()
+      }, 2000)
     }
 
     return () => {
@@ -51,3 +74,5 @@ export const Alert: FC<AlertProps> = ({ className, text, isOpen, onClose, isSucc
 
   );
 };
+
+

@@ -45,7 +45,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
 
   const onLoadingClick = useCallback(async () => {
     try {
-      const result = await dispatch(loginByUsername({ login, password }) as any) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
+      const result = await dispatch(loginByUsername({ login, password })) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
 
       if (result.meta.requestStatus === 'fulfilled') {
         onClose?.()

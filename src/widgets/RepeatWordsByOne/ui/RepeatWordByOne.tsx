@@ -25,7 +25,7 @@ interface RepeatWordByOneProps {
 export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, onClose }) => {
 
   const [revisingWords, setRevisingWords] = useState<Word[]>(words)
-  const [failedWords, setFailedWords] = useState([])
+  const [failedWords, setFailedWords] = useState<Word[]>([])
 
   const [isMistake, setIsMistake] = useState(false);
   const [isHint, setIsHint] = useState(false);
@@ -34,7 +34,7 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const [randomWord, setRandomWord] = useState<Word>({ en: '', ua: [] })
 
   const [translationValue, setTranslationValue] = useState('')
-  const [translationErrorsValidation, setTranslationErrorsValidation] = useState([])
+  const [translationErrorsValidation, setTranslationErrorsValidation] = useState<string[]>([])
 
   const isLoading = useSelector(getIsLoadingSendRepeatWords);
   const errorMessage = useSelector(getIsErrorSendRepeatWords);

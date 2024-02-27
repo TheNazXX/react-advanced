@@ -1,4 +1,3 @@
-import { type DeepPartial } from 'app/providers/StoreProvider/ui/StoreProvider'
 import { type LoginSchema } from '../types/loginSchema'
 import { loginActions, loginReducer } from './loginSlice'
 

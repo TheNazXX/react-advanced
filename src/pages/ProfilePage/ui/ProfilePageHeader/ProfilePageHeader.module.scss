@@ -1,0 +1,19 @@
+.ProfilePageHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title{
+
+  display: block;
+  align-items: center;
+  color: var(--color-200);
+  font-size: 30px;
+  font-weight: 500;
+
+  span{
+    color: white;
+    margin-left: 10px;
+  }
+}

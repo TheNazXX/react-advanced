@@ -21,7 +21,7 @@ export const userSlice = createSlice({
     },
 
     onLogout: (state) => {
-      state.authData = null
+      state.authData = undefined
       localStorage.removeItem(USER_LOCAL_KEY)
     }
   }

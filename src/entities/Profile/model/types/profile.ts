@@ -2,7 +2,7 @@ export interface ProfileInterface {
   firstname: string
   lastname: string
   age: number
-  usename: string
+  role: string
   country: string
   city: string
   avatar: string
@@ -10,7 +10,7 @@ export interface ProfileInterface {
 
 export interface ProfileSchema {
   data?: ProfileInterface
-  isLoading: boolean
+  isLoading?: boolean
   error?: string
-  readonly: boolean
+  readonly?: boolean
 }

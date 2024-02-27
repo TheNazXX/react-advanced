@@ -15,7 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 };
 
-const Button: FC<ButtonProps> = memo(({ className, children, typeBtn, disabled, ...props }) => {
+const Button: FC<ButtonProps> = memo(({ className, children, typeBtn = TypeButton.RESET, disabled = false, ...props }) => {
   return (
     <button className={classNames(cls.Button, { [cls.disabled]: disabled }, [className, cls[typeBtn]])} disabled={disabled} {...props}>
       {children}
