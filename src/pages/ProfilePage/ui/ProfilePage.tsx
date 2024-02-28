@@ -1,7 +1,7 @@
-import { type ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DynamicModuleLoader, type ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Profile, fetchProfileData, getProfileData, getProfileError, getProfileIsLoading, profileReducer } from 'entities/Profile'
+import { Profile, fetchProfileData, getProfileFormData, getProfileError, getProfileIsLoading, profileReducer } from 'entities/Profile'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { Alert, useAlert } from 'shared/ui'
@@ -24,8 +24,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const {isAlert, showAlert, hideAlert, alertSuccess} = useAlert();
 
   const dispatch = useAppDispatch();
-
-  const data = useSelector(getProfileData);
+  
+  const data = useSelector(getProfileFormData);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
 

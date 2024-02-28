@@ -34,5 +34,7 @@
   "Exit": "Exit",
   "EverythingIsRevised": "Everything is revised",
   "NothingToRevise": "Nothing to revise",
-  "CorrectVersion": "Correct version"
+  "CorrectVersion": "Correct version",
+  "Cancel": "Cancel",
+  "Save": "Save"
 }

@@ -1,29 +1,43 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Profile.module.scss'
-import { type FC} from 'react'
+import { useCallback, type FC} from 'react'
 import {useTranslation} from 'react-i18next'
 import { ProfileInterface, ProfileSchema } from '../model/types/profile'
 import { Loader } from 'shared/ui'
 import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
+import { Input, TypeInput } from 'shared/ui/Input/Input'
+import { useSelector } from 'react-redux'
+import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly'
+import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
+import { profileActions } from '../model/slice/ProfileSlice'
 
 interface ProfileProps extends ProfileSchema {
   className?: string;
 }
 
-export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error, readonly }) => {
+export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error}) => {
 
   const {t} = useTranslation('profile');  
-
-  if(isLoading){
-    return (
-      <div className={classNames(cls.Profile, {}, [className])}>
-        <Loader />
-      </div>
-    )
-  }
+  const readonly = useSelector(getProfileReadonly);
+  const dispatch = useAppDispatch();
 
 
-  const generateDescription = (profileData: ProfileInterface | undefined) => {
+  const onChangeField = useCallback((field: keyof ProfileInterface, value: string | number, typeInput: string | number) => {
+
+    if(typeInput === 'number'){
+      if(isNaN(Number(value))){
+        return;
+      }
+
+      value = Number(value);
+    }
+
+    const updatedField: Partial<ProfileInterface> = { [field]: value };
+    dispatch(profileActions.updateProfile(updatedField as ProfileInterface));
+  }, [dispatch]);
+
+
+  const generateDescription = useCallback((profileData: ProfileInterface | undefined) => {
     if (!profileData) {
       return null;
     }
@@ -32,14 +46,35 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error, r
 
     return (
       <>
-        {Object.entries(renderData).map(([key, value]) => (
-          <div key={key} className={cls.item}>
-            {upperFirstLetter(t(key))}: <i>{value}</i>
-          </div>
+        {Object.entries(renderData).map(([key, initialValue]) => (
+  
+           <div key={key} className={cls.item}>
+            <span>{t(upperFirstLetter(t(key)))}:</span>
+                 {
+                  readonly 
+                  ? <i className='animate__animated animate__headShake'>{initialValue}</i>
+                  : <Input 
+                      className={classNames(cls.input, {}, ['animate__animated animate__headShake'])} 
+                      value={initialValue} 
+                      typeInput={TypeInput.RESET}
+                      onChange={(changedValue) => onChangeField(key as keyof Partial<ProfileInterface>, changedValue, typeof(initialValue))}
+
+                    />
+                 }  
+              </div>
+
         ))}
       </>
     );
-  };
+  }, [data, readonly]);
+
+  if(isLoading){
+    return (
+      <div className={classNames(cls.Profile, {}, [className])}>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div className={classNames(cls.Profile, {}, [className])}>

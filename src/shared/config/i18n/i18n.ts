@@ -13,7 +13,8 @@ i18n
   .use(initReactI18next)
   .init({
     lng: defaultLang,
-    debug: __IS_DEV__,
+    // debug: __IS_DEV__,
+    debug: false,
 
     interpolation: {
       escapeValue: false

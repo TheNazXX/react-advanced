@@ -33,7 +33,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
   const error = useSelector(getErrorState)
 
   const { t } = useTranslation()
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))

@@ -13,7 +13,33 @@
   font-weight: 500;
 
   span{
-    color: white;
+    color: var(--inverted-theme-200);
     margin-left: 10px;
+  }
+}
+
+.btns{
+  display: flex;
+  gap: 10px;
+
+  .btn_cancel{
+    border: 1px solid transparent;
+    background-color: var(--danger-color);
+    transition: all .4s;
+
+    &:hover{
+      opacity: .8 !important;
+    }
+  }
+
+  .btn_save{
+    border: 1px solid transparent;
+    background-color: var(--color-green);
+    transition: all .4s;
+
+
+    &:hover{
+      opacity: .8 !important;
+    }
   }
 }

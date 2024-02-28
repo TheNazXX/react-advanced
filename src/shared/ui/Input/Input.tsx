@@ -4,14 +4,20 @@ import { type FC, type ChangeEvent, type InputHTMLAttributes, memo, useEffect, u
 
 type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
-interface InputProps extends HtmlInputProps {
-  className?: string
-  value?: string
-  onChange?: (value: string) => void
-  autofocus?: boolean
+export enum TypeInput {
+  PRIMARY = 'primary',
+  RESET = 'reset' 
 }
 
-export const Input: FC<InputProps> = memo(({ className, type = 'text', value, onChange, autofocus, ...props }) => {
+interface InputProps extends HtmlInputProps {
+  className?: string
+  value?: string | number;
+  onChange?: (value: string) => void
+  autofocus?: boolean
+  typeInput?: TypeInput
+}
+
+export const Input: FC<InputProps> = memo(({ className, type = 'text', value, onChange, autofocus, typeInput = TypeInput.PRIMARY, ...props }) => {
   const ref = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -29,7 +35,7 @@ export const Input: FC<InputProps> = memo(({ className, type = 'text', value, on
     <input
       ref={ref}
       type={type}
-      className={classNames(cls.Input, {}, [className])}
+      className={classNames(cls.Input, {}, [className, cls[typeInput]])}
       {...props}
 
       value={value}

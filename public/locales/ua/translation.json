@@ -33,6 +33,8 @@
   "Exit": "Вийти",
   "EverythingIsRevised": "Все переглянуто",
   "NothingToRevise": "Все переглянуто",
-  "CorrectVersion": "Правильный варинат"
-  
+  "CorrectVersion": "Правильный варинат",
+  "Cancel": "Відмінити",
+  "Save": "Зберегти"
 }
+

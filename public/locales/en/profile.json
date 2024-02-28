@@ -1,3 +1,8 @@
 {
-  "Profile": "Profile"
-}
+  "Profile": "Profile",
+  "FirstName": "FirstName",
+  "LastName": "LastName",
+  "Age": "Age",
+  "Country": "Country",
+  "City": "City"
+  }

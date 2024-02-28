@@ -1,9 +1,20 @@
 .Input{
+  color: var(--inverted-theme-100);
+  outline: none;
+
+}
+
+.primary{
   width: 100%;
   border: 1px solid var(--inverted-theme-100);
-  color: var(--inverted-theme-100);
   padding: 10px;
   border-radius: 5px;
   background-color: var(--theme-300);
-  outline: none;
+}
+
+.reset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
 }
