@@ -1,5 +1,5 @@
 .Profile{
-  
+ 
 }
 
 .img{
@@ -34,6 +34,9 @@
     border-radius: 5px;
     border: 1px solid var(--inverted-theme-100);
     
+    &.error{
+      border-color: var(--danger-color);
+    }
   }
 }
 

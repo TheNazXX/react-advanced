@@ -1,6 +1,6 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Alert.module.scss'
-import { useEffect, type FC, type ReactNode, memo, useRef} from 'react'
+import React, { useEffect, type FC, type ReactNode, memo, useRef} from 'react'
 import {useTranslation} from 'react-i18next'
 import { Portal } from '../Portal/Portal';
 import { CloseBtn } from 'widgets/CloseBtn/CloseBtn';
@@ -22,6 +22,7 @@ export const useAlert = () => {
   const [isAlert, setIsAlert] = useState(false);
   const [alertText, setAlertText] = useState('');
   const [alertSuccess, setAlertSuccess] = useState(true);
+  const [alertChildren, setAlertChildren] = useState<ReactNode>(null);
 
 
   const showAlert = (message: string, success = false) => {
@@ -30,16 +31,22 @@ export const useAlert = () => {
     setAlertSuccess(success);
   }
 
+  const showAlertWithChildren = (children: ReactNode, success = false) => {
+    setIsAlert(true);
+    setAlertChildren(children);
+    setAlertSuccess(success);
+  }
+
   const hideAlert = () => {
     setIsAlert(false);
   }
 
-  return {isAlert, setIsAlert, alertText, alertSuccess, showAlert, hideAlert};
+  return {isAlert, setIsAlert, alertText, alertSuccess, showAlert, alertChildren, showAlertWithChildren, hideAlert};
 }
 
 
 
-export const Alert: FC<AlertProps> = ({ className, text = '', isOpen, onClose, isSuccess = true, autoClose = false }) => {
+export const Alert: FC<AlertProps> = ({ className, text = '', isOpen, onClose, isSuccess = true, autoClose = false, children = null }) => {
 
   const {isOpening, isClosing, onCloseElement} = useAnimation(isOpen, onClose);
   const {t} = useTranslation();
@@ -67,7 +74,9 @@ export const Alert: FC<AlertProps> = ({ className, text = '', isOpen, onClose, i
   return (
     <Portal>
       <div className={classNames(cls.Alert, {[cls.open]: isOpening, [cls.closing]: isClosing, [cls.error]: !isSuccess}, [className])}>
-        <span className={cls.text}>{text}</span>
+        {
+          children ? children : <span className={cls.text}>{text}</span>
+        }
         <CloseBtn className={cls.btn} onClick={onCloseElement}/>
       </div>
     </Portal>

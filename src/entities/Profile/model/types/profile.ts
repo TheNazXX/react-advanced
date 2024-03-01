@@ -1,23 +1,33 @@
+export enum formStructure {
+  FIRSTNAME = 'firstname',
+  LASTNAME = 'lastname',
+  AGE = 'age',
+  ROLE = 'role',
+  COUNTRY = 'country',
+  CITY = 'city',
+  AVATAR = 'avatar',
+}
 
-export interface formValidation {
-  firstname: string[],
-  lastname: string[],
+export interface requiredValidationFields {
+  [formStructure.FIRSTNAME]: string[];
+  [formStructure.LASTNAME]: string[];
 }
 
 export interface ProfileInterface {
-  firstname: string;
-  lastname: string;
-  age?: number;
-  role: string;
-  country?: string;
-  city?: string;
-  avatar?: string;
+  [key: string]: string | number | undefined;
+  [formStructure.FIRSTNAME]: string;
+  [formStructure.LASTNAME]: string;
+  [formStructure.AGE]?: number;
+  [formStructure.ROLE]: string;
+  [formStructure.COUNTRY]?: string;
+  [formStructure.CITY]?: string;
+  [formStructure.AVATAR]?: string;
 }
 
 export interface ProfileSchema {
   data?: ProfileInterface;
   form?: ProfileInterface;
-  formValidation?: formValidation; 
+  formValidationErrors?: requiredValidationFields; 
   isLoading?: boolean;
   error?: string;
   readonly?: boolean;
