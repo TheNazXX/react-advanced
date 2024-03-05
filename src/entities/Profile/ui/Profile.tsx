@@ -1,6 +1,6 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Profile.module.scss'
-import { useCallback, type FC} from 'react'
+import { useCallback, type FC, useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
 import { ProfileInterface, ProfileSchema, requiredValidationFields } from '../model/types/profile'
 import { Loader } from 'shared/ui'
@@ -11,18 +11,19 @@ import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getPro
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 import { initialFormRequiredFields, profileActions } from '../model/slice/ProfileSlice'
 import { getFormValidationErrors } from '../model/selectors/getFormValidationErrors/getFormValidationErrors'
-
+import { getProfileIsLoadingUpdate } from '../model/selectors/getProfileIsLoading/getProfileIsLoading'
 
 interface ProfileProps extends ProfileSchema {
   className?: string;
 }
 
-export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error}) => {
+export const Profile: FC<ProfileProps> = ({ className, data, isLoading, fetchError}) => {
 
   const {t} = useTranslation('profile');  
   const readonly = useSelector(getProfileReadonly);
   const dispatch = useAppDispatch();
   const validationErrors: requiredValidationFields = useSelector(getFormValidationErrors) || initialFormRequiredFields;
+  const isLoadingProfileUpdate = useSelector(getProfileIsLoadingUpdate);
 
   const updateField = useCallback((field: keyof ProfileInterface, value: string | number, typeInput: string | number) => {
     if (typeInput === 'number') {
@@ -39,6 +40,8 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error}) 
   const onChangeField = useCallback((field: keyof ProfileInterface, value: string | number, typeInput: string | number) => {
     updateField(field, value, typeInput);
   }, [dispatch, validationErrors]);
+
+  
 
 
 
@@ -61,7 +64,7 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error}) 
                    ? <i className='animate__animated animate__headShake'>{initialValue}</i>
                    : <Input
                        className={classNames(cls.input, {
-               
+                        [cls.error]: validationErrors[key] && validationErrors[key].length !== 0,
                        }, ['animate__animated animate__headShake'])} 
                        value={initialValue} 
                        typeInput={TypeInput.RESET}
@@ -93,7 +96,9 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading, error}) 
         <div className={cls.role}><i>{data?.role}</i></div>
         <img className={cls.img} src={data?.avatar} alt="avatar"/>
         <div className={cls.descr}>
-          {generateDescription(data)}
+          {
+            isLoadingProfileUpdate ?  <Loader /> : generateDescription(data)
+          }
         </div>
       </div>
     </div>

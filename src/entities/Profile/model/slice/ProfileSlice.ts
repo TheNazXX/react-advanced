@@ -1,4 +1,4 @@
-import { formStructure,  requiredValidationFields } from './../types/profile';
+import { ProfileUpdateResponseInterface, formStructure,  requiredValidationFields } from './../types/profile';
 
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProfileInterface, type ProfileSchema } from '../types/profile'
@@ -17,7 +17,10 @@ const initialState: ProfileSchema = {
   formValidationErrors: initialFormRequiredFields,
   readonly: true,
   isLoading: false,
-  error: undefined
+  isLoadingUpdateProfile: false,
+  fetchError: undefined,
+  updateError: undefined,
+  successUpdate: undefined
 }
 
 export const profileSlice = createSlice({
@@ -39,16 +42,16 @@ export const profileSlice = createSlice({
       state.formValidationErrors = initialFormRequiredFields;
     },
     setValidationErrors: (state, action: PayloadAction<requiredValidationFields>) => {
-     
+      state.formValidationErrors = action.payload;
     },
     resetValidationErrors: (state, action: PayloadAction<string | undefined>) => {
-
+      state.formValidationErrors = initialFormRequiredFields;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProfileData.pending, (state, action) => {
-        state.error = ''
+        state.fetchError = ''
         state.isLoading = true
       })
       .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
@@ -58,20 +61,22 @@ export const profileSlice = createSlice({
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload as string
+        state.fetchError = action.payload as string
       })
       .addCase(updateProfileData.pending, (state, action) => {
-        state.error = ''
-        state.isLoading = true
+        state.successUpdate = undefined;
+        state.fetchError = ''
+        state.isLoadingUpdateProfile = true
       })
-      .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
-        state.isLoading = false;
-        state.data = action.payload;
-        state.form = action.payload;
+      .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileUpdateResponseInterface>) => {
+        state.successUpdate = action.payload.message;
+        state.isLoadingUpdateProfile = false;
+        state.updateError = ''
       })
       .addCase(updateProfileData.rejected, (state, action) => {
-        state.isLoading = false
-        state.error = action.payload as string
+        state.successUpdate = undefined;
+        state.isLoadingUpdateProfile = false
+        state.updateError = action.payload
       })
   }
 

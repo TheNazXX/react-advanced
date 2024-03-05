@@ -7,6 +7,7 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 const DB_REPEAT = 'repeat';
 const DB = 'db';
+const DB_PROFILE = 'profile';
 
 server.use(async (req, res, next) => {
   await new Promise((res) => {
@@ -24,9 +25,9 @@ server.use(async (req, res, next) => {
     dayRepeating = format(new Date(), 'dd.MM.yyyy');
 
     if(words[words.length - 1].date === dayRepeating){
-      repeatWords = [...words[words.length - 2].words]
+      repeatWords = [...words[words.length - 2].words, ...selectRandomWords(10, words.flatMap(elem => elem.words))]
     }else{
-      repeatWords = [...words[words.length - 1].words]
+      repeatWords = [...words[words.length - 1].words, ...selectRandomWords(10, words.flatMap(elem => elem.words))]
     };
 
     fs.writeFileSync(path.resolve(__dirname, 'repeat.json'), JSON.stringify({
@@ -264,6 +265,18 @@ server.post('/repeatWords', (req, res) => {
 })
 
 
+server.put('/profile', (req, res) => {
+  try{
+    let data = req.body;
+ 
+    writeDb(DB_PROFILE, {profile: {...data}});
+
+    return res.status(200).json({message: 'Profile was updated'});
+  }catch (e){
+    console.log(e);
+    return res.status(500).json({ message: e.message });
+  }
+});
 
 
 
@@ -283,6 +296,21 @@ function writeDb(target, body){
   return fs.writeFileSync(path.resolve(__dirname, `${target}.json`), JSON.stringify(body, null, 2), 'utf-8');
 }
 
+// ----------------------------------------------------------------------- //
+
 function isInArray(elem, array){
   return array.find(({en}) => en === elem.en);
+}
+
+// ----------------------------------------------------------------------- //
+
+function selectRandomWords(count, words){
+  const result = new Set();
+
+  while (result.size <= count && result.size <= count){
+    let rdm = Math.floor(Math.random() * words.length);
+    result.add(words[rdm].en);
+  }
+
+  return [...result].map(word => words.find(w => w.en === word));
 }

@@ -9,6 +9,7 @@ export enum formStructure {
 }
 
 export interface requiredValidationFields {
+  [key: string]: string[];
   [formStructure.FIRSTNAME]: string[];
   [formStructure.LASTNAME]: string[];
 }
@@ -29,6 +30,14 @@ export interface ProfileSchema {
   form?: ProfileInterface;
   formValidationErrors?: requiredValidationFields; 
   isLoading?: boolean;
-  error?: string;
+  isLoadingUpdateProfile?: boolean;
+  fetchError?: string;
+  updateError?: string;
+  successUpdate?: string;
   readonly?: boolean;
+}
+
+
+export interface ProfileUpdateResponseInterface {
+  message?: string;
 }

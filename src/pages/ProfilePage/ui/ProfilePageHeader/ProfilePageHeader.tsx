@@ -1,15 +1,14 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './ProfilePageHeader.module.scss'
-import {useCallback, type FC, type ReactNode, useState, useEffect} from 'react'
+import {useCallback, type FC, type ReactNode} from 'react'
 import {useTranslation} from 'react-i18next'
 import { Alert, useAlert, Button, TypeButton } from 'shared/ui'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
-import { ProfileInterface, getProfileFormData, getFormValidationErrors, getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile'
+import { ProfileInterface, getProfileFormData, getFormValidationErrors, getProfileReadonly, profileActions, updateProfileData, getProfileIsLoadingUpdate, getProfileFetchError } from 'entities/Profile'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 import { initialFormRequiredFields } from 'entities/Profile/model/slice/ProfileSlice'
-import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 import { formStructure, requiredValidationFields } from 'entities/Profile/model/types/profile'
 import { validation } from 'shared/libs/validation/validation'
 import { Rules } from 'shared/libs/validation/validation'
@@ -24,16 +23,22 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
   const {t} = useTranslation('profile');
   const readonly = useSelector(getProfileReadonly);
   const formData = useSelector(getProfileFormData);
+  const isLoadingUpdateProfile = useSelector(getProfileIsLoadingUpdate);
+  const fetchError = useSelector(getProfileFetchError) || '';
   const dispatch = useAppDispatch();
 
-  const validationErrors = useSelector(getFormValidationErrors) || initialFormRequiredFields;
+
   const {isAlert, alertSuccess, showAlertWithChildren, hideAlert, alertChildren} = useAlert();
 
-  const [localValidationErrors, setLocalVadidationErrors] = useState<requiredValidationFields>(validationErrors);
+   
+  const renderErrors = (errors: requiredValidationFields) => {
 
- 
-  const onSendData = () => {
-    // sendData
+    const error = Object.values(errors).find(value => value.length);
+
+    if(error){
+      return <div className={cls.errorText}><span>{error}</span></div>;
+    }
+    return null;
   }
 
   const onEdit = useCallback(() => {
@@ -45,23 +50,38 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
   }, [dispatch])
 
   const onSave = useCallback(() => {
-    checkVaditationErrors(initialFormRequiredFields, formData);
+    dispatch(profileActions.setReadonly(true));
+    dispatch(profileActions.resetValidationErrors());
+    const {isErrors, errors} = getValidationErrors(initialFormRequiredFields, formData);
+
+    if(isErrors){
+      dispatch(profileActions.setValidationErrors(errors));
+      showAlertWithChildren(renderErrors(errors), false);
+    }else{
+      dispatch(updateProfileData());
+    }
+
   }, [dispatch, formData]);
 
-  const checkVaditationErrors = (requiredFields: requiredValidationFields, data: ProfileInterface | undefined) => {
+  const getValidationErrors = (requiredFields: requiredValidationFields, data: ProfileInterface | undefined) => {
+
+    const errors: any = {};
+    let isErrors: boolean = false;
 
     if (data) {
-      Object.keys(requiredFields).forEach((key) => {
+      Object.entries(requiredFields).forEach(([key, value]) => {
+        const fieldErrors = validation(data[key] as string, { [Rules.REQUIRED]: true });
 
-        let errors = validation(data[key] as string, {[Rules.REQUIRED]: true});
-
-        if(errors.length !== 0){
-          
+        if(fieldErrors.length !== 0){
+          isErrors = true;
         }
+
+        errors[key] = fieldErrors;
       });
     }
+  
+    return {errors, isErrors};
   }
-
 
   return (
     <>
@@ -73,10 +93,26 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
       
       {
         readonly
-        ? <Button className={classNames('', {}, ['animate__animated animate__fadeIn animate__faster'])} typeBtn={TypeButton.OUTLINE} onClick={onEdit}>{t('Edit')}</Button>
+        ? <Button 
+            className={classNames('', {}, ['animate__animated animate__fadeIn animate__faster'])} 
+            typeBtn={TypeButton.OUTLINE}
+            disabled={fetchError?.length > 0 || isLoadingUpdateProfile}
+            onClick={onEdit}>{t('Edit')}
+          </Button>
         : <div className={cls.btns}>
-          <Button className={classNames(cls.btn_cancel, {}, ['animate__animated animate__fadeIn animate__faster'])} typeBtn={TypeButton.PRIMARY} onClick={onCancelEdit}>{t('Cancel')}</Button>
-          <Button className={classNames(cls.btn_save, {}, ['animate__animated animate__fadeIn animate__faster'])} typeBtn={TypeButton.PRIMARY} onClick={onSave}>{t('Save')}</Button>
+
+          <Button 
+            className={classNames(cls.btn_cancel, {}, ['animate__animated animate__fadeIn animate__faster'])}
+            typeBtn={TypeButton.PRIMARY}
+            onClick={onCancelEdit}
+            disabled={isLoadingUpdateProfile}>{t('Cancel')}</Button>
+
+          <Button 
+            className={classNames(cls.btn_save, {}, ['animate__animated animate__fadeIn animate__faster'])}
+            typeBtn={TypeButton.PRIMARY}
+            onClick={onSave} 
+            disabled={isLoadingUpdateProfile}>{t('Save')}</Button>
+
         </div>
       }
     </div>
