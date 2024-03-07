@@ -18,6 +18,7 @@
 
 .btns{
   display: flex;
+  align-items: center;
   gap: 10px
 }
 
@@ -26,3 +27,10 @@
   font-weight: 600;
   color: var(--inverted-theme-100);
 }
+
+.loader{
+  margin-right: 10px;
+}
+
+
+

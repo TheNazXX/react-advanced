@@ -8,8 +8,6 @@ import { Sidebar } from 'widgets/Sidebar'
 import { useDispatch } from 'react-redux'
 import { userActions } from 'entities/User'
 
-import 'animate.css'
-
 const App: FC = () => {
   const { theme } = useTheme()
   const dispatch = useDispatch()

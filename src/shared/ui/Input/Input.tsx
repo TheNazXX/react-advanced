@@ -6,6 +6,7 @@ type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 
 export enum TypeInput {
   PRIMARY = 'primary',
+  SECONDARY = 'secondary',
   RESET = 'reset' 
 }
 

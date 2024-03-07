@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, useEffect} from 'react'
 import { useTranslation } from 'react-i18next'
 import { DynamicModuleLoader, type ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
 import { Profile, fetchProfileData, getProfileFormData, getProfileFetchError, getProfileUpdateError, getProfileIsLoading, profileReducer, getProfileSuccessUpdate, profileActions} from 'entities/Profile'

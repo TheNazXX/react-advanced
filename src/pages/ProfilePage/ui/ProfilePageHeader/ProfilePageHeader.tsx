@@ -103,13 +103,13 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
 
           <Button 
             className={classNames(cls.btn_cancel, {}, ['animate__animated animate__fadeIn animate__faster'])}
-            typeBtn={TypeButton.PRIMARY}
+            typeBtn={TypeButton.DANGER}
             onClick={onCancelEdit}
             disabled={isLoadingUpdateProfile}>{t('Cancel')}</Button>
 
           <Button 
             className={classNames(cls.btn_save, {}, ['animate__animated animate__fadeIn animate__faster'])}
-            typeBtn={TypeButton.PRIMARY}
+            typeBtn={TypeButton.SAFETY}
             onClick={onSave} 
             disabled={isLoadingUpdateProfile}>{t('Save')}</Button>
 

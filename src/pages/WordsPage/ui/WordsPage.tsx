@@ -5,6 +5,7 @@ import { AppLink, Loader, WordWrap } from 'shared/ui'
 import { type Word, getWords, requestWords } from 'entities/Words'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
+import { AddWord } from 'widgets/AddWord'
 
 interface WordsPageProps {
   className?: string
@@ -29,11 +30,13 @@ export const WordsPage: FC<WordsPageProps> = ({ className }) => {
   }
 
   return (
+    
     <div className={classNames(cls.WordsPage, {}, [className])}>
+      <AddWord className={cls.addWord}/>
       {
         isLoading
           ? <Loader/>
-          : renderWords(words)
+          : <div className={cls.words}>{renderWords(words)}</div>
       }
     </div>
   )

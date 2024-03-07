@@ -1,5 +1,15 @@
 .WordsPage{
+  
+}
+
+.words{
+  margin-top: 50px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+
+  a:last-child{
+    margin-right: auto;
+  }
 }

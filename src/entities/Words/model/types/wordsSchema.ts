@@ -16,15 +16,15 @@ enum TypeWord {
   VERB = 'verb',
   ADJECTIVES = 'adjectives',
   NOUN = 'noun',
-
+  ADVERB = 'adverbs'
 }
 
 interface newWord {
   typeEn: TypeWord,
   en: string,
-  ua: string[],
-  adjectives: Word[],
-  nouns: Word[],
-  expressions: string[],
-  difficult: boolean
+  translate: string[],
+  adjectives?: Word[],
+  nouns?: Word[],
+  sentences?: string[],
+  difficult?: boolean
 }

@@ -1,0 +1,56 @@
+.Select {
+  width: 100%;
+  position: relative;
+
+  select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 10px 5px 10px;
+    background-color: transparent;
+    border: 1px solid var(--color-200);
+    color: var(--inverted-theme-300);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+
+  
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-200);
+    clip-path: polygon(8% 17%, 0% 25%, 50% 84%, 100% 25%, 92% 17%, 50% 65%);
+  }
+
+  &.arrow{
+    position: absolute;
+  }
+}
+
+.secondary{
+  select{ 
+    padding-bottom: 10px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--color-200);
+    background-color: var(--theme-400);
+  }
+
+  option{
+    &:hover{
+      background-color: var(--color-200);
+    }
+  }
+
+}
+

@@ -40,3 +40,21 @@
   pointer-events: none;
   opacity: .5;
 }
+
+.danger{
+  background-color: var(--danger-color);
+
+  &:hover{
+    opacity: .8 !important;
+  }
+  
+}
+
+
+.safety{
+  background-color: var(--color-green);
+
+  &:hover{
+    opacity: .8 !important;
+  }
+}

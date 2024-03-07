@@ -9,3 +9,7 @@ export interface RepeatWordsSchema {
   sendIsLoading: boolean
   sendIsError: string
 }
+
+export interface addRepeatWordResponse {
+  message: string;
+}

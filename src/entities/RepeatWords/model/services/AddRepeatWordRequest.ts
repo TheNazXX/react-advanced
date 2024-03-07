@@ -5,19 +5,13 @@ export const addRepeatWordRequest = async (word: Word) => {
   try {
     const response = await axios.post('http://localhost:8000/repeatWord', { word });
 
-    if (response.status !== 200) {
-      throw Error(response.statusText);
+    if (!response.data) {
+      throw new Error('Something went wrong');
     }
-
-    
-
-    console.log(response);
-
-    // if(response.data)
 
     return await response.data;
   } catch (e: any) {
-    console.log(e);
-    throw Error(e);
+    const errorMessage = e?.response?.data?.message || 'Failed to fetch';
+    throw new Error(errorMessage);
   }
 }

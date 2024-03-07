@@ -5,7 +5,9 @@ import cls from './Button.module.scss'
 export enum TypeButton {
   PRIMARY = 'primary',
   OUTLINE = 'outline',
-  RESET = 'reset'
+  RESET = 'reset',
+  DANGER = 'danger',
+  SAFETY = 'safety'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

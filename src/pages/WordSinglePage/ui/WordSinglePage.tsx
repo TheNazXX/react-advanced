@@ -9,6 +9,8 @@ import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWith
 import { requestWord } from 'entities/Words'
 import { addRepeatWordRequest} from 'entities/RepeatWords'
 import { Alert } from 'shared/ui/Alert/Alert'
+import { addRepeatWordResponse } from 'entities/RepeatWords/model/types/RepeatWordsSchema'
+import { typeLoader } from 'shared/ui/Loader/Loader'
 
 
 interface WordPageProps {
@@ -41,20 +43,19 @@ const useAlert = () => {
   return {isAlert, alertText, alertSuccess, showAlert, hideAlert};
 }
 
-
-
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const {isAlert, alertText, alertSuccess,  showAlert, hideAlert} = useAlert();
 
   const [currentWord, setCurentWord] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setIsError] = useState<null | string>(null);
+  const [isLoadigAddRepeatWord, setIsLoadigAddRepeatWord] = useState<boolean>(false);
 
   const [addRepeatIsLoading, setRepeatIsLoading] = useState(false);
   const [addRepeatError, setRepeatError] = useState('');
 
-  const { t } = useTranslation()
-  const { word } = useParams()
+  const { t } = useTranslation();
+  const { word } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,25 +68,17 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   }
 
 
+  const onRepeatWordRequest = () => {
+    setIsLoadigAddRepeatWord(true)
 
-  const onAddReviseWord = () => {
-
-
-    setRepeatIsLoading(true);
-    setRepeatError('');
-
-    addRepeatWordRequest(currentWord).then(data => {
-      console.log(data);
-
-    }).catch(({message}: Error) => {
-
-      showAlert(message, false);
-      setRepeatError(message);
-
+    addRepeatWordRequest(currentWord).then(({message}: addRepeatWordResponse) => {
+      showAlert(message, true);
+    }).catch((e) => {
+      const errorText = e?.message || 'Something went wrong';
+      showAlert(errorText, false);
     }).finally(() => {
-
-      setRepeatIsLoading(false);
-    })
+      setIsLoadigAddRepeatWord(false);
+    });
   }
 
   return (
@@ -95,12 +88,23 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
         ? <Loader />
         : <div className={cls.wrapper}>
             <div className={cls.head}>
-              <span className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord.en)}</span>
-              <div className={cls.btns}>
-                <Button typeBtn={TypeButton.PRIMARY}>{t('Edit')}</Button>
-                <Button typeBtn={TypeButton.PRIMARY} onClick={onAddReviseWord} disabled={addRepeatIsLoading}>{t('AddRepeat')}</Button>
-                <Button typeBtn={TypeButton.PRIMARY}>{t('Delete')}</Button>
-              </div>
+              <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord.en)}</i>
+              
+ 
+
+          
+                <div className={cls.btns}>
+                  {
+                    isLoadigAddRepeatWord 
+                    ? <Loader className={cls.loader} type={typeLoader.DOTS}/>
+                    : <Button typeBtn={TypeButton.PRIMARY} onClick={onRepeatWordRequest} disabled={addRepeatIsLoading}>{t('AddRepeat')}</Button>
+                  }
+                  <Button typeBtn={TypeButton.PRIMARY} disabled={isLoadigAddRepeatWord}>{t('Edit')}</Button>
+                  <Button typeBtn={TypeButton.DANGER} disabled={isLoadigAddRepeatWord}>{t('Delete')}</Button>
+                </div>
+       
+
+
             </div>
 
             {
@@ -110,7 +114,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
     
     }
 
-    <Alert key={alertText} isOpen={isAlert} onClose={() => hideAlert()} text={alertText} isSuccess={false} autoClose={true}/>
+    <Alert key={alertText} isOpen={isAlert} onClose={() => hideAlert()} text={alertText} isSuccess={alertSuccess} autoClose={true}/>
     </>
   )
 }

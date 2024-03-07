@@ -21,28 +21,6 @@
 .btns{
   display: flex;
   gap: 10px;
-
-  .btn_cancel{
-    border: 1px solid transparent;
-    background-color: var(--danger-color);
-    transition: all .4s;
-
-    &:hover{
-      opacity: .8 !important;
-    }
-  }
-
-  .btn_save{
-    border: 1px solid transparent;
-    background-color: var(--color-green);
-    transition: all .4s;
-
-
-    &:hover{
-      opacity: .8 !important;
-    }
-  }
-
 }
 
 .errorText{

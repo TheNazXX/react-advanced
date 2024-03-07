@@ -4,7 +4,7 @@ import cls from './RepeatPage.module.scss'
 import { AppLink, Button, Loader, Modal, TypeButton, WordWrap } from 'shared/ui'
 import { getWords, type Word } from 'entities/Words'
 import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
-import { requestRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords } from 'entities/RepeatWords'
+import { fetchRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords } from 'entities/RepeatWords'
 import { useDispatch, useSelector } from 'react-redux'
 import { type ThunkDispatch } from '@reduxjs/toolkit'
 
@@ -27,7 +27,7 @@ const RepeatPage: FC = () => {
   }
 
   useEffect(() => {
-    dispatch(requestRepeatWords())
+    dispatch(fetchRepeatWords())
   }, [])
 
   let content

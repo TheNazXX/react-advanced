@@ -204,24 +204,18 @@ server.post('/repeatWord', (req, res) => {
   try {
     const db = getDb(DB_REPEAT);
     const {repeatWords} = db;
-
     const {word} = req.body;
 
-
     if(isInArray(word, repeatWords)){
-      return res.json({status: 400, message: 'Word already consist in reapiting'})
+      return res.status(400).json({message: 'Word already consist in repeating'});
     };
 
-    console.log(word);
-    
     repeatWords.push(word);
-
     writeDb(DB_REPEAT, db);
 
-    return res.json({status: 200, message: 'success'});
+    return res.status(200).json({message: 'Word was added successfuly'});
 
 } catch (e) {
-    console.log(e);
     return res.status(500).json({ message: e.message });
 }
 })

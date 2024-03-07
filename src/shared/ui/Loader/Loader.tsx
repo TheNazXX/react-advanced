@@ -2,12 +2,18 @@ import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Loader.module.scss'
 import { type FC } from 'react'
 
-interface LoaderProps {
-  className?: string
+export enum typeLoader {
+  CIRCLE = 'circle',
+  DOTS = 'dots'
 }
 
-export const Loader: FC<LoaderProps> = ({ className }) => {
+interface LoaderProps {
+  className?: string
+  type?: typeLoader
+}
+
+export const Loader: FC<LoaderProps> = ({ className, type = typeLoader.CIRCLE }) => {
   return (
-    <div className={classNames(cls.customLoader, {}, [className])}></div>
+    <div className={classNames(cls[type], {}, [className])}></div>
   )
 }
