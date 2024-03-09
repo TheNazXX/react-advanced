@@ -1,21 +1,20 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "login": "admin",
-      "password": "123"
-    }
-  ],
   "words": [
     {
       "date": "31.01.2024",
       "words": [
         {
           "en": "literaly",
-          "ua": [
+          "translate": [
             "в буквальному сенсі",
             "буквально"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -23,16 +22,16 @@
       "date": "28.01.2024",
       "words": [
         {
-          "en": "secondary education",
-          "ua": [
-            "середня освіта"
-          ]
-        },
-        {
           "en": "terrific",
-          "ua": [
+          "translate": [
             "приголомшливо"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -41,58 +40,106 @@
       "words": [
         {
           "en": "routine",
-          "ua": [
+          "translate": [
             "рутина"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "implementation",
-          "ua": [
+          "translate": [
             "реалізація",
             "впропадження"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "ensure",
-          "ua": [
+          "translate": [
             "забезпечувати",
             "гарантувати"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "dedicate",
-          "ua": [
+          "translate": [
             "присвячувати"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "unit",
-          "ua": [
+          "translate": [
             "одиниця",
             "підрозділ",
             "блок"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "agreement",
-          "ua": [
+          "translate": [
             "угода",
             "договір"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "robust",
-          "ua": [
+          "translate": [
             "міцний",
             "надійний"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "enterprise",
-          "ua": [
+          "translate": [
             "підприємство",
             "бізнес"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -101,48 +148,90 @@
       "words": [
         {
           "en": "execute",
-          "ua": [
+          "translate": [
             "виконати",
             "виконувати"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "silently",
-          "ua": [
+          "translate": [
             "мовчки"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "solid",
-          "ua": [
+          "translate": [
             "міцний",
             "твердий"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "rubber",
-          "ua": [
+          "translate": [
             "резина"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "smooth",
-          "ua": [
+          "translate": [
             "гладкий",
             "рівний"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "opposites",
-          "ua": [
+          "translate": [
             "протилежності"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "permanent",
-          "ua": [
+          "translate": [
             "постійний"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -151,19 +240,31 @@
       "words": [
         {
           "en": "receipt",
-          "ua": [
+          "translate": [
             "квитанція",
             "розписка",
             "чек"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "particularly",
-          "ua": [
+          "translate": [
             "зокрема",
             "особливо",
             "а саме"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -172,57 +273,105 @@
       "words": [
         {
           "en": "maintain",
-          "ua": [
+          "translate": [
             "підтримувати",
             "зберігати"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "consistently",
-          "ua": [
+          "translate": [
             "послідовно"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "eventually",
-          "ua": [
+          "translate": [
             "зрештою",
             "врешті-решт"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "probably",
-          "ua": [
+          "translate": [
             "напевно",
             "можливо",
             "мабуть"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "soft",
-          "ua": [
+          "translate": [
             "м'який"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "slightly",
-          "ua": [
+          "translate": [
             "злегка",
             "трохи"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "nodays",
-          "ua": [
+          "translate": [
             "в наш час"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "currently",
-          "ua": [
+          "translate": [
             "наразі",
             "на данний момент"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -231,118 +380,225 @@
       "words": [
         {
           "en": "indeed",
-          "ua": [
-            "дійсно",
-            "справді"
-          ]
+          "translate": [
+            "действительно",
+            "на самом деле"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "common",
-          "ua": [
-            "спільний",
-            "загальний",
-            "звичайний"
-          ]
+          "translate": [
+            "общий",
+            "обычный"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "recently",
-          "ua": [
-            "нещодавно",
-            "останнім часом"
-          ]
+          "translate": [
+            "недавно",
+            "в последнее время"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "elevete",
-          "ua": [
-            "підіймати",
-            "підвищувати"
-          ]
+          "translate": [
+            "поднимать",
+            "повышать"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "presumably",
-          "ua": [
-            "імовірно"
-          ]
+          "translate": [
+            "предположительно"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "distract",
-          "ua": [
-            "відволікати"
-          ]
+          "translate": [
+            "отвлекать"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "serves to",
-          "ua": [
-            "служить для"
-          ]
+          "translate": [
+            "служит для"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "thus",
-          "ua": [
-            "таким чином"
-          ]
+          "translate": [
+            "таким образом"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "trivial",
-          "ua": [
+          "translate": [
             "банально"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "knee",
-          "ua": [
-            "коліно"
-          ]
+          "translate": [
+            "колено"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "define",
-          "ua": [
-            "визначити"
-          ]
+          "translate": [
+            "определить"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "government",
-          "ua": [
-            "уряд",
-            "влада"
-          ]
+          "translate": [
+            "правительство",
+            "государство"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "pastry",
-          "ua": [
-            "випічка"
-          ]
+          "translate": [
+            "выпечка"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "leaf",
-          "ua": [
+          "translate": [
             "листок"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "raw",
-          "ua": [
-            "сирий"
-          ]
+          "translate": [
+            "сырой"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "flour",
-          "ua": [
+          "translate": [
             "мука"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "diet",
-          "ua": [
-            "дієта",
-            "раціон"
-          ]
+          "translate": [
+            "диета",
+            "рацион"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "nourishment",
-          "ua": [
-            "харчування"
-          ]
+          "translate": [
+            "питание"
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -351,129 +607,249 @@
       "words": [
         {
           "en": "comb",
-          "ua": [
+          "translate": [
             "расчёска"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "accommodation",
-          "ua": [
+          "translate": [
             "размещение",
             "проживание",
             "жильё"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "disappear",
-          "ua": [
+          "translate": [
             "исчезать"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "coat",
-          "ua": [
+          "translate": [
             "пальто"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "insects",
-          "ua": [
+          "translate": [
             "насекомые"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "desert",
-          "ua": [
+          "translate": [
             "пустыня"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "lake",
-          "ua": [
+          "translate": [
             "озеро"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "within",
-          "ua": [
+          "translate": [
             "в пределах"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "landscape",
-          "ua": [
+          "translate": [
             "ландшафт",
             "пейзаж"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "cave",
-          "ua": [
+          "translate": [
             "пещера"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "so far",
-          "ua": [
+          "translate": [
             "пока что"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "surface",
-          "ua": [
+          "translate": [
             "поверхность"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "attract",
-          "ua": [
+          "translate": [
             "привлекать"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "attitude",
-          "ua": [
+          "translate": [
             "отношение"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "merely",
-          "ua": [
+          "translate": [
             "всего лишь"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "certain",
-          "ua": [
+          "translate": [
             "определённый",
             "некоторый"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "telling",
-          "ua": [
+          "translate": [
             "рассказ"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "actually",
-          "ua": [
+          "translate": [
             "на самом деле",
             "в действительности"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "in fact",
-          "ua": [
+          "translate": [
             "на самом деле",
             "фактически"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "receive",
-          "ua": [
+          "translate": [
             "получить"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -482,121 +858,229 @@
       "words": [
         {
           "en": "outer",
-          "ua": [
+          "translate": [
             "внешний"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "humor",
-          "ua": [
+          "translate": [
             "юмор"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "worth",
-          "ua": [
+          "translate": [
             "стоит"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "succinctly",
-          "ua": [
+          "translate": [
             "лаконично",
             "кратко"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "briefly",
-          "ua": [
+          "translate": [
             "кратко",
             "вкратце"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "confident",
-          "ua": [
+          "translate": [
             "уверенный",
             "уверенность"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "reliable",
-          "ua": [
+          "translate": [
             "надежный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "attribute",
-          "ua": [
+          "translate": [
             "признак"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "trait",
-          "ua": [
+          "translate": [
             "черта",
             "признак"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "comperhend",
-          "ua": [
+          "translate": [
             "понять",
             "постичь"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "roughly",
-          "ua": [
+          "translate": [
             "примерно",
             "приблизительно"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "tidy",
-          "ua": [
+          "translate": [
             "аккуратный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "average",
-          "ua": [
+          "translate": [
             "в среднем"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "ordinary",
-          "ua": [
+          "translate": [
             "обычный",
             "обыкновенный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "sensible",
-          "ua": [
+          "translate": [
             "разумный",
             "здравомыслящий"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "imagination",
-          "ua": [
+          "translate": [
             "воображение",
             "фантазия"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "ivent",
-          "ua": [
+          "translate": [
             "изобрести",
             "придумать"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "several",
-          "ua": [
+          "translate": [
             "несколько"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -605,61 +1089,115 @@
       "words": [
         {
           "en": "suffer",
-          "ua": [
+          "translate": [
             "страдать"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "pride",
-          "ua": [
+          "translate": [
             "гордость",
             "гордыня"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "jealous",
-          "ua": [
+          "translate": [
             "зависть",
             "ревность"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "influence",
-          "ua": [
+          "translate": [
             "влиять"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "upset",
-          "ua": [
+          "translate": [
             "расстроенный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "curious",
-          "ua": [
+          "translate": [
             "любопытный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "anxiety",
-          "ua": [
+          "translate": [
             "беспокойство",
             "тревога"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "miserable",
-          "ua": [
+          "translate": [
             "несчастный",
             "жалкий"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "absorbed",
-          "ua": [
+          "translate": [
             "поглощенный"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -668,24 +1206,42 @@
       "words": [
         {
           "en": "ever since",
-          "ua": [
+          "translate": [
             "с тех пор"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "altogether",
-          "ua": [
+          "translate": [
             "в целом",
             "полностью"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "legally",
-          "ua": [
+          "translate": [
             "юридически",
             "законно",
             "легально"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -694,29 +1250,53 @@
       "words": [
         {
           "en": "radically",
-          "ua": [
+          "translate": [
             "радикально"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "infringe",
-          "ua": [
+          "translate": [
             "нарушать"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "church",
-          "ua": [
+          "translate": [
             "церковь",
             "храм"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "afterwards",
-          "ua": [
+          "translate": [
             "впоследствии",
             "затем"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -725,9 +1305,15 @@
       "words": [
         {
           "en": "anniversary",
-          "ua": [
+          "translate": [
             "юбилей"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     },
@@ -736,22 +1322,40 @@
       "words": [
         {
           "en": "immediately",
-          "ua": [
+          "translate": [
             "сразу",
             "немедленно"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "bother",
-          "ua": [
+          "translate": [
             "беспокоить"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         },
         {
           "en": "spare",
-          "ua": [
+          "translate": [
             "запасной"
-          ]
+          ],
+          "typeWord": "",
+          "unit": "",
+          "synonyms": [],
+          "sentences": [],
+          "translateSentences": [],
+          "difficult": false
         }
       ]
     }

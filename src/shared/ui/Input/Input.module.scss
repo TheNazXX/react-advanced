@@ -1,8 +1,21 @@
+.wrapper{
+  position: relative;
+  
+
+  span{
+    position: absolute;
+    right: 5px;
+    top: 2.5px;
+    color: var(--color-200);
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
 .Input{
   width: 100%;
   color: var(--inverted-theme-100);
   outline: none;
-
 }
 
 .primary{

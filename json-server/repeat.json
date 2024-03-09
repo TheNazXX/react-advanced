@@ -1,24 +1,4 @@
 {
-  "dayRepeating": "07.03.2024",
-  "repeatWords": [
-    {
-      "en": "immediately",
-      "ua": [
-        "сразу",
-        "немедленно"
-      ]
-    },
-    {
-      "en": "bother",
-      "ua": [
-        "беспокоить"
-      ]
-    },
-    {
-      "en": "spare",
-      "ua": [
-        "запасной"
-      ]
-    }
-  ]
+  "dayRepeating": "09.03.2024",
+  "repeatWords": []
 }

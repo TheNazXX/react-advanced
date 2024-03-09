@@ -41,7 +41,6 @@ server.use(async (req, res, next) => {
 })
 
 
-
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
@@ -174,7 +173,7 @@ server.post('/word', (req, res) => {
 
     let correctWord = {
       ...word,
-      ua: word.ua.map(elem => elem.trim().toLowerCase())
+      translate: word.translate.map(elem => elem.trim().toLowerCase())
     }
     
     if(lastWords.date === getDate()){

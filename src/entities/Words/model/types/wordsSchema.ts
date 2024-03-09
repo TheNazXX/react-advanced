@@ -1,6 +1,12 @@
 export interface Word {
-  en: string
-  ua: string[]
+  en: string,
+  translate: string[],
+  typeWord?: TypeWord;
+  unit?: string;
+  synonyms?: string[],
+  sentences?: string[],
+  translateSentences?: string[]
+  difficult?: boolean
 }
 
 export interface WordsSchema {
@@ -17,14 +23,4 @@ enum TypeWord {
   ADJECTIVES = 'adjectives',
   NOUN = 'noun',
   ADVERB = 'adverbs'
-}
-
-interface newWord {
-  typeEn: TypeWord,
-  en: string,
-  translate: string[],
-  adjectives?: Word[],
-  nouns?: Word[],
-  sentences?: string[],
-  difficult?: boolean
 }

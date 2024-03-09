@@ -20,7 +20,7 @@ interface WordPageProps {
 
 const initialState: Word = {
   en: '',
-  ua: []
+  translate: []
 }
 
 const useAlert = () => {
@@ -108,7 +108,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
             </div>
 
             {
-              currentWord.ua.join(',')
+              currentWord.translate.join(',')
             }
           </div>
     

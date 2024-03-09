@@ -12,107 +12,75 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 import 'animate.css'
-import { type ResponseAddWord } from '../model/types/ResponseShema'
+import { RequiredFieldsAddWordErrors, type ResponseAddWord } from '../model/types/types'
 import { TypeTextarea } from 'shared/ui/Textarea/Textarea'
+import { Rules } from 'shared/libs/validation/validation'
 
 interface AddWordProps {
   className?: string
   children?: ReactNode
 }
 
+const partOfSpeech = [
+  { value: 'unknown', label: '-' },
+  { value: 'noun', label: 'noun' },
+  { value: 'verb', label: 'verb' },
+  { value: 'adjective', label: 'adjective' },
+  { value: 'adverb', label: 'adverb' },
+]
+
+const units = [
+  { value: 'any', label: '-' },
+  { value: 'unit1', label: 'unit-1' },
+  { value: 'unit2', label: 'unit-2' },
+]
+
+
+
+const requiredFieldsErrors: RequiredFieldsAddWordErrors = {
+  enWordValue: [],
+  transtaltionWordValue: []
+}
+
 export const AddWord: FC<AddWordProps> = ({ className }) => {
   const { t } = useTranslation()
 
-  const [enValue, setEnValue] = useState<string>('')
-  const [uaValue, setUaValue] = useState<string>('')
+  const [enWordValue, setEnWordValue] = useState('');
+  const [transtaltionWordValue, setTranslationWordValue] = useState('');
+  const [synonymsWordValue, setSynonymsWordValue] = useState('');
+  const [partOfSpeechValue, setPartOfSpeechValue] = useState(partOfSpeech[0].label);
+  const [unitsValue, setUnitsValue] = useState(units[0].label);
+  const [sentenceValue, setSentenceValue] = useState('');
+  const [sentenceTranslationValue, setSentenceTranslationValue] = useState('');
 
-  const [fetchError, setFetchError] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [validationErrors, setValidationErrors] = useState<RequiredFieldsAddWordErrors>(requiredFieldsErrors);
 
-  const [enValueErrors, setEnValueErrors] = useState<string[]>([])
-  const [uaValueErrors, setUaValueErrors] = useState<string[]>([])
+  const checkValidation = () => {
 
-  const successTimer = useRef<ReturnType<typeof setTimeout>>()
-
-
-  const onRequest = async () => {
-    setIsLoading(true)
-
-    try {
-      const response = await fetch('http://localhost:8000/word', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          en: enValue.toLowerCase().trim(),
-          ua: uaValue.toLowerCase().trim().split(',').filter(elem => elem !== '') // Fix this
-        })
-      })
-
-      if (!response.ok) {
-        setFetchError(true)
-        setIsLoading(false)
-        return
-      }
-
-      setIsLoading(false)
-      return await response.json()
-    } catch (e) {
-      setIsLoading(false)
-      setFetchError(true)
+    let isErrors = false;
+    const errors: RequiredFieldsAddWordErrors = {
+      enWordValue: [...validation(enWordValue, {[Rules.REQUIRED]: true, [Rules.IS_EN]: true})],
+      transtaltionWordValue: [...validation(transtaltionWordValue, {[Rules.REQUIRED]: true, [Rules.IS_UA]: true})]
     };
+
+    Object.values(errors).forEach(elem => {
+      if(elem.length){
+        isErrors = true;
+      };
+    });
+
+    return {isErrors, errors};
   }
 
-  const onChangeEnValue = (value: string) => {
-    setEnValue(value)
-    setEnValueErrors([])
-  }
 
-  const onChangeUaValue = (value: string) => {
-    setUaValue(value)
-    setUaValueErrors([])
-  }
+  const onAddWord = () => {
+    const {isErrors, errors} = checkValidation();
 
-  const getDate = () => {
-    return format(new Date(), 'dd.MM.yyyy')
-  }
-
-  const onLoaded = ({ statusCode, message }: ResponseAddWord) => {
-    setIsLoading(false)
-
-    if (statusCode === 200) {
-      setEnValue('')
-      setUaValue('')
-
+    if(isErrors){
+      setValidationErrors(errors);
       return;
     }
-
-    setFetchError(true)
   }
-
-  const onSubmit = () => {
-    if (checkValidation(enValue, EnWordRules).length) {
-      setEnValueErrors(checkValidation(enValue, EnWordRules))
-      return
-    }
-
-    if (checkValidation(uaValue, UaWordRules).length) {
-      setUaValueErrors(checkValidation(uaValue, UaWordRules))
-      return
-    }
-
-    onRequest().then(onLoaded)
-  }
-
-  const checkValidation = (value: string, rules: RulesProps): string[] => {
-    return validation(value, rules)
-  }
-
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(successTimer.current)
-    }
-  }, [])
 
   return (
     <div className={classNames(cls.AddWord, {}, [className, 'animate__animated animate__fadeIn'])}>
@@ -124,8 +92,8 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
         <Button 
           className={cls.btn} 
           typeBtn={TypeButton.PRIMARY} 
-          onClick={onSubmit} 
-          disabled={isLoading}
+          onClick={onAddWord} 
+          disabled={false}
         >
           {t('AddWord')}
 
@@ -141,12 +109,12 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
           <div className={cls.row}>
             <div className={cls.group}>
               <label htmlFor="en_word">
-                {t('Word*')}
+                {t('Word')}
               </label>
-              <Input onChange={onChangeEnValue} value={enValue} className={cls.Input} placeholder="Type word..." typeInput={TypeInput.SECONDARY}/>
+              <Input onChange={setEnWordValue} value={enWordValue} className={cls.Input} placeholder="Type word..." typeInput={TypeInput.SECONDARY} isRequired={true}/>
 
-              {enValueErrors.length
-                ? <small className="animate__animated animate__fadeIn animate__faster">{enValueErrors[0]}</small>
+              {validationErrors.enWordValue.length
+                ? <small className="animate__animated animate__fadeIn animate__faster">{validationErrors.enWordValue[0]}</small>
                 : null}
             </div>
 
@@ -154,11 +122,8 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
               <label htmlFor="en_word">
                 {t('Synonyms')}
               </label>
-              <Input onChange={onChangeEnValue} value={enValue} className={cls.Input} placeholder="Type synonyms" typeInput={TypeInput.SECONDARY}/>
+              <Input onChange={setSynonymsWordValue} value={synonymsWordValue} className={cls.Input} placeholder="Type synonyms" typeInput={TypeInput.SECONDARY}/>
 
-              {enValueErrors.length
-                ? <small className="animate__animated animate__fadeIn animate__faster">{enValueErrors[0]}</small>
-                : null}
             </div>
           </div>
 
@@ -168,11 +133,10 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
                 {t('Part of speech')}
               </label>
 
-              <Select options={[
-                { value: 'option1', label: 'Unknown' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' },
-              ]}/>
+              <Select
+                onChange={setPartOfSpeechValue}
+                value={partOfSpeechValue}
+                options={partOfSpeech}/>
             </div>
 
 
@@ -181,11 +145,10 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
                 {t('Units')}
               </label>
 
-              <Select options={[
-                { value: 'option1', label: 'Any' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' },
-              ]}/>
+              <Select
+              onChange={setUnitsValue}
+              value={unitsValue}
+              options={units}/>
             </div>
           </div>
 
@@ -194,7 +157,10 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
               <label htmlFor="en_word">
                 {t('Translation')}
               </label>
-              <Input onChange={onChangeEnValue} value={enValue} className={cls.Input} placeholder="Type word transtalion..." typeInput={TypeInput.SECONDARY}/>
+              <Input onChange={setTranslationWordValue} value={transtaltionWordValue} className={cls.Input} placeholder="Type word transtalion..." typeInput={TypeInput.SECONDARY} isRequired={true}/>
+              {validationErrors.transtaltionWordValue.length
+                ? <small className="animate__animated animate__fadeIn animate__faster">{validationErrors.transtaltionWordValue[0]}</small>
+                : null}
             </div>
           </div>
 
@@ -204,21 +170,37 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
                   {t('Sentence')}
                 </label>
                 
-                <Button className={cls.textarae_btn}>
-                  <FontAwesomeIcon className={cls.icon} icon={faSquarePlus}/>
-                </Button>
+                <div className={cls.textarea_wrapper}>
+                  <Button className={cls.textarea_btn}>
+                    <FontAwesomeIcon className={cls.icon} icon={faSquarePlus}/>
+                  </Button>
+                  <Textarea 
+                    className={cls.textarea} 
+                    typeTextarea={TypeTextarea.SECONDARY} 
+                    placeholder='Type sentence with this word' 
+                    value={sentenceValue}
+                    onChange={setSentenceValue}
+                  />
+                </div>
 
-                <Textarea className={cls.textarea} typeTextarea={TypeTextarea.SECONDARY} placeholder='Type sentence with this word' value={123}/>
             </div>
             <div className={cls.group}>
               <label htmlFor="en_word">
                 {t('Translation')}
               </label>
 
-              <Button className={cls.textarae_btn}>
-                <FontAwesomeIcon className={cls.icon} icon={faSquarePlus}/>
-              </Button>
-              <Textarea className={cls.textarea} typeTextarea={TypeTextarea.SECONDARY} placeholder='Type translation to sentence above'/>
+              <div className={cls.textarea_wrapper}>
+                  <Button className={cls.textarea_btn}>
+                    <FontAwesomeIcon className={cls.icon} icon={faSquarePlus}/>
+                </Button>
+                <Textarea 
+                  className={cls.textarea} 
+                  typeTextarea={TypeTextarea.SECONDARY}
+                  placeholder='Type translation to sentence above'
+                  value={sentenceTranslationValue}
+                  onChange={setSentenceTranslationValue}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -16,9 +16,10 @@ interface InputProps extends HtmlInputProps {
   onChange?: (value: string) => void
   autofocus?: boolean
   typeInput?: TypeInput
+  isRequired?: boolean
 }
 
-export const Input: FC<InputProps> = memo(({ className, type = 'text', value, onChange, autofocus, typeInput = TypeInput.PRIMARY, ...props }) => {
+export const Input: FC<InputProps> = memo(({ className, type = 'text', value, onChange, autofocus, typeInput = TypeInput.PRIMARY, isRequired = false, ...props }) => {
   const ref = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -33,7 +34,8 @@ export const Input: FC<InputProps> = memo(({ className, type = 'text', value, on
   }
 
   return (
-    <input
+    <div className={cls.wrapper}>
+      <input
       ref={ref}
       type={type}
       className={classNames(cls.Input, {}, [className, cls[typeInput]])}
@@ -42,5 +44,8 @@ export const Input: FC<InputProps> = memo(({ className, type = 'text', value, on
       value={value}
       onChange={onChangeHandler}
     />
+
+    {isRequired ? <span>*</span> : null}
+    </div>
   )
 })
