@@ -25,4 +25,10 @@
   padding: 10px;
   border-radius: 2.5px;
   background-color: var(--theme-400);
+
+
+  &.error{
+    border-bottom: 1px solid var(--danger-color);
+  }
 }
+

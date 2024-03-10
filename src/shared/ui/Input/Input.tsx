@@ -13,13 +13,22 @@ export enum TypeInput {
 interface InputProps extends HtmlInputProps {
   className?: string
   value?: string | number;
-  onChange?: (value: string) => void
-  autofocus?: boolean
-  typeInput?: TypeInput
-  isRequired?: boolean
+  onChange?: (value: string) => void;
+  autofocus?: boolean;
+  typeInput?: TypeInput;
+  isRequired?: boolean;
+  isError?: boolean
 }
 
-export const Input: FC<InputProps> = memo(({ className, type = 'text', value, onChange, autofocus, typeInput = TypeInput.PRIMARY, isRequired = false, ...props }) => {
+export const Input: FC<InputProps> = memo(({ className, 
+  type = 'text', 
+  value, 
+  onChange, 
+  autofocus, 
+  typeInput = TypeInput.PRIMARY, 
+  isRequired = false, 
+  isError = false,
+  ...props }) => {
   const ref = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -38,14 +47,14 @@ export const Input: FC<InputProps> = memo(({ className, type = 'text', value, on
       <input
       ref={ref}
       type={type}
-      className={classNames(cls.Input, {}, [className, cls[typeInput]])}
+      className={classNames(cls.Input, {[cls.error]: isError}, [className, cls[typeInput]])}
       {...props}
 
       value={value}
       onChange={onChangeHandler}
     />
 
-    {isRequired ? <span>*</span> : null}
+    {isRequired ? <span className={classNames('', {[cls.error]: isError}, [])}>*</span> : null}
     </div>
   )
 })

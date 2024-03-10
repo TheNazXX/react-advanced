@@ -31,7 +31,7 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const [isHint, setIsHint] = useState(false);
 
   const [currentIdxWord, setCurrentIdxWord] = useState<number>(0)
-  const [randomWord, setRandomWord] = useState<Word>({ en: '', translate: [] })
+  const [randomWord, setRandomWord] = useState<Word>({ en: '', translate: []  })
 
   const [translationValue, setTranslationValue] = useState('')
   const [translationErrorsValidation, setTranslationErrorsValidation] = useState<string[]>([])

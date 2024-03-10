@@ -9,6 +9,10 @@
     color: var(--color-200);
     font-size: 18px;
     font-weight: 600;
+
+    &.error{
+      color: var(--danger-color);
+    }
   }
 }
 
@@ -16,6 +20,10 @@
   width: 100%;
   color: var(--inverted-theme-100);
   outline: none;
+
+  &.error{
+    border-bottom: 1px solid var(--danger-color);
+  }
 }
 
 .primary{

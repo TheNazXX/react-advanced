@@ -6,7 +6,6 @@
         {
           "en": "literaly",
           "translate": [
-            "в буквальному сенсі",
             "буквально"
           ],
           "typeWord": "",
@@ -24,7 +23,7 @@
         {
           "en": "terrific",
           "translate": [
-            "приголомшливо"
+            "потрясающий"
           ],
           "typeWord": "",
           "unit": "",
@@ -43,59 +42,59 @@
           "translate": [
             "рутина"
           ],
-          "typeWord": "",
-          "unit": "",
-          "synonyms": [],
-          "sentences": [],
-          "translateSentences": [],
+          "typeWord": "noun",
+          "unit": null,
+          "synonyms": null,
+          "sentences": null,
+          "translateSentences": null,
           "difficult": false
         },
         {
           "en": "implementation",
           "translate": [
-            "реалізація",
-            "впропадження"
+            "реализация",
+            "внедрение"
           ],
-          "typeWord": "",
-          "unit": "",
-          "synonyms": [],
-          "sentences": [],
-          "translateSentences": [],
+          "typeWord": "noun",
+          "unit": null,
+          "synonyms": ["realization"],
+          "sentences": ["The implementation of the new software system significantly improved efficiency in the workplace."],
+          "translateSentences": ["Внедрение новой программной системы значительно повысило эффективность на рабочем месте."],
           "difficult": false
         },
         {
           "en": "ensure",
           "translate": [
-            "забезпечувати",
-            "гарантувати"
+            "обеспечивать",
+            "гарантировать"
           ],
-          "typeWord": "",
-          "unit": "",
+          "typeWord": "verb",
+          "unit": null,
           "synonyms": [],
-          "sentences": [],
-          "translateSentences": [],
+          "sentences": null,
+          "translateSentences": null,
           "difficult": false
         },
         {
           "en": "dedicate",
           "translate": [
-            "присвячувати"
+            "посвящать"
           ],
-          "typeWord": "",
+          "typeWord": "verb",
           "unit": "",
-          "synonyms": [],
-          "sentences": [],
-          "translateSentences": [],
+          "synonyms": null,
+          "sentences": null,
+          "translateSentences": null,
           "difficult": false
         },
         {
           "en": "unit",
           "translate": [
-            "одиниця",
-            "підрозділ",
+            "еденица",
+            "раздел",
             "блок"
           ],
-          "typeWord": "",
+          "typeWord": "noun",
           "unit": "",
           "synonyms": [],
           "sentences": [],

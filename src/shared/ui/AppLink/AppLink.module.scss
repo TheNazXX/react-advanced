@@ -5,6 +5,7 @@
 }
 
 .active{
+  pointer-events: none;
   cursor: default;
   background-color: var(--color-300);
 

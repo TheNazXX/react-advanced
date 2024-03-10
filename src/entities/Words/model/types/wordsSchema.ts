@@ -1,11 +1,10 @@
 export interface Word {
   en: string,
   translate: string[],
-  typeWord?: TypeWord;
-  unit?: string;
-  synonyms?: string[],
-  sentences?: string[],
-  translateSentences?: string[]
+  partOfSpeech?: partOfSpeech | null;
+  unit?: string | null;
+  synonyms?: string[] | null,
+  sentences?: Sentence[] | null,
   difficult?: boolean
 }
 
@@ -15,12 +14,15 @@ export interface WordsSchema {
   error: string
 }
 
+export interface Sentence {
+  en: string,
+  translate: string
+}
 
-// ------------------- //
-
-enum TypeWord {
+export enum partOfSpeech {
+  DEFAULT = '',
   VERB = 'verb',
-  ADJECTIVES = 'adjectives',
+  ADJECTIVE = 'adjectives',
   NOUN = 'noun',
   ADVERB = 'adverbs'
 }

@@ -37,11 +37,11 @@ export const UaWordRules = {
 
 const Errors: ErrorsProps = {
   [Rules.REQUIRED]: 'Field is required!',
-  [Rules.STRING]: 'Word is wrong!',
-  [Rules.MAX]: 'Word is too long!',
-  [Rules.MIN]: 'Word is too short!',
-  [Rules.IS_EN]: 'Non english word!',
-  [Rules.IS_UA]: 'Non ua word!'
+  [Rules.STRING]: 'Field is wrong!',
+  [Rules.MAX]: 'Field is too long!',
+  [Rules.MIN]: 'Field is too short!',
+  [Rules.IS_EN]: 'Non english field!',
+  [Rules.IS_UA]: 'Non ua field!'
 } as const
 
 export function validation (value: string, rules: RulesProps): string[] {
@@ -77,10 +77,10 @@ function match (value: string, rule: string, ruleValue: string | number): boolea
       return false
     }
     case Rules.IS_EN: {
-      return /^[a-zA-Z\s]+$/.test(value)
+      return /^[a-zA-Z.,\s]+$/.test(value)
     }
     case Rules.IS_UA: {
-      return /^[\u0400-\u04FF\s,'-]+$/u.test(value)
+      return /^[.,\u0400-\u04FF\s'-]+$/u.test(value)
     }
     default: return false
   }
