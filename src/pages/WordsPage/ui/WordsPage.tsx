@@ -21,6 +21,8 @@ export const WordsPage: FC<WordsPageProps> = ({ className }) => {
     dispatch(requestWords())
   }, [])
 
+
+
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
       <AppLink key={idx} to={`/words/${en}`}>

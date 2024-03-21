@@ -17,6 +17,7 @@ import { TypeTextarea } from 'shared/ui/Textarea/Textarea'
 import { Rules } from 'shared/libs/validation/validation'
 import { Word } from 'entities/Words'
 import { Sentence, partOfSpeech } from 'entities/Words/model/types/wordsSchema'
+import { postWord } from 'entities/Words/model/services/PostWord'
 
 interface AddWordProps {
   className?: string
@@ -35,6 +36,7 @@ const partOfSpeechOptions: PartOfSpeechOptionInterface[] = [
   { value: partOfSpeech.VERB, label: 'verb' },
   { value: partOfSpeech.ADJECTIVE, label: 'adjective' },
   { value: partOfSpeech.ADVERB, label: 'adverb' },
+  { value: partOfSpeech.CONJUNCTION, label: 'conjunction' },
 ]
 
 const unitsOptions = [
@@ -88,6 +90,19 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
     return {isErrors, errors};
   }
 
+  const resetForm = () => {
+    setEnWordValue('');
+    setTranslationWordValue('');
+    setSynonymsWordValue('')
+    setPartOfSpeechValue(partOfSpeechOptions[0].value);
+    setUnitsValue(unitsOptions[0].value);
+    setSentenceValue('');
+    setSentenceTranslationValue('');
+    setSentenceError([]);
+    setSentenceTranslationError([]);
+    setSentencesArray([]);
+  }
+
 
   const onAddWord = () => {
     setValidationErrors(initialFieldsErrors);;
@@ -103,7 +118,10 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
       return;
     }
 
-    console.log(prepareWord());
+    postWord(prepareWord()).then(({message}) => {
+      showAlert(message, true);
+      resetForm();
+    }).catch((e) => console.log('error', e))
   }
 
   const prepareWord = (): Word => {
@@ -120,7 +138,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
 
   
   const prepareArrayFromString = (value: string): string[] => {
-    return value.split(',').map(elem => elem.toLowerCase().trim()).filter(elem => elem);
+    return value.split(',').map(elem => elem.toLowerCase().trim()).filter(elem => elem)
   }
 
 

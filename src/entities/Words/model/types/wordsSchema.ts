@@ -1,6 +1,6 @@
 export interface Word {
   en: string,
-  translate: string[],
+  translate?: string[],
   partOfSpeech?: partOfSpeech | null;
   unit?: string | null;
   synonyms?: string[] | null,
@@ -22,7 +22,8 @@ export interface Sentence {
 export enum partOfSpeech {
   DEFAULT = '',
   VERB = 'verb',
-  ADJECTIVE = 'adjectives',
+  ADJECTIVE = 'adjective',
   NOUN = 'noun',
-  ADVERB = 'adverbs'
+  ADVERB = 'adverbs',
+  CONJUNCTION = 'conjunction'
 }

@@ -19,8 +19,7 @@ interface WordPageProps {
 }
 
 const initialState: Word = {
-  en: '',
-  translate: []
+  en: ''
 }
 
 const useAlert = () => {
@@ -64,6 +63,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
   const onLoaded = (data: Word) => {
     setIsLoading(false);
+    console.log(data);
     setCurentWord(data);
   }
 
@@ -89,10 +89,6 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
         : <div className={cls.wrapper}>
             <div className={cls.head}>
               <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord.en)}</i>
-              
- 
-
-          
                 <div className={cls.btns}>
                   {
                     isLoadigAddRepeatWord 
@@ -102,13 +98,10 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
                   <Button typeBtn={TypeButton.PRIMARY} disabled={isLoadigAddRepeatWord}>{t('Edit')}</Button>
                   <Button typeBtn={TypeButton.DANGER} disabled={isLoadigAddRepeatWord}>{t('Delete')}</Button>
                 </div>
-       
-
-
             </div>
 
             {
-              currentWord.translate.join(',')
+              currentWord.translate?.join(',')
             }
           </div>
     

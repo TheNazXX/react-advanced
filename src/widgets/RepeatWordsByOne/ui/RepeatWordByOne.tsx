@@ -95,11 +95,11 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
   const checkByCorrectWord = () => {
     const result = translationValue.trim().split(',').map(elem => elem.trim())
 
-    if (result.length !== randomWord.translate.length) {
+    if (result.length !== randomWord.translate?.length) {
       return false
     }
 
-    return result.every(elem => randomWord.translate.includes(elem))
+    return result.every(elem => randomWord.translate?.includes(elem))
   }
 
   useEffect(() => {
@@ -147,14 +147,14 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({ className, words, on
               ? <small key={translationErrorsValidation[0]} className="animate__animated animate__fadeIn animate__faster">{translationErrorsValidation[0]}</small>
               : null}
 
-            <span className={cls.hint}>{t('Possibly')} {randomWord?.translate?.length} {lowerFirstLetter(t(correctTranslate(randomWord?.translate?.length)))}</span>
+            <span className={cls.hint}>{t('Possibly')} {randomWord?.translate?.length} {lowerFirstLetter(t(correctTranslate(randomWord?.translate?.length || 0)))}</span>
           </label>
 
           {
             isMistake || isHint
             ? <div className={classNames(cls.correct, {}, ['animate__animated animate__fadeIn'])}>{t("CorrectVersion")}&nbsp;-&nbsp; 
                 <div className={classNames(cls.correct_elems, {}, [])}>
-                  {randomWord?.translate.map((elem) => {
+                  {randomWord?.translate?.map((elem) => {
                     return <span key={elem}>{elem}</span>
                   })}
                 </div>
