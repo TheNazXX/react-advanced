@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import { type ProfileInterface } from 'entities/Profile'
 
-export const fetchProfileData = createAsyncThunk<ProfileInterface, void, ThunkConfig<string>>(
+export const requestProfileData = createAsyncThunk<ProfileInterface, void, ThunkConfig<string>>(
   'profile/fetchProfileData',
   async (_, {extra, rejectWithValue}) => {
     try {

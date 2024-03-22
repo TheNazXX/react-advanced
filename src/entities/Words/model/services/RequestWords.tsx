@@ -18,8 +18,8 @@ export const requestWords = createAsyncThunk(
 
       return response.data
     } catch (e: any) {
-      const errorText = e.response?.data?.message || 'Something went wrong'; 
+      const errorText = e.response?.data?.message || 'Could not to load words'; 
       return thunkAPI.rejectWithValue(errorText);
     }
-  }
+}
 )

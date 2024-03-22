@@ -2,7 +2,7 @@ import { ProfileUpdateResponseInterface, formStructure,  requiredValidationField
 
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProfileInterface, type ProfileSchema } from '../types/profile'
-import { fetchProfileData } from '../service/fetchProfileData'
+import { requestProfileData } from '../service/requestProfileData'
 import { Rules, RulesProps, validation } from 'shared/libs/validation/validation'
 import { updateProfileData } from '../service/updateProfileData';
 
@@ -50,16 +50,16 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProfileData.pending, (state, action) => {
+      .addCase(requestProfileData.pending, (state, action) => {
         state.fetchError = ''
         state.isLoading = true
       })
-      .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
+      .addCase(requestProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
         state.isLoading = false;
         state.data = action.payload;
         state.form = action.payload;
       })
-      .addCase(fetchProfileData.rejected, (state, action) => {
+      .addCase(requestProfileData.rejected, (state, action) => {
         state.isLoading = false
         state.fetchError = action.payload as string
       })

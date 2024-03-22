@@ -45,7 +45,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
 
   const onLoadingClick = useCallback(async () => {
     try {
-      const result = await dispatch(loginByUsername({ login, password })) // !any -> Аргумент типа "AsyncThunkAction<User, LoginByUsernameProps, AsyncThunkConfig>" нельзя назначить параметру типа "UnknownAction
+      const result = await dispatch(loginByUsername({ login, password }));
 
       if (result.meta.requestStatus === 'fulfilled') {
         onClose?.()
@@ -87,6 +87,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
 
       {error && <i className={classNames(cls.error, {}, ['animate__animated animate__headShake'])}>{error}</i>}
       </div>
+
     </DynamicModuleLoader>
   )
 })

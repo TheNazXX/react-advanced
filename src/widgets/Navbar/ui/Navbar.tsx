@@ -1,5 +1,5 @@
 import { classNames } from 'shared/libs/classNames/classNames'
-import { type FC, useState, useCallback } from 'react'
+import { type FC, useState, useCallback, useEffect } from 'react'
 import { Button } from 'shared/ui'
 
 import cls from './Navbar.module.scss'
@@ -15,16 +15,20 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const [isAuthModal, setAuthModal] = useState<boolean>(false)
-  const authData = useSelector(getUserAuthData)
+  const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch()
 
   const onToggleModal = useCallback(() => {
     setAuthModal(state => !state)
   }, [])
 
-  const onLogout = useCallback(() => {
-    dispatch(userActions.onLogout())
-  }, [])
+  const onLogout = () => {
+    dispatch(userActions.onLogout());
+  }
+
+  useEffect(() => {
+    console.log(authData);
+  }, [authData]);
 
   return (
     <div

@@ -7,6 +7,10 @@ import { WordsPage } from 'pages/WordsPage'
 import { type RouteProps } from 'react-router-dom'
 import { ProfilePage } from 'pages/ProfilePage'
 
+type AppRoutesProps = RouteProps & {
+  authOnly?: boolean;
+};
+
 export enum AppRoutes {
   PROFILE = 'profile',
   MAIN = 'main',
@@ -25,10 +29,11 @@ export const RoutePathes: Record<AppRoutes, string> = {
   [AppRoutes.PAGE_NOT_FOUND]: '*'
 }
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.PROFILE]: {
     path: RoutePathes.profile,
-    element: <ProfilePage />
+    element: <ProfilePage />,
+    authOnly: true
   },
   [AppRoutes.MAIN]: {
     path: RoutePathes.main,

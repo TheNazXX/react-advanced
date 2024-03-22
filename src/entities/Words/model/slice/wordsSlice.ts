@@ -26,6 +26,10 @@ export const wordsSlice = createSlice({
       .addCase(requestWords.fulfilled, (state, action) => {
         state.isLoading = false
       })
+      .addCase(requestWords.rejected, (state, action) => {
+        state.error = action.payload as string;
+        state.isLoading = false;
+      })
   }
 })
 

@@ -7,7 +7,7 @@ export { getProfileFetchError, getProfileUpdateError } from './model/selectors/g
 export { getProfileIsLoading, getProfileIsLoadingUpdate } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 
 
-export { fetchProfileData } from './model/service/fetchProfileData'
+export { requestProfileData } from './model/service/requestProfileData'
 export { updateProfileData } from './model/service/updateProfileData';
 export type { ProfileInterface, ProfileSchema, ProfileUpdateResponseInterface } from './model/types/profile'
 export { profileReducer, profileActions } from './model/slice/ProfileSlice'

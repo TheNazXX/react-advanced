@@ -3,7 +3,7 @@ import axios from 'axios'
 import { repeatWordsActions } from '../slice/repeatWordsSlice'
 import { type Word } from 'entities/Words'
 
-export const fetchRepeatWords = createAsyncThunk(
+export const requestRepeatWords = createAsyncThunk(
   'getRepeatWords',
   async (_, thunkAPI) => {
     try {
@@ -14,11 +14,11 @@ export const fetchRepeatWords = createAsyncThunk(
       };
 
       thunkAPI.dispatch(repeatWordsActions.setWords(response.data as Word[]))
-
       return response.data
-    } catch (e) {
+    } catch (e: any) {
       console.log(e)
-      return thunkAPI.rejectWithValue('Something went wrong')
+      const errorText = e.response?.data?.message || 'Could not to load repeatWords'; 
+      return thunkAPI.rejectWithValue(errorText)
     }
   }
 )

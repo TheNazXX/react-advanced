@@ -50,8 +50,6 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
   }, [dispatch])
 
   const onSave = useCallback(() => {
-    dispatch(profileActions.setReadonly(true));
-    dispatch(profileActions.resetValidationErrors());
     const {isErrors, errors} = getValidationErrors(initialFormRequiredFields, formData);
 
     if(isErrors){
@@ -59,6 +57,8 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({ className }) => 
       showAlertWithChildren(renderErrors(errors), false);
     }else{
       dispatch(updateProfileData());
+      dispatch(profileActions.setReadonly(true));
+      dispatch(profileActions.resetValidationErrors());
     }
 
   }, [dispatch, formData]);

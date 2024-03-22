@@ -8,7 +8,7 @@ import { classNames } from 'shared/libs/classNames/classNames'
 import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 import { requestWord } from 'entities/Words'
 import { addRepeatWordRequest} from 'entities/RepeatWords'
-import { Alert } from 'shared/ui/Alert/Alert'
+import { Alert, useAlert } from 'shared/ui/Alert/Alert'
 import { addRepeatWordResponse } from 'entities/RepeatWords/model/types/RepeatWordsSchema'
 import { typeLoader } from 'shared/ui/Loader/Loader'
 
@@ -20,26 +20,6 @@ interface WordPageProps {
 
 const initialState: Word = {
   en: ''
-}
-
-const useAlert = () => {
-  const [isAlert, setIsAlert] = useState(false);
-  const [alertText, setAlertText] = useState('');
-  const [alertSuccess, setAlertSuccess] = useState(true);
-
-
-  const showAlert = (message: string, success = false) => {
-    setIsAlert(true);
-    setAlertText(message);
-    setAlertSuccess(success);
-  }
-
-  const hideAlert = () => {
-    setIsAlert(false);
-  }
-
-
-  return {isAlert, alertText, alertSuccess, showAlert, hideAlert};
 }
 
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
@@ -63,7 +43,6 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
   const onLoaded = (data: Word) => {
     setIsLoading(false);
-    console.log(data);
     setCurentWord(data);
   }
 
