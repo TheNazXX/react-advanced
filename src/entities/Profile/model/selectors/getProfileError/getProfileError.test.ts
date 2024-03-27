@@ -4,8 +4,7 @@ import { formStructure } from '../../types/profile'
 
 describe('getProfileErrors', () => {
   test('test fetch error', () => {
-
-    const error = 'Something went wrong';
+    const error = 'Something went wrong'
 
     const state: DeepPartial<StateSchema> = {
       profile: {
@@ -13,12 +12,11 @@ describe('getProfileErrors', () => {
       }
     }
 
-    expect(getProfileFetchError(state as StateSchema)).toEqual(error);
+    expect(getProfileFetchError(state as StateSchema)).toEqual(error)
   })
 
   test('test update error', () => {
-
-    const error = 'Something went wrong';
+    const error = 'Something went wrong'
 
     const state: DeepPartial<StateSchema> = {
       profile: {
@@ -26,6 +24,6 @@ describe('getProfileErrors', () => {
       }
     }
 
-    expect(getProfileUpdateError(state as StateSchema)).toEqual(error);
+    expect(getProfileUpdateError(state as StateSchema)).toEqual(error)
   })
 })

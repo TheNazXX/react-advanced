@@ -7,16 +7,15 @@ type HtmlTextAreaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'valu
 export enum TypeTextarea {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
-  RESET = 'reset' 
+  RESET = 'reset'
 }
 
-
 interface TextareaProps extends HtmlTextAreaProps {
-  className?: string;
-  value?: string | number;
-  onChange?: (value: string) => void;
-  typeTextarea?: TypeTextarea;
-  isError?: boolean;
+  className?: string
+  value?: string | number
+  onChange?: (value: string) => void
+  typeTextarea?: TypeTextarea
+  isError?: boolean
 }
 
 export const Textarea: FC<TextareaProps> = memo(({ className, value, onChange, typeTextarea = TypeTextarea.PRIMARY, isError = false, ...props }) => {
@@ -30,7 +29,7 @@ export const Textarea: FC<TextareaProps> = memo(({ className, value, onChange, t
   return (
     <textarea
       ref={ref}
-      className={classNames(cls.Textarea, {[cls.error]: isError}, [className, cls[typeTextarea]])}
+      className={classNames(cls.Textarea, { [cls.error]: isError }, [className, cls[typeTextarea]])}
       {...props}
       onChange={onChangeHandler}
       value={value}

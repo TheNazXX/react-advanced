@@ -27,8 +27,8 @@ export const wordsSlice = createSlice({
         state.isLoading = false
       })
       .addCase(requestWords.rejected, (state, action) => {
-        state.error = action.payload as string;
-        state.isLoading = false;
+        state.error = action.payload as string
+        state.isLoading = false
       })
   }
 })

@@ -1,4 +1,4 @@
-import { Rules, RulesProps } from "shared/libs/validation/validation";
+import { Rules, RulesProps } from 'shared/libs/validation/validation'
 
 export interface ResponseAddWord {
   statusCode: number

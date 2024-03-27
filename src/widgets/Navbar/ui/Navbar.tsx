@@ -15,7 +15,7 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const [isAuthModal, setAuthModal] = useState<boolean>(false)
-  const authData = useSelector(getUserAuthData);
+  const authData = useSelector(getUserAuthData)
   const dispatch = useDispatch()
 
   const onToggleModal = useCallback(() => {
@@ -23,12 +23,12 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   }, [])
 
   const onLogout = () => {
-    dispatch(userActions.onLogout());
+    dispatch(userActions.onLogout())
   }
 
   useEffect(() => {
-    console.log(authData);
-  }, [authData]);
+    console.log(authData)
+  }, [authData])
 
   return (
     <div

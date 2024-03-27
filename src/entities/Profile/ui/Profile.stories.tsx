@@ -1,11 +1,10 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 
-import {Profile} from './Profile'
+import { Profile } from './Profile'
 import { StoreDecorator } from 'shared/config/storybook/Decorators/StoreDecorator/StoreDecorator'
 import { formStructure } from '../model/types/profile'
 import { BrowswerRouterDecorator, ThemeDecorator } from 'shared/config/storybook/Decorators'
-import avatar from 'shared/assets/tests/images/avatar.jpg';
-
+import avatar from 'shared/assets/tests/images/avatar.jpg'
 
 import 'app/styles/index.scss'
 import { Theme } from 'app/providers/ThemeProvider'
@@ -51,4 +50,3 @@ Loading.decorators = [
   BrowswerRouterDecorator,
   ThemeDecorator(Theme.LIGHT)
 ]
-

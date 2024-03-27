@@ -1,8 +1,8 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Profile.module.scss'
-import { useCallback, type FC, useEffect} from 'react'
-import {useTranslation} from 'react-i18next'
-import { ProfileInterface, ProfileSchema, requiredValidationFields } from '../model/types/profile'
+import { useCallback, type FC, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { type ProfileInterface, type ProfileSchema, type requiredValidationFields } from '../model/types/profile'
 import { Loader } from 'shared/ui'
 import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 import { Input, TypeInput } from 'shared/ui/Input/Input'
@@ -14,73 +14,70 @@ import { getFormValidationErrors } from '../model/selectors/getFormValidationErr
 import { getProfileIsLoadingUpdate } from '../model/selectors/getProfileIsLoading/getProfileIsLoading'
 
 interface ProfileProps extends ProfileSchema {
-  className?: string;
+  className?: string
 }
 
 export const Profile: FC<ProfileProps> = ({ className, data, isLoading }) => {
-
-  const {t} = useTranslation('profile');  
-  const readonly = useSelector(getProfileReadonly);
-  const dispatch = useAppDispatch();
-  const validationErrors: requiredValidationFields = useSelector(getFormValidationErrors) || initialFormRequiredFields;
-  const isLoadingProfileUpdate = useSelector(getProfileIsLoadingUpdate);
+  const { t } = useTranslation('profile')
+  const readonly = useSelector(getProfileReadonly)
+  const dispatch = useAppDispatch()
+  const validationErrors: requiredValidationFields = useSelector(getFormValidationErrors) || initialFormRequiredFields
+  const isLoadingProfileUpdate = useSelector(getProfileIsLoadingUpdate)
 
   const updateField = useCallback((field: keyof ProfileInterface, value: string | number, typeInput: string | number) => {
     if (typeInput === 'number') {
       if (isNaN(Number(value))) {
-        return;
+        return
       }
-      value = Number(value);
+      value = Number(value)
     }
 
-    const updatedField: Partial<ProfileInterface> = { [field]: value };
-    dispatch(profileActions.updateProfile(updatedField as ProfileInterface));
-  }, [dispatch]);
+    const updatedField: Partial<ProfileInterface> = { [field]: value }
+    dispatch(profileActions.updateProfile(updatedField as ProfileInterface))
+  }, [dispatch])
 
   const onChangeField = useCallback((field: keyof ProfileInterface, value: string | number, typeInput: string | number) => {
-    updateField(field, value, typeInput);
-  }, [dispatch, validationErrors]);
-
-  
+    updateField(field, value, typeInput)
+  }, [dispatch, validationErrors])
 
   const generateDescription = useCallback((profileData: ProfileInterface | undefined) => {
     if (!profileData) {
-      return null;
+      return null
     }
 
-    const {avatar, role, ...renderData} = profileData;
+    const { avatar, role, ...renderData } = profileData
 
     return (
       <>
         {Object.entries(renderData).map(([key, initialValue]) => {
           return (
-  
+
             <div key={key} className={cls.item}>
              <span>{t(upperFirstLetter(t(key)))}:</span>
                   {
-                   readonly 
-                   ? <i className='animate__animated animate__headShake'>{initialValue}</i>
-                   : <Input
+                   readonly
+                     ? <i className='animate__animated animate__headShake'>{initialValue}</i>
+                     : <Input
                        className={classNames(cls.input, {
-                        [cls.error]: validationErrors[key] && validationErrors[key].length !== 0,
-                       }, ['animate__animated animate__headShake'])} 
-                       value={initialValue} 
+                         [cls.error]: validationErrors[key] && validationErrors[key].length !== 0
+                       }, ['animate__animated animate__headShake'])}
+                       value={initialValue}
                        typeInput={TypeInput.RESET}
-                       onChange={(changedValue) => onChangeField(key as keyof Partial<ProfileInterface>, changedValue, typeof(initialValue))}
- 
-                     />
-                
-                  }  
-               </div>
- 
-         )
-        })}
-      
-      </>
-    );
-  }, [data, readonly, validationErrors]);
+                       onChange={(changedValue) => { onChangeField(key as keyof Partial<ProfileInterface>, changedValue, typeof (initialValue)) }}
 
-  if(isLoading){
+                     />
+
+                  }
+               </div>
+
+          )
+        })}
+
+      </>
+    )
+  }, [data, readonly, validationErrors])
+
+  if (isLoading) {
     return (
       <div className={classNames(cls.Profile, {}, [className])}>
         <Loader />
@@ -95,10 +92,10 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading }) => {
         <img className={cls.img} src={data?.avatar} alt="avatar"/>
         <div className={cls.descr}>
           {
-            isLoadingProfileUpdate ?  <Loader /> : generateDescription(data)
+            isLoadingProfileUpdate ? <Loader /> : generateDescription(data)
           }
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

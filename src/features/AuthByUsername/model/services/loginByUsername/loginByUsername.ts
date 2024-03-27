@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from 'app/providers/StoreProvider'
+import { type ThunkConfig } from 'app/providers/StoreProvider'
 import { userActions, type User } from 'entities/User'
 import { USER_LOCAL_KEY } from 'shared/const/lodalStorage'
 
@@ -10,9 +10,8 @@ interface LoginByUsernameProps {
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
   'login/loginByUsername',
-  async (authData, {extra, dispatch, rejectWithValue}) => { // authData, thunkAPI
+  async (authData, { extra, dispatch, rejectWithValue }) => { // authData, thunkAPI
     try {
-
       const response = await extra.api.post<User>('/login', authData)
 
       if (!response.data) {

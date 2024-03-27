@@ -1,8 +1,8 @@
-import { FC, ChangeEvent, SelectHTMLAttributes, memo, useEffect, useRef } from 'react';
-import { classNames } from 'shared/libs/classNames/classNames';
-import cls from './Select.module.scss';
+import { type FC, type ChangeEvent, type SelectHTMLAttributes, memo, useEffect, useRef } from 'react'
+import { classNames } from 'shared/libs/classNames/classNames'
+import cls from './Select.module.scss'
 
-type HtmlSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange'>;
+type HtmlSelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange'>
 
 export enum TypeSelect {
   PRIMARY = 'primary',
@@ -11,23 +11,22 @@ export enum TypeSelect {
 }
 
 interface SelectProps extends HtmlSelectProps {
-  className?: string;
-  value?: string | number;
-  onChange?: (value: string) => void;
-  typeSelect?: TypeSelect;
-  options: { value: string | number; label: string }[];
+  className?: string
+  value?: string | number
+  onChange?: (value: string) => void
+  typeSelect?: TypeSelect
+  options: Array<{ value: string | number, label: string }>
 }
 
 export const Select: FC<SelectProps> = memo(({ className, value, onChange, typeSelect = TypeSelect.PRIMARY, options, ...props }) => {
-  const ref = useRef<HTMLSelectElement>(null);
-
+  const ref = useRef<HTMLSelectElement>(null)
 
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    onChange?.(e.target.value);
-  };
+    onChange?.(e.target.value)
+  }
 
   return (
-    <div className={classNames(cls.Select, {}, [className, cls['secondary']])}>
+    <div className={classNames(cls.Select, {}, [className, cls.secondary])}>
       <select
         ref={ref}
         {...props}
@@ -42,5 +41,5 @@ export const Select: FC<SelectProps> = memo(({ className, value, onChange, typeS
       </select>
       <div className={cls.arrow}></div>
     </div>
-  );
-});
+  )
+})

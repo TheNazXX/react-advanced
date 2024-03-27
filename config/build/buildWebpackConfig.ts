@@ -6,7 +6,7 @@ import { buildLoaders } from './buildLoaders'
 import { buildResolves } from './buildResolve'
 import { buildDevServer } from './buildDevServer'
 
-export function buildWebpackConfig ({ paths, mode, port, isDev, apiUrl, project}: BuildOptions): webpack.Configuration {
+export function buildWebpackConfig ({ paths, mode, port, isDev, apiUrl, project }: BuildOptions): webpack.Configuration {
   return {
     mode,
     entry: paths.entry,

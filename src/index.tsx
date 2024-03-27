@@ -7,7 +7,7 @@ import { ErrorBoundary } from 'app/providers/ErrorBoundary'
 import './app/styles/index.scss'
 import { StoreProvider } from 'app/providers/StoreProvider'
 
-createRoot(document.getElementById('root') as HTMLElement).render(
+createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <StoreProvider>
       <ErrorBoundary>

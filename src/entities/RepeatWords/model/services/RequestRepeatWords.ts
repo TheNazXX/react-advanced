@@ -17,7 +17,7 @@ export const requestRepeatWords = createAsyncThunk(
       return response.data
     } catch (e: any) {
       console.log(e)
-      const errorText = e.response?.data?.message || 'Could not to load repeatWords'; 
+      const errorText = e.response?.data?.message || 'Could not to load repeatWords'
       return thunkAPI.rejectWithValue(errorText)
     }
   }

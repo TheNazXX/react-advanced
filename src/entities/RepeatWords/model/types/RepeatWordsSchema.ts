@@ -11,5 +11,5 @@ export interface RepeatWordsSchema {
 }
 
 export interface addRepeatWordResponse {
-  message: string;
+  message: string
 }

@@ -11,8 +11,6 @@ describe('loginByUsername.test', () => {
   test('success', async () => {
     const userValue = { login: '123', id: '1' }
 
-
-
     const testAsyncThunk = new TestAsyncThunk(loginByUsername)
     testAsyncThunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
     const result = await testAsyncThunk.callThunk({ login: '123', password: '123' })
@@ -26,7 +24,6 @@ describe('loginByUsername.test', () => {
   })
 
   test('403', async () => {
-
     const testAsyncThunk = new TestAsyncThunk(loginByUsername)
     testAsyncThunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await testAsyncThunk.callThunk({ login: '123', password: '123' })

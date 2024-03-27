@@ -5,7 +5,6 @@ import { type ReactNode } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
 
-
 export interface renderWithRouterOptions {
   route?: string
   initialState?: DeepPartial<StateSchema>

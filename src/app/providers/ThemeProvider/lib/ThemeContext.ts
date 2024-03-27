@@ -24,10 +24,10 @@ export const ThemesColors = [
 ]
 
 export interface ThemeContextProps {
-  theme?: Theme | undefined;
-  themeColor?: ThemeColor | undefined;
-  setTheme?: (theme: Theme) => void | undefined;
-  setThemeColor?: (color: ThemeColor) => void | undefined;
+  theme?: Theme | undefined
+  themeColor?: ThemeColor | undefined
+  setTheme?: (theme: Theme) => void | undefined
+  setThemeColor?: (color: ThemeColor) => void | undefined
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({})

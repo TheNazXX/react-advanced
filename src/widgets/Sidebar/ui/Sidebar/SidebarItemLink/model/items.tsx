@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RoutePathes } from 'shared/config/routeConfig/routeConfig'
 
 export interface SidebarItemLinkType {
-  path: string;
-  text: string;
-  icon: JSX.Element;
-  authOnly?: boolean;
+  path: string
+  text: string
+  icon: JSX.Element
+  authOnly?: boolean
 }
 
 export const SidebarItemLinks: SidebarItemLinkType[] = [

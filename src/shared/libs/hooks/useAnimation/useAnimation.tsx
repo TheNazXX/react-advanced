@@ -1,26 +1,25 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react'
 
 export const useAnimation = (isOpen: boolean, onClose: () => void) => {
-  const [isOpening, setIsOpening] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [isOpening, setIsOpening] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
 
-  const openingAnimation = useRef<ReturnType<typeof setTimeout>>();
-  const closingAnimation = useRef<ReturnType<typeof setTimeout>>();
+  const openingAnimation = useRef<ReturnType<typeof setTimeout>>()
+  const closingAnimation = useRef<ReturnType<typeof setTimeout>>()
 
   const onCloseElement = () => {
-
-    setIsClosing(true);
+    setIsClosing(true)
     closingAnimation.current = setTimeout(() => {
-      onClose();
-      setIsClosing(false);
-      setIsOpening(false);
+      onClose()
+      setIsClosing(false)
+      setIsOpening(false)
     }, 100)
   }
 
   useEffect(() => {
-    if(isOpen){
+    if (isOpen) {
       openingAnimation.current = setTimeout(() => {
-        setIsOpening(true);
+        setIsOpening(true)
       }, 100)
 
       return () => {
@@ -30,5 +29,5 @@ export const useAnimation = (isOpen: boolean, onClose: () => void) => {
     }
   }, [isOpen])
 
-  return {isOpening, isClosing, onCloseElement};
+  return { isOpening, isClosing, onCloseElement }
 }

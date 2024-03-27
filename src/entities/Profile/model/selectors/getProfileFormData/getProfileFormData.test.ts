@@ -4,7 +4,6 @@ import { getProfileFormData } from './getProfileFormData'
 
 describe('getProfileFormData', () => {
   test('should return state', () => {
-
     const formData = {
       [formStructure.FIRSTNAME]: 'Nazar',
       [formStructure.LASTNAME]: 'Shevchuk',
@@ -17,11 +16,11 @@ describe('getProfileFormData', () => {
       }
     }
 
-    expect(getProfileFormData(state as StateSchema)).toEqual(formData);
+    expect(getProfileFormData(state as StateSchema)).toEqual(formData)
   })
 
   test('empty state', () => {
-    const state: DeepPartial<StateSchema> = {};
-    expect(getProfileFormData(state as StateSchema)).toEqual(undefined);
+    const state: DeepPartial<StateSchema> = {}
+    expect(getProfileFormData(state as StateSchema)).toEqual(undefined)
   })
 })

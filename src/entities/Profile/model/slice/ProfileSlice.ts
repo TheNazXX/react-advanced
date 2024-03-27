@@ -1,14 +1,14 @@
-import { ProfileUpdateResponseInterface, formStructure,  requiredValidationFields } from './../types/profile';
+import { type ProfileUpdateResponseInterface, formStructure, type requiredValidationFields } from './../types/profile'
 
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ProfileInterface, type ProfileSchema } from '../types/profile'
+import { type ProfileInterface, type ProfileSchema } from '../types/profile'
 import { fetchProfileData } from '../service/fetchProfileData/fetchProfileData'
-import { updateProfileData } from '../service/updateProfileData/updateProfileData';
+import { updateProfileData } from '../service/updateProfileData/updateProfileData'
 
 export const initialFormRequiredFields: requiredValidationFields = {
   [formStructure.FIRSTNAME]: [],
   [formStructure.LASTNAME]: []
-};
+}
 
 const initialState: ProfileSchema = {
   data: undefined,
@@ -27,7 +27,7 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     setReadonly: (state, action: PayloadAction<boolean>) => {
-      state.readonly = action.payload;
+      state.readonly = action.payload
     },
     updateProfile: (state, action: PayloadAction<ProfileInterface>) => {
       state.form = {
@@ -36,15 +36,15 @@ export const profileSlice = createSlice({
       }
     },
     cancelEdit: (state) => {
-      state.readonly = true;
-      state.form = state.data;
-      state.formValidationErrors = initialFormRequiredFields;
+      state.readonly = true
+      state.form = state.data
+      state.formValidationErrors = initialFormRequiredFields
     },
     setValidationErrors: (state, action: PayloadAction<requiredValidationFields>) => {
-      state.formValidationErrors = action.payload;
+      state.formValidationErrors = action.payload
     },
     resetValidationErrors: (state, action: PayloadAction<string | undefined>) => {
-      state.formValidationErrors = initialFormRequiredFields;
+      state.formValidationErrors = initialFormRequiredFields
     }
   },
   extraReducers: (builder) => {
@@ -54,26 +54,26 @@ export const profileSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
-        state.isLoading = false;
-        state.data = action.payload;
-        state.form = action.payload;
+        state.isLoading = false
+        state.data = action.payload
+        state.form = action.payload
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false
-        state.fetchError = action.payload as string
+        state.fetchError = action.payload!
       })
       .addCase(updateProfileData.pending, (state, action) => {
-        state.successUpdate = undefined;
+        state.successUpdate = undefined
         state.updateError = ''
         state.isLoadingUpdateProfile = true
       })
       .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileUpdateResponseInterface>) => {
-        state.successUpdate = action.payload.message;
-        state.isLoadingUpdateProfile = false;
+        state.successUpdate = action.payload.message
+        state.isLoadingUpdateProfile = false
         state.updateError = ''
       })
       .addCase(updateProfileData.rejected, (state, action) => {
-        state.successUpdate = undefined;
+        state.successUpdate = undefined
         state.isLoadingUpdateProfile = false
         state.updateError = action.payload
       })

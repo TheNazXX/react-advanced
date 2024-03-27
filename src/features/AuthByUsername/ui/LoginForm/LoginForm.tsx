@@ -1,10 +1,10 @@
 import cls from './LoginForm.module.scss'
-import { useCallback, type FC, type ReactNode, memo  } from 'react'
+import { useCallback, type FC, type ReactNode, memo } from 'react'
 import { Button } from 'shared/ui'
 import { TypeButton } from 'shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Input } from 'shared/ui/Input/Input'
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { classNames } from 'shared/libs/classNames/classNames'
@@ -33,7 +33,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
   const error = useSelector(getErrorState)
 
   const { t } = useTranslation()
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const onChangeUserName = useCallback((value: string) => {
     dispatch(loginActions.setUserName(value))
@@ -45,7 +45,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onClose }) => {
 
   const onLoadingClick = useCallback(async () => {
     try {
-      const result = await dispatch(loginByUsername({ login, password }));
+      const result = await dispatch(loginByUsername({ login, password }))
 
       if (result.meta.requestStatus === 'fulfilled') {
         onClose?.()

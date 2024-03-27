@@ -2,7 +2,8 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { ProjectType } from './types/config'
+import { type ProjectType } from './types/config'
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
 export function buildPlugins (path: string, isDev: boolean, apiUrl: string, project: ProjectType): webpack.WebpackPluginInstance[] {
   const plugins = [
@@ -21,8 +22,8 @@ export function buildPlugins (path: string, isDev: boolean, apiUrl: string, proj
     })
   ]
 
-
   if (isDev) {
+    plugins.push(new ReactRefreshWebpackPlugin())
     plugins.push(new webpack.HotModuleReplacementPlugin())
 
     // plugins.push(new BundleAnalyzerPlugin({

@@ -1,4 +1,4 @@
-import axios, { Axios, AxiosResponse } from 'axios'
+import axios, { Axios, type AxiosResponse } from 'axios'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type Word } from '../types/wordsSchema'
@@ -9,7 +9,7 @@ export const requestWords = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response: AxiosResponse<Word[]> = await axios.get('http://apiwords/words')
-      
+
       if (!response.data) {
         throw new Error()
       }
@@ -18,8 +18,8 @@ export const requestWords = createAsyncThunk(
 
       return response.data
     } catch (e: any) {
-      const errorText = e.response?.data?.message || 'Could not to load words'; 
-      return thunkAPI.rejectWithValue(errorText);
+      const errorText = e.response?.data?.message || 'Could not to load words'
+      return thunkAPI.rejectWithValue(errorText)
     }
-}
+  }
 )

@@ -3,16 +3,16 @@ import axios from 'axios'
 
 export const postWord = async (word: Word) => {
   try {
-    const response = await axios.post('http://apiwords/word', word);
+    const response = await axios.post('http://apiwords/word', word)
 
     if (!response.data) {
-      throw new Error('Something went wrong');
+      throw new Error('Something went wrong')
     }
 
-    return await response.data;
+    return await response.data
   } catch (e: any) {
-    console.log(e);
-    const errorMessage = e?.response?.data?.message || 'Failed to fetch';
-    throw new Error(errorMessage);
+    console.log(e)
+    const errorMessage = e?.response?.data?.message || 'Failed to fetch'
+    throw new Error(errorMessage)
   }
 }

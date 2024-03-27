@@ -1,23 +1,22 @@
 import { useState, useEffect, type FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import cls from './RepeatPage.module.scss'
-import { AppLink, Button, Loader, Modal, TypeButton, WordWrap } from 'shared/ui'
+import { AppLink, Button, Loader, Modal, TypeButton, WordWrap, Alert, useAlert } from 'shared/ui'
 import { getWords, type Word } from 'entities/Words'
 import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
 import { requestRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords, getIsErrorRepeatWords } from 'entities/RepeatWords'
 import { useDispatch, useSelector } from 'react-redux'
 import { type ThunkDispatch } from '@reduxjs/toolkit'
-import { Alert, useAlert } from 'shared/ui'
 
 const RepeatPage: FC = () => {
-  const isLoading = useSelector(getIsLoadingGetRepeatWords);
-  const repeatWords = useSelector(getRepeatWords);
-  const errorGetRepeatWords = useSelector(getIsErrorRepeatWords);
+  const isLoading = useSelector(getIsLoadingGetRepeatWords)
+  const repeatWords = useSelector(getRepeatWords)
+  const errorGetRepeatWords = useSelector(getIsErrorRepeatWords)
 
   const [revisingType, setRevisingType] = useState('')
   const [byOneModal, setByOneModal] = useState(false)
 
-  const {isAlert, showAlert, alertSuccess, alertText, hideAlert} = useAlert();
+  const { isAlert, showAlert, alertSuccess, alertText, hideAlert } = useAlert()
 
   const { t } = useTranslation()
   const dispatch = useDispatch<ThunkDispatch<Word[], null, any>>()
@@ -35,8 +34,8 @@ const RepeatPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    if(errorGetRepeatWords){
-      showAlert(errorGetRepeatWords, false);
+    if (errorGetRepeatWords) {
+      showAlert(errorGetRepeatWords, false)
     };
   }, [errorGetRepeatWords])
 
@@ -54,8 +53,8 @@ const RepeatPage: FC = () => {
     content = <div className={cls.text}>{t('EverythingIsRevised')}: <AppLink to={'/words'}><Button typeBtn={TypeButton.PRIMARY}>{t('AddToRevise')}</Button></AppLink></div>
   }
 
-  if(!isLoading && errorGetRepeatWords){
-    content = <Button onClick={() => dispatch(requestRepeatWords())} typeBtn={TypeButton.PRIMARY}>{t('Try again')}</Button>
+  if (!isLoading && errorGetRepeatWords) {
+    content = <Button onClick={async () => await dispatch(requestRepeatWords())} typeBtn={TypeButton.PRIMARY}>{t('Try again')}</Button>
   }
 
   return (
@@ -85,7 +84,7 @@ const RepeatPage: FC = () => {
         }
 
       </Modal>
-        
+
       <Alert isOpen={isAlert} onClose={hideAlert} isSuccess={alertSuccess} autoClose={true} text={alertText} />
     </div>
   )

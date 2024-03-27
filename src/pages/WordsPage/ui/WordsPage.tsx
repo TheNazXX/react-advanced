@@ -1,12 +1,11 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './WordsPage.module.scss'
 import { type FC, type ReactNode, useEffect } from 'react'
-import { Alert, AppLink, Loader, WordWrap } from 'shared/ui'
+import { Alert, AppLink, Loader, WordWrap, useAlert } from 'shared/ui'
 import { type Word, getWords, requestWords } from 'entities/Words'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 import { AddWord } from 'widgets/AddWord'
-import { useAlert } from 'shared/ui'
 
 interface WordsPageProps {
   className?: string
@@ -14,21 +13,19 @@ interface WordsPageProps {
 }
 
 export const WordsPage: FC<WordsPageProps> = ({ className }) => {
-
-  const dispatch = useAppDispatch();
-  const { words, isLoading, error } = useSelector(getWords);
-  const {isAlert, showAlert, alertSuccess, alertText, hideAlert} = useAlert();
+  const dispatch = useAppDispatch()
+  const { words, isLoading, error } = useSelector(getWords)
+  const { isAlert, showAlert, alertSuccess, alertText, hideAlert } = useAlert()
 
   useEffect(() => {
     dispatch(requestWords())
   }, [])
 
   useEffect(() => {
-    if(error){
-      showAlert(error, false);
+    if (error) {
+      showAlert(error, false)
     }
   }, [error])
-
 
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
@@ -39,7 +36,7 @@ export const WordsPage: FC<WordsPageProps> = ({ className }) => {
   }
 
   return (
-    
+
     <div className={classNames(cls.WordsPage, {}, [className])}>
       <AddWord className={cls.addWord}/>
       {

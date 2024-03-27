@@ -7,11 +7,10 @@ import cls from './WordSinglePage.module.scss'
 import { classNames } from 'shared/libs/classNames/classNames'
 import { upperFirstLetter } from 'shared/libs/actionsWithFirstLetter/actionsWithFirstLetter'
 import { requestWord } from 'entities/Words'
-import { addRepeatWordRequest} from 'entities/RepeatWords'
+import { addRepeatWordRequest } from 'entities/RepeatWords'
 import { Alert, useAlert } from 'shared/ui/Alert/Alert'
-import { addRepeatWordResponse } from 'entities/RepeatWords/model/types/RepeatWordsSchema'
+import { type addRepeatWordResponse } from 'entities/RepeatWords/model/types/RepeatWordsSchema'
 import { typeLoader } from 'shared/ui/Loader/Loader'
-
 
 interface WordPageProps {
   className?: string
@@ -23,41 +22,40 @@ const initialState: Word = {
 }
 
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
-  const {isAlert, alertText, alertSuccess,  showAlert, hideAlert} = useAlert();
+  const { isAlert, alertText, alertSuccess, showAlert, hideAlert } = useAlert()
 
-  const [currentWord, setCurentWord] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setIsError] = useState<null | string>(null);
-  const [isLoadigAddRepeatWord, setIsLoadigAddRepeatWord] = useState<boolean>(false);
+  const [currentWord, setCurentWord] = useState(initialState)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setIsError] = useState<null | string>(null)
+  const [isLoadigAddRepeatWord, setIsLoadigAddRepeatWord] = useState<boolean>(false)
 
-  const [addRepeatIsLoading, setRepeatIsLoading] = useState(false);
-  const [addRepeatError, setRepeatError] = useState('');
+  const [addRepeatIsLoading, setRepeatIsLoading] = useState(false)
+  const [addRepeatError, setRepeatError] = useState('')
 
-  const { t } = useTranslation();
-  const { word } = useParams();
+  const { t } = useTranslation()
+  const { word } = useParams()
 
   useEffect(() => {
-    setIsLoading(true);
-    requestWord(word as string).then(onLoaded).catch((e: string) => setIsError(e));
+    setIsLoading(true)
+    requestWord(word!).then(onLoaded).catch((e: string) => { setIsError(e) })
   }, [])
 
   const onLoaded = (data: Word) => {
-    setIsLoading(false);
-    setCurentWord(data);
+    setIsLoading(false)
+    setCurentWord(data)
   }
-
 
   const onRepeatWordRequest = () => {
     setIsLoadigAddRepeatWord(true)
 
-    addRepeatWordRequest(currentWord).then(({message}: addRepeatWordResponse) => {
-      showAlert(message, true);
+    addRepeatWordRequest(currentWord).then(({ message }: addRepeatWordResponse) => {
+      showAlert(message, true)
     }).catch((e) => {
-      const errorText = e?.message || 'Something went wrong';
-      showAlert(errorText, false);
+      const errorText = e?.message || 'Something went wrong'
+      showAlert(errorText, false)
     }).finally(() => {
-      setIsLoadigAddRepeatWord(false);
-    });
+      setIsLoadigAddRepeatWord(false)
+    })
   }
 
   return (
@@ -70,9 +68,9 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
               <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord.en)}</i>
                 <div className={cls.btns}>
                   {
-                    isLoadigAddRepeatWord 
-                    ? <Loader className={cls.loader} type={typeLoader.DOTS}/>
-                    : <Button typeBtn={TypeButton.PRIMARY} onClick={onRepeatWordRequest} disabled={addRepeatIsLoading}>{t('AddRepeat')}</Button>
+                    isLoadigAddRepeatWord
+                      ? <Loader className={cls.loader} type={typeLoader.DOTS}/>
+                      : <Button typeBtn={TypeButton.PRIMARY} onClick={onRepeatWordRequest} disabled={addRepeatIsLoading}>{t('AddRepeat')}</Button>
                   }
                   <Button typeBtn={TypeButton.PRIMARY} disabled={isLoadigAddRepeatWord}>{t('Edit')}</Button>
                   <Button typeBtn={TypeButton.DANGER} disabled={isLoadigAddRepeatWord}>{t('Delete')}</Button>
@@ -83,10 +81,10 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
               currentWord.translate?.join(',')
             }
           </div>
-    
+
     }
 
-    <Alert key={alertText} isOpen={isAlert} onClose={() => hideAlert()} text={alertText} isSuccess={alertSuccess} autoClose={true}/>
+    <Alert key={alertText} isOpen={isAlert} onClose={() => { hideAlert() }} text={alertText} isSuccess={alertSuccess} autoClose={true}/>
     </>
   )
 }
