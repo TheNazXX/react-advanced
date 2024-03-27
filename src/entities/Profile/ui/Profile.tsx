@@ -17,7 +17,7 @@ interface ProfileProps extends ProfileSchema {
   className?: string;
 }
 
-export const Profile: FC<ProfileProps> = ({ className, data, isLoading, fetchError}) => {
+export const Profile: FC<ProfileProps> = ({ className, data, isLoading }) => {
 
   const {t} = useTranslation('profile');  
   const readonly = useSelector(getProfileReadonly);
@@ -42,8 +42,6 @@ export const Profile: FC<ProfileProps> = ({ className, data, isLoading, fetchErr
   }, [dispatch, validationErrors]);
 
   
-
-
 
   const generateDescription = useCallback((profileData: ProfileInterface | undefined) => {
     if (!profileData) {

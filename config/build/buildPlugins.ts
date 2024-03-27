@@ -2,8 +2,9 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { ProjectType } from './types/config'
 
-export function buildPlugins (path: string, isDev: boolean, apiUrl: string): webpack.WebpackPluginInstance[] {
+export function buildPlugins (path: string, isDev: boolean, apiUrl: string, project: ProjectType): webpack.WebpackPluginInstance[] {
   const plugins = [
     new HtmlWebpackPlugin({
       template: path
@@ -15,7 +16,8 @@ export function buildPlugins (path: string, isDev: boolean, apiUrl: string): web
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-      __API__: JSON.stringify(apiUrl)
+      __API__: JSON.stringify(apiUrl),
+      __PROJECT__: JSON.stringify(project)
     })
   ]
 

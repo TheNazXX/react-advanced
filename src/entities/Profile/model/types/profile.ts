@@ -19,7 +19,7 @@ export interface ProfileInterface {
   [formStructure.FIRSTNAME]: string;
   [formStructure.LASTNAME]: string;
   [formStructure.AGE]?: number;
-  [formStructure.ROLE]: string;
+  [formStructure.ROLE]?: string;
   [formStructure.COUNTRY]?: string;
   [formStructure.CITY]?: string;
   [formStructure.AVATAR]?: string;

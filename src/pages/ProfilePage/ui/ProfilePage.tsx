@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect} from 'react'
 import { useTranslation } from 'react-i18next'
 import { DynamicModuleLoader, type ReducersList } from 'shared/libs/components/DynamicModuleLoader/DynamicModuleLoader'
-import { Profile, requestProfileData, getProfileFormData, getProfileFetchError, getProfileUpdateError, getProfileIsLoading, profileReducer, getProfileSuccessUpdate, profileActions} from 'entities/Profile'
+import { Profile, fetchProfileData, getProfileFormData, getProfileFetchError, getProfileUpdateError, getProfileIsLoading, profileReducer, getProfileSuccessUpdate, profileActions} from 'entities/Profile'
 import { useAppDispatch } from 'shared/libs/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { Alert, Button, TypeButton, useAlert } from 'shared/ui'
@@ -41,7 +41,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   }, [successUpdateProfile])
 
   useEffect(() => {
-    dispatch(requestProfileData());
+    if(__PROJECT__ !== 'storybook'){
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,7 +52,6 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     };
 
     if(updateError){
-      console.log('1');
       showAlert(updateError, false)
       dispatch(profileActions.setReadonly(true))
     }
@@ -63,7 +64,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         {
           fetchError.length === 0 
           ? <Profile data={data} isLoading={isLoading} fetchError={fetchError}/>
-          : <Button typeBtn={TypeButton.PRIMARY} onClick={() => dispatch(requestProfileData())}>{t('tryAgain')}</Button>
+          : <Button typeBtn={TypeButton.PRIMARY} onClick={() => dispatch(fetchProfileData())}>{t('tryAgain')}</Button>
 
         }
         <Alert isOpen={isAlert} text={alertText} isSuccess={alertSuccess} onClose={hideAlert} autoClose={true}/>

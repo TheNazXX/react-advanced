@@ -2,9 +2,8 @@ import { ProfileUpdateResponseInterface, formStructure,  requiredValidationField
 
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ProfileInterface, type ProfileSchema } from '../types/profile'
-import { requestProfileData } from '../service/requestProfileData'
-import { Rules, RulesProps, validation } from 'shared/libs/validation/validation'
-import { updateProfileData } from '../service/updateProfileData';
+import { fetchProfileData } from '../service/fetchProfileData/fetchProfileData'
+import { updateProfileData } from '../service/updateProfileData/updateProfileData';
 
 export const initialFormRequiredFields: requiredValidationFields = {
   [formStructure.FIRSTNAME]: [],
@@ -50,22 +49,22 @@ export const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(requestProfileData.pending, (state, action) => {
+      .addCase(fetchProfileData.pending, (state, action) => {
         state.fetchError = ''
         state.isLoading = true
       })
-      .addCase(requestProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
+      .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileInterface>) => {
         state.isLoading = false;
         state.data = action.payload;
         state.form = action.payload;
       })
-      .addCase(requestProfileData.rejected, (state, action) => {
+      .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false
         state.fetchError = action.payload as string
       })
       .addCase(updateProfileData.pending, (state, action) => {
         state.successUpdate = undefined;
-        state.fetchError = ''
+        state.updateError = ''
         state.isLoadingUpdateProfile = true
       })
       .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileUpdateResponseInterface>) => {

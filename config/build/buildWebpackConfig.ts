@@ -6,7 +6,7 @@ import { buildLoaders } from './buildLoaders'
 import { buildResolves } from './buildResolve'
 import { buildDevServer } from './buildDevServer'
 
-export function buildWebpackConfig ({ paths, mode, port, isDev, apiUrl}: BuildOptions): webpack.Configuration {
+export function buildWebpackConfig ({ paths, mode, port, isDev, apiUrl, project}: BuildOptions): webpack.Configuration {
   return {
     mode,
     entry: paths.entry,
@@ -15,7 +15,7 @@ export function buildWebpackConfig ({ paths, mode, port, isDev, apiUrl}: BuildOp
       filename: 'bundle.[contenthash].js',
       clean: true
     },
-    plugins: buildPlugins(paths.html, isDev, apiUrl),
+    plugins: buildPlugins(paths.html, isDev, apiUrl, project),
     module: {
       rules: buildLoaders(isDev)
     },

@@ -1,3 +1,4 @@
+
 export {getProfileSuccessUpdate} from './model/selectors/getProfileSuccessUpdate/getProfileSuccessUpdate';
 export {getFormValidationErrors} from './model/selectors/getFormValidationErrors/getFormValidationErrors'
 export {getProfileFormData} from './model/selectors/getProfileFormData/getProfileFormData';
@@ -7,8 +8,8 @@ export { getProfileFetchError, getProfileUpdateError } from './model/selectors/g
 export { getProfileIsLoading, getProfileIsLoadingUpdate } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 
 
-export { requestProfileData } from './model/service/requestProfileData'
-export { updateProfileData } from './model/service/updateProfileData';
+export { fetchProfileData } from './model/service/fetchProfileData/fetchProfileData'
+export {updateProfileData} from './model/service/updateProfileData/updateProfileData'
 export type { ProfileInterface, ProfileSchema, ProfileUpdateResponseInterface } from './model/types/profile'
 export { profileReducer, profileActions } from './model/slice/ProfileSlice'
 export { Profile } from './ui/Profile'
