@@ -1,0 +1,39 @@
+.Synonyms{
+  display: flex;
+  i{
+    margin-right: 10px;
+  }
+
+  ul{
+    margin-left: 15px;
+    list-style: none;
+
+    li{
+      position: relative;
+
+      &::before{
+        position: absolute;
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: white;
+        left: -12.5px;
+        top: 50%;
+        transform: translateY(-35%);
+      }
+    }
+  }
+}
+
+.btn{
+  transform: translateY(1px);
+  font-size: 22px;
+  color: var(--inverted-theme-200);
+  transition: all .3s;
+
+  &:hover{
+    color: var(--color-200);
+  }
+
+}

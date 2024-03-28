@@ -12,6 +12,11 @@ import { Alert, useAlert } from 'shared/ui/Alert/Alert'
 import { type addRepeatWordResponse } from 'entities/RepeatWords/model/types/RepeatWordsSchema'
 import { typeLoader } from 'shared/ui/Loader/Loader'
 
+import { Translate } from './Translate/Translate'
+import { Type } from './Type/Type'
+import { Synonyms } from './Synonyms/Synonyms'
+import { Sentences } from './Sentences/Sentences'
+
 interface WordPageProps {
   className?: string
   children?: ReactNode
@@ -77,9 +82,16 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
                 </div>
             </div>
 
-            {
-              currentWord.translate?.join(',')
-            }
+            
+            <div className={cls.inner}>
+              <div className='flex-between'>
+                  <Translate className={cls.translate} items={currentWord.translate || []} />
+                  <Type type={currentWord.partOfSpeech || 'unknown'}/>
+              </div>
+
+              <Synonyms className={cls.synonyms} items={currentWord.synonyms || undefined}/>
+              <Sentences items={currentWord.sentences || undefined}/>
+            </div>
           </div>
 
     }

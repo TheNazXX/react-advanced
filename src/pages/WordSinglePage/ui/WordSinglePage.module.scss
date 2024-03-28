@@ -32,5 +32,26 @@
   margin-right: 10px;
 }
 
+.inner{
+  padding: 1em 3em;
+  font-size: 20px;
+
+  i{
+    font-weight: 500;
+    color: var(--color-200);
+    margin-right: 15px;
+  }
+
+  span{
+    font-size: 18px;
+  }
+}
+
+.translate,
+.synonyms{
+  margin-bottom: 50px;
+}
+
+
 
 

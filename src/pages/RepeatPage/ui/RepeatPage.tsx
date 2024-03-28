@@ -4,7 +4,7 @@ import cls from './RepeatPage.module.scss'
 import { AppLink, Button, Loader, Modal, TypeButton, WordWrap, Alert, useAlert } from 'shared/ui'
 import { getWords, type Word } from 'entities/Words'
 import { RepeatWordByOne } from 'widgets/RepeatWordsByOne'
-import { requestRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords, getIsErrorRepeatWords } from 'entities/RepeatWords'
+import { fetchRepeatWords, getIsLoadingGetRepeatWords, getRepeatWords, getIsErrorRepeatWords } from 'entities/RepeatWords'
 import { useDispatch, useSelector } from 'react-redux'
 import { type ThunkDispatch } from '@reduxjs/toolkit'
 
@@ -30,7 +30,7 @@ const RepeatPage: FC = () => {
   }
 
   useEffect(() => {
-    dispatch(requestRepeatWords())
+    dispatch(fetchRepeatWords())
   }, [])
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const RepeatPage: FC = () => {
   }
 
   if (!isLoading && errorGetRepeatWords) {
-    content = <Button onClick={async () => await dispatch(requestRepeatWords())} typeBtn={TypeButton.PRIMARY}>{t('Try again')}</Button>
+    content = <Button onClick={async () => await dispatch(fetchRepeatWords())} typeBtn={TypeButton.PRIMARY}>{t('Try again')}</Button>
   }
 
   return (

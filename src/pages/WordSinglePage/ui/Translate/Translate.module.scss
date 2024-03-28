@@ -1,0 +1,26 @@
+.Translate{
+  display: flex;
+  font-size: 20px;
+
+
+  ul{
+    margin-left: 15px;
+    list-style: none;
+
+    li{
+      position: relative;
+
+      &::before{
+        position: absolute;
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: white;
+        left: -12.5px;
+        top: 50%;
+        transform: translateY(-35%);
+      }
+    }
+  }
+}

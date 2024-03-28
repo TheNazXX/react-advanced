@@ -1,7 +1,7 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { type RepeatWordsSchema } from '../types/RepeatWordsSchema'
 import { type Word } from 'entities/Words'
-import { requestRepeatWords } from '../services/RequestRepeatWords'
+import { fetchRepeatWords } from '../services/fetchRepeatWords'
 import { sendRepeatWords } from '../services/SendRepeatWords'
 
 const initialState: RepeatWordsSchema = {
@@ -24,14 +24,14 @@ export const RepeatWordsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(requestRepeatWords.pending, (state, action) => {
+      .addCase(fetchRepeatWords.pending, (state, action) => {
         state.getIsLoading = true
         state.getIsError = ''
       })
-      .addCase(requestRepeatWords.fulfilled, (state, action) => {
+      .addCase(fetchRepeatWords.fulfilled, (state, action) => {
         state.getIsLoading = false
       })
-      .addCase(requestRepeatWords.rejected, (state, action) => {
+      .addCase(fetchRepeatWords.rejected, (state, action) => {
         state.getIsLoading = false
         state.getIsError = action.payload as string
       })

@@ -26,10 +26,6 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
     dispatch(userActions.onLogout())
   }
 
-  useEffect(() => {
-    console.log(authData)
-  }, [authData])
-
   return (
     <div
       className={classNames(cls.navbar, {}, [])}
