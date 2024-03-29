@@ -2,7 +2,7 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { type RepeatWordsSchema } from '../types/RepeatWordsSchema'
 import { type Word } from 'entities/Words'
 import { fetchRepeatWords } from '../services/fetchRepeatWords'
-import { sendRepeatWords } from '../services/SendRepeatWords'
+import { sendRepeatWords } from '../services/sendRepeatWords'
 
 const initialState: RepeatWordsSchema = {
   words: [],

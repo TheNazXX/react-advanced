@@ -14,6 +14,7 @@ interface AppLinkProps extends LinkProps {
 }
 
 export const AppLink: FC<AppLinkProps> = memo(({ className, children, to, ...otherProps }) => {
+
   return (
     <NavLink to={to} className={({ isActive }) => {
       return classNames(cls.AppLink, { [cls.active]: isActive }, [className])

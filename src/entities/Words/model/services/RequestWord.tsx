@@ -10,6 +10,6 @@ export const requestWord = async (word: string) => {
 
     return response.data
   } catch (e: any) {
-    return e.message
+    throw new Error('Unknown word');
   }
 }

@@ -1,7 +1,7 @@
 import { useEffect, type FC, type ReactNode, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { type Word } from 'entities/Words'
-import { Button, Loader, TypeButton } from 'shared/ui'
+import { AppLink, Button, Loader, TypeButton } from 'shared/ui'
 import { useTranslation } from 'react-i18next'
 import cls from './WordSinglePage.module.scss'
 import { classNames } from 'shared/libs/classNames/classNames'
@@ -16,20 +16,17 @@ import { Translate } from './Translate/Translate'
 import { Type } from './Type/Type'
 import { Synonyms } from './Synonyms/Synonyms'
 import { Sentences } from './Sentences/Sentences'
+import { RoutePathes, routeConfig } from 'shared/config/routeConfig/routeConfig'
 
 interface WordPageProps {
   className?: string
   children?: ReactNode
 }
 
-const initialState: Word = {
-  en: ''
-}
-
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const { isAlert, alertText, alertSuccess, showAlert, hideAlert } = useAlert()
 
-  const [currentWord, setCurentWord] = useState(initialState)
+  const [currentWord, setCurentWord] = useState<Word | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setIsError] = useState<null | string>(null)
   const [isLoadigAddRepeatWord, setIsLoadigAddRepeatWord] = useState<boolean>(false)
@@ -42,7 +39,9 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    requestWord(word!).then(onLoaded).catch((e: string) => { setIsError(e) })
+    requestWord(word!).then(onLoaded).catch((e: any) => {
+      showAlert(e.message, false);
+     })
   }, [])
 
   const onLoaded = (data: Word) => {
@@ -53,14 +52,23 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const onRepeatWordRequest = () => {
     setIsLoadigAddRepeatWord(true)
 
-    addRepeatWordRequest(currentWord).then(({ message }: addRepeatWordResponse) => {
-      showAlert(message, true)
-    }).catch((e) => {
-      const errorText = e?.message || 'Something went wrong'
-      showAlert(errorText, false)
-    }).finally(() => {
-      setIsLoadigAddRepeatWord(false)
-    })
+    if(currentWord){
+      addRepeatWordRequest(currentWord).then(({ message }: addRepeatWordResponse) => {
+        showAlert(message, true)
+      }).catch((e) => {
+        const errorText = e?.message || 'Something went wrong'
+        showAlert(errorText, false)
+      }).finally(() => {
+        setIsLoadigAddRepeatWord(false)
+      })
+    }
+  }
+
+  if(!currentWord){
+    return <>
+      <Button typeBtn={TypeButton.PRIMARY}><AppLink className={cls.back} to={RoutePathes.words}>{t('Back')}</AppLink></Button>
+      <Alert key={alertText} isOpen={isAlert} onClose={() => { hideAlert() }} text={alertText} isSuccess={alertSuccess} autoClose={true}/>
+    </>
   }
 
   return (
@@ -70,7 +78,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
         ? <Loader />
         : <div className={cls.wrapper}>
             <div className={cls.head}>
-              <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord.en)}</i>
+              <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord?.en)}</i>
                 <div className={cls.btns}>
                   {
                     isLoadigAddRepeatWord
@@ -85,12 +93,12 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
             
             <div className={cls.inner}>
               <div className='flex-between'>
-                  <Translate className={cls.translate} items={currentWord.translate || []} />
-                  <Type type={currentWord.partOfSpeech || 'unknown'}/>
+                  <Translate className={cls.translate} items={currentWord?.translate || []} />
+                  <Type type={currentWord?.partOfSpeech || 'unknown'}/>
               </div>
 
-              <Synonyms className={cls.synonyms} items={currentWord.synonyms || undefined}/>
-              <Sentences items={currentWord.sentences || undefined}/>
+              <Synonyms className={cls.synonyms} items={currentWord?.synonyms || undefined}/>
+              <Sentences items={currentWord?.sentences || undefined}/>
             </div>
           </div>
 

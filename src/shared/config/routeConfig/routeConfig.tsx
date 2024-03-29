@@ -6,6 +6,8 @@ import { WordsPage } from 'pages/WordsPage'
 
 import { type RouteProps } from 'react-router-dom'
 import { ProfilePage } from 'pages/ProfilePage'
+import { ArticlesPage } from 'pages/ArticlesPage'
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage'
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean
@@ -17,6 +19,8 @@ export enum AppRoutes {
   REPEAT = 'repeat',
   WORDS = 'words',
   WORD = 'word',
+  ARTICLES = 'articles',
+  ARTICLE_DETAILS = 'article_details',
   PAGE_NOT_FOUND = 'not_found'
 }
 
@@ -25,6 +29,8 @@ export const RoutePathes: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.REPEAT]: '/repeat',
   [AppRoutes.WORDS]: '/words',
+  [AppRoutes.ARTICLES]: '/articles/', // + :id 
+  [AppRoutes.ARTICLE_DETAILS]: '/article_details',
   [AppRoutes.WORD]: '/words/:word',
   [AppRoutes.PAGE_NOT_FOUND]: '*'
 }
@@ -50,6 +56,14 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.WORD]: {
     path: RoutePathes.word,
     element: <WordSinglePage />
+  },
+  [AppRoutes.ARTICLES]: {
+    path: RoutePathes.articles,
+    element: <ArticlesPage />
+  },
+  [AppRoutes.ARTICLE_DETAILS]: {
+    path: RoutePathes.article_details,
+    element: <ArticleDetailsPage />
   },
   [AppRoutes.PAGE_NOT_FOUND]: {
     path: RoutePathes.not_found,
