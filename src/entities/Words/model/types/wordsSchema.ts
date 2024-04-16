@@ -1,6 +1,6 @@
 export interface Word {
   en: string
-  translate?: string[]
+  translate: string[]
   partOfSpeech?: partOfSpeech | null
   unit?: string | null
   synonyms?: string[] | null

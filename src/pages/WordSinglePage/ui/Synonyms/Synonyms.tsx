@@ -11,9 +11,10 @@ interface SynonymsProps {
   className?: string;
   children?: ReactNode;
   items?: string[];
+  onEdit?: () => void;
 }
 
-export const Synonyms: FC<SynonymsProps> = ({ className, items }) => {
+export const Synonyms: FC<SynonymsProps> = ({ className, items, onEdit }) => {
 
   const {t} = useTranslation()
 
@@ -30,7 +31,7 @@ export const Synonyms: FC<SynonymsProps> = ({ className, items }) => {
                       })
                     }
                   </ul>
-          : <Button className={cls.btn} onClick={() => {}}>
+          : <Button className={cls.btn} onClick={onEdit}>
               <FontAwesomeIcon className={cls.icon} icon={faSquarePlus}/>
             </Button>
           }

@@ -1,5 +1,7 @@
 .Synonyms{
   display: flex;
+  align-items: start;
+  
   i{
     margin-right: 10px;
   }
@@ -27,7 +29,7 @@
 }
 
 .btn{
-  transform: translateY(1px);
+  transform: translateY(3px);
   font-size: 22px;
   color: var(--inverted-theme-200);
   transition: all .3s;

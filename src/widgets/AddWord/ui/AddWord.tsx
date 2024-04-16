@@ -20,8 +20,8 @@ import { type Sentence, partOfSpeech } from 'entities/Words/model/types/wordsSch
 import { postWord } from 'entities/Words/model/services/PostWord'
 
 interface AddWordProps {
-  className?: string
-  children?: ReactNode
+  className?: string;
+  children?: ReactNode;
 }
 
 interface PartOfSpeechOptionInterface {
@@ -55,7 +55,7 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
   const { isAlert, showAlert, alertSuccess, alertText, hideAlert, alertChildren } = useAlert()
 
   const [enWordValue, setEnWordValue] = useState('')
-  const [transtaltionWordValue, setTranslationWordValue] = useState('')
+  const [transtaltionWordValue, setTranslationWordValue] = useState('');
   const [synonymsWordValue, setSynonymsWordValue] = useState<string>('')
   const [partOfSpeechValue, setPartOfSpeechValue] = useState<string>(partOfSpeechOptions[0].value)
   const [unitsValue, setUnitsValue] = useState<string>(unitsOptions[0].value)

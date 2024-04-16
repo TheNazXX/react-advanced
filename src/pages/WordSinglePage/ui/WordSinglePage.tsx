@@ -17,6 +17,9 @@ import { Type } from './Type/Type'
 import { Synonyms } from './Synonyms/Synonyms'
 import { Sentences } from './Sentences/Sentences'
 import { RoutePathes, routeConfig } from 'shared/config/routeConfig/routeConfig'
+import { Input } from 'shared/ui/Input/Input'
+import { TypeInput } from 'shared/ui/Input/Input'
+import { EditModal } from './EditModal/EditModal'
 
 interface WordPageProps {
   className?: string
@@ -25,7 +28,8 @@ interface WordPageProps {
 
 export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const { isAlert, alertText, alertSuccess, showAlert, hideAlert } = useAlert()
-
+  
+  const [isEdit, setIsEdit] = useState(false);
   const [currentWord, setCurentWord] = useState<Word | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setIsError] = useState<null | string>(null)
@@ -64,6 +68,12 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
     }
   }
 
+  const onEdit = () => {
+    setIsEdit(true);
+  }
+
+
+
   if(!currentWord){
     return <>
       <Button typeBtn={TypeButton.PRIMARY}><AppLink className={cls.back} to={RoutePathes.words}>{t('Back')}</AppLink></Button>
@@ -78,14 +88,16 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
         ? <Loader />
         : <div className={cls.wrapper}>
             <div className={cls.head}>
-              <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord?.en)}</i>
+            <i className={classNames(cls.word, {}, ['animate__animated animate__fadeIn'])}>{upperFirstLetter(currentWord?.en)}</i>
+             
                 <div className={cls.btns}>
                   {
                     isLoadigAddRepeatWord
                       ? <Loader className={cls.loader} type={typeLoader.DOTS}/>
                       : <Button typeBtn={TypeButton.PRIMARY} onClick={onRepeatWordRequest} disabled={addRepeatIsLoading}>{t('AddRepeat')}</Button>
                   }
-                  <Button typeBtn={TypeButton.PRIMARY} disabled={isLoadigAddRepeatWord}>{t('Edit')}</Button>
+
+                  <Button typeBtn={TypeButton.PRIMARY} disabled={isLoadigAddRepeatWord} onClick={onEdit}>{t('Edit')}</Button>
                   <Button typeBtn={TypeButton.DANGER} disabled={isLoadigAddRepeatWord}>{t('Delete')}</Button>
                 </div>
             </div>
@@ -97,13 +109,14 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
                   <Type type={currentWord?.partOfSpeech || 'unknown'}/>
               </div>
 
-              <Synonyms className={cls.synonyms} items={currentWord?.synonyms || undefined}/>
-              <Sentences items={currentWord?.sentences || undefined}/>
+              <Synonyms className={cls.synonyms} items={currentWord?.synonyms || undefined} onEdit={() => setIsEdit(true)}/>
+              <Sentences items={currentWord?.sentences || undefined} currentWord={currentWord.en} onEdit={() => setIsEdit(true)}/>
             </div>
           </div>
 
     }
 
+    <EditModal isOpen={isEdit} onClose={() => setIsEdit(false)} word={currentWord}/>
     <Alert key={alertText} isOpen={isAlert} onClose={() => { hideAlert() }} text={alertText} isSuccess={alertSuccess} autoClose={true}/>
     </>
   )
