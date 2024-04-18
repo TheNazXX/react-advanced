@@ -1,5 +1,4 @@
 .EditWord{
-  padding: 20px;
 }
 
 .head{
@@ -25,5 +24,64 @@
     color: var(--color-200);
     display: block;
     margin-bottom: 2.5px;
+  }
+
+  textarea{
+    margin-bottom: 5px;
+
+    &::-webkit-scrollbar {
+      width: 6px; 
+    }
+    
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+      border-radius: 10px;
+    }
+    
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-300); 
+      border-radius: 10px;
+     
+    }
+    
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+
+  &_row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+.btns{
+  display: flex;
+  gap: 7.5px;
+  margin-bottom: 2.5px;
+  margin-right: auto;
+}
+
+.btn{
+  padding: 6.5px;
+  font-size: 12px;
+  line-height: 9px;
+
+  &.active{
+    background-color: var(--color-300);
+  }
+}
+
+.sentences{
+  .group_row{
+    margin-bottom: 10px;
   }
 }

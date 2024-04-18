@@ -19,8 +19,6 @@ export const Sentences: FC<SentencesProps> = ({ className, items, currentWord = 
 
   const {t} = useTranslation()
 
-  console.log(items);
-
   return (
     <div className={classNames(cls.Sentences, {}, [className])}>
       <i className={cls.title}>{t('Sentences')}:</i>

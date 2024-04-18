@@ -29,7 +29,7 @@ interface PartOfSpeechOptionInterface {
   label: string
 }
 
-const partOfSpeechOptions: PartOfSpeechOptionInterface[] = [
+export const partOfSpeechOptions: PartOfSpeechOptionInterface[] = [
   { value: partOfSpeech.DEFAULT, label: '-' },
   { value: partOfSpeech.NOUN, label: 'noun' },
   { value: partOfSpeech.VERB, label: 'verb' },
@@ -38,7 +38,7 @@ const partOfSpeechOptions: PartOfSpeechOptionInterface[] = [
   { value: partOfSpeech.CONJUNCTION, label: 'conjunction' }
 ]
 
-const unitsOptions = [
+export const unitsOptions = [
   { value: '', label: '-' },
   { value: 'unit1', label: 'unit-1' },
   { value: 'unit2', label: 'unit-2' }
