@@ -1,10 +1,10 @@
-import axios from 'axios'
-import { USER_LOCAL_KEY } from 'shared/const/lodalStorage'
+import axios from "axios";
+import { USER_LOCAL_KEY } from "shared/const/localStorage";
 
 export const $api = axios.create({
   baseURL: __API__,
   headers: {
     authorization: localStorage.getItem(USER_LOCAL_KEY),
-    'Content-Type': 'application/json'
-  }
-})
+    "Content-Type": "application/json",
+  },
+});

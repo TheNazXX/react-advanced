@@ -1,1 +1,20 @@
-{}
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Javascript news",
+      "subtitle": "What is new in JS",
+      "views": 1022,
+      "createAt": "2023-02-02",
+      "type": ["IT", "Course"],
+      "blocks": [
+        {
+          "id": 1,
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    }
+  ]
+}
