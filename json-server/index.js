@@ -1,3 +1,4 @@
+// eslint-ignore
 const jsonServer = require("json-server");
 const fs = require("fs");
 const path = require("path");
@@ -7,8 +8,8 @@ const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 const DB_PROFILE = "profile";
 
 server.use(async (req, res, next) => {
-  await new Promise((res) => {
-    setTimeout(res, 500);
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
   });
   next();
 });
@@ -20,7 +21,7 @@ server.post("/login", (req, res) => {
   try {
     const { login, password } = req.body;
     const db = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, "users.json"), "UTF-8")
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8")
     );
 
     const { users = [] } = db;
@@ -40,24 +41,6 @@ server.post("/login", (req, res) => {
   }
 });
 
-server.get("/profile", (_, res) => {
-  try {
-    const db = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, "profile.json"), "UTF-8")
-    );
-    const { profile } = db;
-
-    if (profile) {
-      return res.json(profile);
-    }
-
-    return res.status(403).json({ message: "Something went wrong" });
-  } catch (e) {
-    console.log(e);
-    return res.status(500).json({ message: e.message });
-  }
-});
-
 // server.use((req, res, next) => {
 //   if(!req.headers.authorization){
 //     return res.status(403).json({message: 'AUTH ERROR'});
@@ -68,7 +51,7 @@ server.get("/profile", (_, res) => {
 
 server.put("/profile", (req, res) => {
   try {
-    let data = req.body;
+    const data = req.body;
 
     writeDb(DB_PROFILE, { profile: { ...data } });
 
@@ -113,7 +96,7 @@ function selectRandomWords(count, words) {
   const result = new Set();
 
   while (result.size <= count && result.size <= count) {
-    let rdm = Math.floor(Math.random() * words.length);
+    const rdm = Math.floor(Math.random() * words.length);
     result.add(words[rdm].en);
   }
 

@@ -1,37 +1,40 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { type WordsSchema, type Word } from '../types/wordsSchema'
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { type WordsSchema, type Word } from "../types/wordsSchema";
 
-import { requestWords } from '../services/RequestWords'
+import { requestWords } from "../services/RequestWords";
 
 const initialState: WordsSchema = {
   words: [],
   isLoading: false,
-  error: ''
-}
+  error: "",
+};
 
 export const wordsSlice = createSlice({
-  name: 'words',
+  name: "words",
   initialState,
   reducers: {
     setWords: (state, action: PayloadAction<Word[]>) => {
-      state.words = action.payload
-    }
+      state.words = action.payload;
+    },
+    addWord: (state, action: PayloadAction<Word>) => {
+      state.words.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(requestWords.pending, (state, action) => {
-        state.isLoading = true
-        state.error = ''
+        state.isLoading = true;
+        state.error = "";
       })
       .addCase(requestWords.fulfilled, (state, action) => {
-        state.isLoading = false
+        state.isLoading = false;
       })
       .addCase(requestWords.rejected, (state, action) => {
-        state.error = action.payload as string
-        state.isLoading = false
-      })
-  }
-})
+        state.error = action.payload as string;
+        state.isLoading = false;
+      });
+  },
+});
 
-export const { actions: wordsActions } = wordsSlice
-export const { reducer: wordsReducer } = wordsSlice
+export const { actions: wordsActions } = wordsSlice;
+export const { reducer: wordsReducer } = wordsSlice;

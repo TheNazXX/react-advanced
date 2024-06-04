@@ -1,8 +1,8 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './EditModal.module.scss'
-import {type FC, type ReactNode} from 'react'
+import { type FC, type ReactNode } from 'react'
 import { Modal } from 'shared/ui'
-import { Word } from 'entities/Words'
+import { type Word } from 'entities/Words'
 import { EditWord } from '../EditWord/EditWord'
 
 interface EditModalProps {

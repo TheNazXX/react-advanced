@@ -11,7 +11,10 @@ import { type RepeatWordsSchema } from "entities/RepeatWords";
 import { type UserSchema } from "entities/User";
 import { type WordsSchema } from "entities/Words";
 import { type LoginSchema } from "features/AuthByUsername";
+import { type ArticlesSchema } from "pages/ArticlesPage/model/types/ArticlesSchema";
+import { type ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
 import { type To, type NavigateOptions } from "react-router-dom";
+import { type AddCommentFormSchema } from "features/AuthByUsername/ui/AddCommentForm";
 
 export interface StateSchema {
   user: UserSchema;
@@ -21,7 +24,10 @@ export interface StateSchema {
   // Async reducers
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articles?: ArticlesSchema;
   articleDetails?: ArticleDetailsSchema;
+  articleDetailsComments?: ArticleDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

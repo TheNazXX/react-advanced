@@ -57,5 +57,11 @@ module.exports = {
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "multiline-ternary": "off",
+    "array-callback-return": "off",
   },
 };

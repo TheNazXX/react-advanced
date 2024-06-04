@@ -1,14 +1,13 @@
-.wrapper{
+.wrapper {
   max-width: 1080px;
   margin: 0 auto;
 }
 
-
-.loader{
+.loader {
   margin: 0 auto;
 }
 
-.head{
+.head {
   padding: 3em;
   display: flex;
   align-items: flex-start;
@@ -16,27 +15,27 @@
   border-bottom: 1px solid var(--color-100);
 }
 
-.btns{
+.btns {
   display: flex;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
-.word{
+.word {
   font-size: 60px;
   font-weight: 600;
   color: var(--inverted-theme-100);
 }
 
-.loader{
+.loader {
   margin-right: 10px;
 }
 
-.inner{
+.inner {
   padding: 1em 3em;
   font-size: 20px;
 
-  i{
+  i {
     padding: 0 2.5px;
     display: inline-block;
     font-weight: 500;
@@ -45,23 +44,18 @@
     border-bottom: 1px solid var(--color-200);
   }
 
-  span{
+  span {
     font-size: 18px;
   }
 }
 
 .translate,
-.synonyms{
+.synonyms {
   margin-bottom: 50px;
 }
 
-.back{
+.back {
   cursor: pointer;
   pointer-events: all;
   background-color: transparent;
 }
-
-
-
-
-

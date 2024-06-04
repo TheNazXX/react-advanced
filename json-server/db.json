@@ -1,20 +1,88 @@
 {
   "articles": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Javascript news",
-      "subtitle": "What is new in JS",
+      "subtitle": "JavaScript continues to evolve with exciting new updates. The latest ECMAScript version introduces several new features, including enhanced pattern matching and top-level await. These changes aim to make asynchronous code easier to write and more readable. Additionally, popular frameworks like React and Vue are also receiving updates to improve performance and developer experience. As JavaScript remains one of the most widely used programming languages, these advancements are highly anticipated by the developer community. Stay tuned for more updates as the language continues to grow and adapt to modern development needs.",
       "views": 1022,
       "createAt": "2023-02-02",
-      "type": ["IT", "Course"],
+      "type": [
+        "IT",
+        "Course"
+      ],
       "blocks": [
         {
-          "id": 1,
+          "id": "1",
           "type": "TEXT",
           "title": "Title",
-          "text": ["Some text"]
+          "text": [
+            "Some text"
+          ]
         }
       ]
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "some cooment",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some cooment 2",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "few",
+      "id": "FzH8CIO"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "123",
+      "id": "Ell2jeL"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "login": "admin",
+      "password": "123",
+      "role": "ADMIN",
+      "avatar": "https://images.pexels.com/photos/5380661/pexels-photo-5380661.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "2",
+      "login": "user",
+      "password": "123",
+      "role": "USER"
+    }
+  ],
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "Nazar",
+      "lastname": "Shevchuk",
+      "age": 21,
+      "role": "admin",
+      "country": "Ukraine",
+      "city": "Port-Anental",
+      "avatar": "https://images.pexels.com/photos/5380661/pexels-photo-5380661.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "2",
+      "firstname": "TheNazX",
+      "lastname": "Shevchuk",
+      "age": 21,
+      "role": "admin",
+      "country": "Ukraine",
+      "city": "Port-Anental",
+      "avatar": null
     }
   ]
 }

@@ -1,0 +1,29 @@
+.Article {
+  position: relative;
+  border: 2px solid var(--color-300);
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: var(--color-200);
+  font-weight: 600;
+}
+
+.text {
+  text-indent: 1.5em;
+}
+
+.btn {
+  display: block;
+  margin-left: auto;
+}
+
+.date {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: var(--color-200);
+}

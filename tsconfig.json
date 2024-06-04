@@ -1,7 +1,8 @@
 {
   "include": [
-    "src/**/*.ts", 
-    "src/**/*.tsx", 
+    "json-server/index.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".eslintrc.js",
     "webpack.config.ts",
     "config/jest/jest.config.ts",
@@ -9,8 +10,10 @@
     "config/jest/jestEmptyComponent.tsx",
     "config/storybook/**/*.ts",
     "config/build/**/*.ts",
-    "scripts/**/*.js"
-, "src/shared/config/storybook/Decorators/ThemeDecorator/themeDecorator.tss", "src/entities/Profile/model/selectors/getProfileIsLoading"  ],
+    "scripts/**/*.js",
+    "src/shared/config/storybook/Decorators/ThemeDecorator/themeDecorator.tss",
+    "src/entities/Profile/model/selectors/getProfileIsLoading"
+  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",
@@ -26,15 +29,14 @@
 
     "baseUrl": ".",
 
-    "paths": { 
+    "paths": {
       "*": ["./src/*"]
     }
-
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
-  "types": ["node", "jest", "@testing-library/jest-dom"],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }

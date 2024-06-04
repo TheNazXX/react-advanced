@@ -1,9 +1,11 @@
-.dark_theme{
-  --theme-100: #343a40; 
-  --theme-200: #212529; 
-  --theme-300: #14171C; 
+.dark_theme {
+  --theme-100: #343a40;
+  --theme-200: #212529;
+  --theme-300: #14171c;
   --theme-400: #0a0c0e;
   --inverted-theme-100: #f8f9fa;
   --inverted-theme-200: #e9ecef;
   --inverted-theme-300: #dee2e6;
+
+  --skeleton-color: rgba(255, 255, 255, 0.1);
 }

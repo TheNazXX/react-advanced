@@ -1,11 +1,12 @@
 {
   "profile": {
+    "id": "1",
     "firstname": "Nazar",
     "lastname": "Shevchuk",
     "age": 21,
     "role": "admin",
     "country": "Ukraine",
     "city": "Port-Anental",
-    "avatar": "https://media.istockphoto.com/id/1453966546/vector/hacker-in-a-hoodie.jpg?s=612x612&w=0&k=20&c=BKAs4l0HxvceBklhSmOEnPmpTjp1-p8cdHvKv2KjHBc="
+    "avatar": "https://images.pexels.com/photos/5380661/pexels-photo-5380661.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   }
 }

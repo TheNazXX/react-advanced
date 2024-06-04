@@ -1,57 +1,55 @@
-.Profile{
- 
+.Profile {
 }
 
-.img{
-  width: 250px;
+.img {
+  width: 200px;
   height: 200px;
   border-radius: 5px;
 }
 
-.inner{
+.inner {
   position: relative;
   display: flex;
   gap: 15px;
 }
 
-.item{
+.item {
   display: flex;
   gap: 5px;
   margin-bottom: 6px;
   font-weight: 500;
   color: var(--color-100);
 
-  span{
+  span {
     margin-right: 7.5px;
   }
 
-  i{
+  i {
     display: inline-block;
     padding: 2px 3.5px;
     color: var(--inverted-theme-100);
   }
 
-  .input{
+  .input {
     width: auto;
     padding: 1px 7.5px;
     border-radius: 2.5px;
     border: 1px solid var(--color-300);
-    
-    &.error{
+
+    &.error {
       border-color: var(--danger-color);
     }
   }
 }
 
-.role{
+.role {
   position: absolute;
   top: 0;
   right: 0;
 
-
-  i{
+  i {
     padding-bottom: 2px;
     color: var(--color-200);
-    border-bottom: 1px solid  var(--color-200);
+    border-bottom: 1px solid var(--color-200);
   }
 }

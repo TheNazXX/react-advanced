@@ -32,7 +32,7 @@ export type ArticleBlock =
   | ArticleCodeBlock;
 
 export interface Article {
-  id: number;
+  id: string;
   title: string;
   subtitle: string;
   views: number;

@@ -1,15 +1,15 @@
-import { type Word } from 'entities/Words'
+import { type Word } from "entities/Words";
 
 export interface RepeatWordsSchema {
-  words: Word[]
+  words: Word[];
 
-  getIsLoading: boolean
-  getIsError: string
+  getIsLoading: boolean;
+  getIsError: string;
 
-  sendIsLoading: boolean
-  sendIsError: string
+  sendIsLoading: boolean;
+  sendIsError: string;
 }
 
 export interface addRepeatWordResponse {
-  message: string
+  message: string;
 }

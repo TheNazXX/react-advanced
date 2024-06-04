@@ -1,7 +1,7 @@
 import { classNames } from 'shared/libs/classNames/classNames'
 import cls from './Type.module.scss'
-import {type FC, type ReactNode} from 'react'
-import {useTranslation} from 'react-i18next'
+import { type FC, type ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface TypeProps {
   className?: string;
@@ -10,8 +10,7 @@ interface TypeProps {
 }
 
 export const Type: FC<TypeProps> = ({ className, type }) => {
-
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <div className={classNames(cls.Type, {}, [className])}>
