@@ -2,7 +2,6 @@ import { type Word } from "entities/Words";
 import axios from "axios";
 
 export const postWord = async (word: Word) => {
-  console.log(word);
   try {
     const response = await axios.post(
       "http://localhost:8888/api/addWord",

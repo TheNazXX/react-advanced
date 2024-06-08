@@ -34,11 +34,6 @@ export const CommentList: FC<CommentListProps> = memo(
       );
     }
 
-    return (
-      <div className={classNames(cls.CommentList, {}, [])}>
-        <AddCommentForm className={cls.commentForm} />
-        {content}
-      </div>
-    );
+    return <div className={classNames(cls.CommentList, {}, [])}>{content}</div>;
   }
 );

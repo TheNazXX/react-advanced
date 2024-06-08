@@ -6,18 +6,13 @@
       "subtitle": "JavaScript continues to evolve with exciting new updates. The latest ECMAScript version introduces several new features, including enhanced pattern matching and top-level await. These changes aim to make asynchronous code easier to write and more readable. Additionally, popular frameworks like React and Vue are also receiving updates to improve performance and developer experience. As JavaScript remains one of the most widely used programming languages, these advancements are highly anticipated by the developer community. Stay tuned for more updates as the language continues to grow and adapt to modern development needs.",
       "views": 1022,
       "createAt": "2023-02-02",
-      "type": [
-        "IT",
-        "Course"
-      ],
+      "type": ["IT", "Course"],
       "blocks": [
         {
           "id": "1",
           "type": "TEXT",
           "title": "Title",
-          "text": [
-            "Some text"
-          ]
+          "text": ["Some text"]
         }
       ]
     }
@@ -25,27 +20,33 @@
   "comments": [
     {
       "id": "1",
-      "text": "some cooment",
+      "text": "This article provides a clear and insightful overview of the topic, highlighting key points effectively. The examples used are relevant and help in understanding the concepts better. I appreciate the thorough research and the balanced perspective presented. Overall, it's a valuable read for anyone interested in this subject.",
       "articleId": "1",
       "userId": "1"
     },
     {
       "id": "2",
-      "text": "some cooment 2",
+      "text": "This article thoroughly examines the complexities of the topic and offers a well-rounded perspective. The author's use of real-world examples makes the information more relatable and easier to grasp. I particularly enjoyed the in-depth analysis and the practical advice provided. The writing style is clear and engaging, which keeps the reader interested from start to finish. Additionally, the inclusion of expert opinions adds credibility to the arguments. It would be great to see more articles like this that delve deeply into current issues. Overall, an excellent and informative read.",
       "articleId": "1",
       "userId": "2"
     },
     {
       "articleId": "1",
       "userId": "1",
-      "text": "few",
+      "text": "I found this article to be exceptionally well-written and informative. The author does a fantastic job of breaking down intricate details into understandable segments. The use of visuals and data charts greatly aids in comprehending the subject matter. The balanced approach in presenting different viewpoints is commendable and shows a commitment to unbiased reporting. I also appreciate the practical tips offered towards the end, which are very useful. This piece not only educates but also encourages further exploration of the topic. Kudos to the author for such a comprehensive and engaging article.",
       "id": "FzH8CIO"
     },
     {
       "articleId": "1",
       "userId": "2",
-      "text": "123",
+      "text": "This piece provides a fresh perspective on an often-discussed topic, making it a compelling read. The thorough research and the clear presentation of facts are particularly impressive. The author skillfully integrates historical context with current trends, offering a well-rounded understanding. The insights shared are not only thought-provoking but also inspire readers to think critically about the subject. I also appreciate the detailed references and links to additional resources. The writing style is both informative and engaging, making complex ideas accessible to a broad audience. I look forward to reading more articles from this author.",
       "id": "Ell2jeL"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "rfeww",
+      "id": "DaFA_E-"
     }
   ],
   "users": [

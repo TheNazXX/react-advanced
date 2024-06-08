@@ -14,13 +14,15 @@ import { correctTranslate } from "../helpers/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { type ThunkDispatch } from "redux-thunk";
 import {
-  sendRepeatWords,
-  getIsLoadingSendRepeatWords,
-  getIsErrorSendRepeatWords,
+  postRepeatWords,
+  getIsLoadingPost,
+  getIsErrorPost,
+  getIsSuccessPost,
 } from "entities/RepeatWords";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import { repeatWordsActions } from "entities/RepeatWords/model/slice/repeatWordsSlice";
 
 interface RepeatWordByOneProps {
   className?: string;
@@ -51,8 +53,9 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({
   const [translationErrorsValidation, setTranslationErrorsValidation] =
     useState<string[]>([]);
 
-  const isLoading = useSelector(getIsLoadingSendRepeatWords);
-  const errorMessage = useSelector(getIsErrorSendRepeatWords);
+  const isLoadingPost = useSelector(getIsLoadingPost);
+  const errorMessagePost = useSelector(getIsErrorPost);
+  const isSuccessPost = useSelector(getIsSuccessPost);
 
   const { t } = useTranslation();
   const delayHideLoading = useRef<ReturnType<typeof setTimeout>>();
@@ -125,7 +128,6 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({
   }, [words]);
 
   useEffect(() => {
-    // Переключение слов
     const rdm = Math.floor(0 + Math.random() * revisingWords.length);
     setRandomWord(revisingWords[rdm]);
     setCurrentIdxWord(rdm);
@@ -137,8 +139,12 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({
   };
 
   const onComplete = () => {
-    dispatch(sendRepeatWords({ words: [...failedWords], onSuccess }));
+    dispatch(postRepeatWords(failedWords));
   };
+
+  useEffect(() => {
+    isSuccessPost && onSuccess();
+  }, [isSuccessPost]);
 
   const renderWords = (words: Word[]) => {
     return words.map(({ en }, idx) => (
@@ -231,7 +237,7 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({
         <>
           <h2 className={cls.title}>{t("NeedInRevising")}</h2>
           <div className={cls.inner}>
-            {isLoading ? (
+            {isLoadingPost ? (
               <Loader className={cls.loader} />
             ) : failedWords.length !== 0 ? (
               renderWords(failedWords)
@@ -242,7 +248,7 @@ export const RepeatWordByOne: FC<RepeatWordByOneProps> = ({
             )}
           </div>
 
-          {!isLoading && (
+          {!isLoadingPost && (
             <Button
               className={cls.btn}
               typeBtn={TypeButton.OUTLINE}

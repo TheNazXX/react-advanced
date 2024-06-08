@@ -1,15 +1,13 @@
 export { type RepeatWordsSchema } from "./model/types/RepeatWordsSchema";
-export { getRepeatWords } from "./model/selectors/getRepeatWords/getRepeatWords";
 
 export { fetchRepeatWords } from "./model/services/fetchRepeatWords";
-export { addRepeatWordRequest } from "./model/services/AddRepeatWordRequest";
-export { sendRepeatWords } from "./model/services/SendRepeatWords";
+export { postRepeatWords } from "./model/services/postRepeatWords";
 
 export {
-  getIsErrorRepeatWords,
-  getIsErrorSendRepeatWords,
-} from "./model/selectors/getErrorRepeatWords/getErrorRepeatWords";
-export {
-  getIsLoadingGetRepeatWords,
-  getIsLoadingSendRepeatWords,
-} from "./model/selectors/getIsLoadingRepeatWords/getIsLoadingRepeatWords";
+  getRepeatWords,
+  getIsErrorGet,
+  getIsErrorPost,
+  getIsLoadingGet,
+  getIsLoadingPost,
+  getIsSuccessPost,
+} from "./model/selectors/getRepeatWordsState/getRepeatWordsState";

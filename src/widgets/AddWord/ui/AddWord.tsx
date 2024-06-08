@@ -3,35 +3,26 @@ import cls from "./AddWord.module.scss";
 import { useState, type FC, type ReactNode, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Input, TypeInput } from "shared/ui/Input/Input";
-import { format } from "date-fns";
 import { Alert, Button, Loader, Select, Textarea, useAlert } from "shared/ui";
 import { TypeButton } from "shared/ui/Button/Button";
-import {
-  type RulesProps,
-  validation,
-  EnWordRules,
-  UaWordRules,
-} from "shared/libs/validation/validation";
+import { type RulesProps, validation } from "shared/libs/validation/validation";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 import "animate.css";
-import {
-  type RequiredFieldsAddWordErrors,
-  type ResponseAddWord,
-} from "../model/types/types";
+import { type RequiredFieldsAddWordErrors } from "../model/types/types";
 import { TypeTextarea } from "shared/ui/Textarea/Textarea";
 import { Rules } from "shared/libs/validation/validation";
-import { getWords, type Word } from "entities/Words";
+import { type Word, postWord } from "entities/Words";
 import {
   type Sentence,
   partOfSpeech,
 } from "entities/Words/model/types/wordsSchema";
-import { postWord } from "entities/Words/model/services/PostWord";
+
 import { useAppDispatch } from "shared/libs/hooks/useAppDispatch/useAppDispatch";
+
 import { wordsActions } from "entities/Words/model/slice/wordsSlice";
-import { useSelector } from "react-redux";
 import { repeatWordsActions } from "entities/RepeatWords/model/slice/repeatWordsSlice";
 
 interface AddWordProps {

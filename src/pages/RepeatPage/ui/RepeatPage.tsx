@@ -11,22 +11,21 @@ import {
   Alert,
   useAlert,
 } from "shared/ui";
-import { getWords, type Word } from "entities/Words";
+import { type Word } from "entities/Words";
 import { RepeatWordByOne } from "widgets/RepeatWordsByOne";
 import {
   fetchRepeatWords,
-  getIsLoadingGetRepeatWords,
+  getIsLoadingGet,
   getRepeatWords,
-  getIsErrorRepeatWords,
+  getIsErrorGet,
 } from "entities/RepeatWords";
 import { useDispatch, useSelector } from "react-redux";
 import { type ThunkDispatch } from "@reduxjs/toolkit";
 
 const RepeatPage: FC = () => {
-  const isLoading = useSelector(getIsLoadingGetRepeatWords);
+  const isLoading = useSelector(getIsLoadingGet);
   const repeatWords = useSelector(getRepeatWords);
-  const words = useSelector(getWords);
-  const errorGetRepeatWords = useSelector(getIsErrorRepeatWords);
+  const errorGetRepeatWords = useSelector(getIsErrorGet);
 
   const [revisingType, setRevisingType] = useState("");
   const [byOneModal, setByOneModal] = useState(false);
@@ -36,8 +35,8 @@ const RepeatPage: FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<ThunkDispatch<Word[], null, any>>();
 
-  const renderWords = (words: Word[]) => {
-    return words.map(({ en }, idx) => (
+  const renderWords = (items: Word[]) => {
+    return items.map(({ en }, idx) => (
       <AppLink key={idx} to={`/words/${en}`}>
         <WordWrap>{en}</WordWrap>
       </AppLink>
@@ -45,12 +44,8 @@ const RepeatPage: FC = () => {
   };
 
   useEffect(() => {
-    // dispatch(fetchRepeatWords());
+    dispatch(fetchRepeatWords());
   }, []);
-
-  useEffect(() => {
-    console.log(repeatWords);
-  }, [repeatWords]);
 
   useEffect(() => {
     if (errorGetRepeatWords) {

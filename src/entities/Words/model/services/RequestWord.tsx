@@ -10,7 +10,7 @@ export const requestWord = async (word: string) => {
       throw new Error("Empty data");
     }
 
-    return response.data.data;
+    return response.data.words;
   } catch (e: any) {
     throw new Error("Unknown word");
   }

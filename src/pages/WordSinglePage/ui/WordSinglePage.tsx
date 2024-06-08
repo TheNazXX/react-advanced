@@ -1,15 +1,14 @@
 import { useEffect, type FC, type ReactNode, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { type Word } from "entities/Words";
-import { AppLink, Button, Loader, Modal, TypeButton } from "shared/ui";
+import { AppLink, Button, Loader, TypeButton } from "shared/ui";
 import { useTranslation } from "react-i18next";
 import cls from "./WordSinglePage.module.scss";
 import { classNames } from "shared/libs/classNames/classNames";
 import { upperFirstLetter } from "shared/libs/actionsWithFirstLetter/actionsWithFirstLetter";
-import { requestWord } from "entities/Words";
-import { addRepeatWordRequest } from "entities/RepeatWords";
+import { requestWord, deleteWord } from "entities/Words";
+import { getIsLoadingPost, postRepeatWords } from "entities/RepeatWords";
 import { Alert, useAlert } from "shared/ui/Alert/Alert";
-import { type addRepeatWordResponse } from "entities/RepeatWords/model/types/RepeatWordsSchema";
 import { typeLoader } from "shared/ui/Loader/Loader";
 
 import { Translate } from "./Translate/Translate";
@@ -18,7 +17,8 @@ import { Synonyms } from "./Synonyms/Synonyms";
 import { Sentences } from "./Sentences/Sentences";
 import { RoutePathes } from "shared/config/routeConfig/routeConfig";
 import { EditModal } from "./EditModal/EditModal";
-import { deleteWord } from "entities/Words/model/services/DeleteWord";
+import { useAppDispatch } from "shared/libs/hooks/useAppDispatch/useAppDispatch";
+import { useSelector } from "react-redux";
 
 interface WordPageProps {
   className?: string;
@@ -41,17 +41,15 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [currentWord, setCurentWord] = useState<Word | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setIsError] = useState<null | string>(null);
-  const [isLoadigAddRepeatWord, setIsLoadigAddRepeatWord] =
-    useState<boolean>(false);
 
-  const [addRepeatIsLoading, setRepeatIsLoading] = useState(false);
-  const [addRepeatError, setRepeatError] = useState("");
+  const postIsLoadingRepeatWord = useSelector(getIsLoadingPost);
 
   const { t } = useTranslation();
   const { word } = useParams();
 
   const deleteDelay = useRef<ReturnType<typeof setTimeout>>();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setIsLoading(true);
@@ -72,21 +70,7 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
   };
 
   const onRepeatWordRequest = () => {
-    setIsLoadigAddRepeatWord(true);
-
-    if (currentWord) {
-      addRepeatWordRequest(currentWord)
-        .then(({ message }: addRepeatWordResponse) => {
-          showAlert(message, true);
-        })
-        .catch((e) => {
-          const errorText = e?.message || "Something went wrong";
-          showAlert(errorText, false);
-        })
-        .finally(() => {
-          setIsLoadigAddRepeatWord(false);
-        });
-    }
+    if (currentWord) dispatch(postRepeatWords(currentWord));
   };
 
   const onEdit = () => {
@@ -152,13 +136,13 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
             </i>
 
             <div className={cls.btns}>
-              {isLoadigAddRepeatWord ? (
+              {postIsLoadingRepeatWord ? (
                 <Loader className={cls.loader} type={typeLoader.DOTS} />
               ) : (
                 <Button
                   typeBtn={TypeButton.PRIMARY}
                   onClick={onRepeatWordRequest}
-                  disabled={addRepeatIsLoading}
+                  disabled={postIsLoadingRepeatWord}
                 >
                   {t("AddRepeat")}
                 </Button>
@@ -166,14 +150,14 @@ export const WordSinglePage: FC<WordPageProps> = ({ className }) => {
 
               <Button
                 typeBtn={TypeButton.PRIMARY}
-                disabled={isLoadigAddRepeatWord}
+                disabled={postIsLoadingRepeatWord}
                 onClick={onEdit}
               >
                 {t("Edit")}
               </Button>
               <Button
                 typeBtn={TypeButton.DANGER}
-                disabled={isLoadigAddRepeatWord}
+                disabled={postIsLoadingRepeatWord}
                 onClick={onDeleteWord}
               >
                 {t("Delete")}

@@ -63,5 +63,7 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "multiline-ternary": "off",
     "array-callback-return": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/non-nullable-type-assertion-style": "off",
   },
 };
