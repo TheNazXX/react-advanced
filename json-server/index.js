@@ -41,27 +41,6 @@ server.post("/login", (req, res) => {
   }
 });
 
-// server.use((req, res, next) => {
-//   if(!req.headers.authorization){
-//     return res.status(403).json({message: 'AUTH ERROR'});
-//   }
-
-//   next();
-// })
-
-server.put("/profile", (req, res) => {
-  try {
-    const data = req.body;
-
-    writeDb(DB_PROFILE, { profile: { ...data } });
-
-    return res.status(200).json({ message: "Profile was updated" });
-  } catch (e) {
-    console.log(e);
-    return res.status(500).json({ message: e.message });
-  }
-});
-
 server.use(router);
 
 server.listen(8000, () => {

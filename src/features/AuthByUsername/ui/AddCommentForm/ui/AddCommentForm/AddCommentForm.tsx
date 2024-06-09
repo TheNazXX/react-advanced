@@ -14,11 +14,10 @@ import {
   addCommentFormActions,
   addCommentFormReducer,
 } from "../../model/slice/addCommentFormSlice";
-import { sendComment } from "../../model/services/sendComment";
 
 export interface AddCommentFormProps {
   className?: string;
-  onSendComment?: () => void;
+  onSendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {
@@ -35,6 +34,11 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
       dispatch(addCommentFormActions.setText(value));
     }, []);
 
+    const onSendHandler = useCallback(() => {
+      onSendComment(text || "");
+      onCommentOnChange("");
+    }, [onCommentOnChange, onSendComment, text]);
+
     return (
       <DynamicModuleLoader reducers={reducers}>
         <div className={classNames(cls.AddCommentForm, {}, [className])}>
@@ -47,7 +51,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
           <Button
             className={cls.btn}
             typeBtn={TypeButton.PRIMARY}
-            onClick={onSendComment}
+            onClick={onSendHandler}
           >
             {t("Send")}
           </Button>

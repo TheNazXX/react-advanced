@@ -8,7 +8,7 @@ import { type StateSchema } from "app/providers/StoreProvider";
 
 import { type Comment } from "entities/Comment";
 import { type ArticleDetailsCommentsSchema } from "../types/articlesDetailsCommenstSchema";
-import { fetchCommentsByArticleId } from "../services/fetchCommentsByAtricleId/fetchCommentsByAtricleId";
+import { fetchCommentsByArticleId } from "../services/fetchCommentsByAtricleId";
 
 const commentsAdapter = createEntityAdapter<Comment, string>({
   selectId: (comment: Comment) => comment.id,
@@ -26,7 +26,11 @@ const articleDetailseSlice = createSlice({
     ids: [],
     entities: {},
   }),
-  reducers: {},
+  reducers: {
+    addCommentForArticle: (state, action: PayloadAction<Comment>) => {
+      commentsAdapter.addOne(state, action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCommentsByArticleId.pending, (state, action) => {

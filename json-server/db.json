@@ -6,13 +6,18 @@
       "subtitle": "JavaScript continues to evolve with exciting new updates. The latest ECMAScript version introduces several new features, including enhanced pattern matching and top-level await. These changes aim to make asynchronous code easier to write and more readable. Additionally, popular frameworks like React and Vue are also receiving updates to improve performance and developer experience. As JavaScript remains one of the most widely used programming languages, these advancements are highly anticipated by the developer community. Stay tuned for more updates as the language continues to grow and adapt to modern development needs.",
       "views": 1022,
       "createAt": "2023-02-02",
-      "type": ["IT", "Course"],
+      "type": [
+        "IT",
+        "Course"
+      ],
       "blocks": [
         {
           "id": "1",
           "type": "TEXT",
           "title": "Title",
-          "text": ["Some text"]
+          "text": [
+            "Some text"
+          ]
         }
       ]
     }
@@ -44,9 +49,9 @@
     },
     {
       "articleId": "1",
-      "userId": "2",
-      "text": "rfeww",
-      "id": "DaFA_E-"
+      "userId": "1",
+      "text": "123",
+      "id": "bnH21gq"
     }
   ],
   "users": [

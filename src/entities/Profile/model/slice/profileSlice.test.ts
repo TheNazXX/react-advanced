@@ -1,103 +1,110 @@
-import { type ProfileSchema, formStructure } from '../types/profile'
-import { initialFormRequiredFields, profileActions, profileReducer } from './ProfileSlice'
+import { type ProfileSchema, formStructure } from "../types/profile";
+import {
+  initialFormRequiredFields,
+  profileActions,
+  profileReducer,
+} from "./ProfileSlice";
 
-import { updateProfileData } from '../service/updateProfileData/updateProfileData'
+import { updateProfileData } from "../service/updateProfileData/updateProfileData";
 
 const data = {
-  [formStructure.FIRSTNAME]: 'Nazar',
-  [formStructure.LASTNAME]: 'Shevchuk',
-  [formStructure.ROLE]: 'admin'
-}
+  [formStructure.ID]: "1",
+  [formStructure.FIRSTNAME]: "Nazar",
+  [formStructure.LASTNAME]: "Shevchuk",
+  [formStructure.ROLE]: "admin",
+};
 
-describe('ProfileSlice', () => {
-  test('test set data', () => {
+describe("ProfileSlice", () => {
+  test("test set data", () => {
     const state: DeepPartial<ProfileSchema> = {
-      readonly: false
-    }
+      readonly: false,
+    };
 
-    expect(profileReducer(
-      state as ProfileSchema,
-      profileActions.setReadonly(true)
-    )).toEqual({
-      readonly: true
-    })
-  })
+    expect(
+      profileReducer(state as ProfileSchema, profileActions.setReadonly(true))
+    ).toEqual({
+      readonly: true,
+    });
+  });
 
-  test('cancel edit', () => {
+  test("cancel edit", () => {
     const state: DeepPartial<ProfileSchema> = {
       readonly: false,
       formValidationErrors: initialFormRequiredFields,
       form: {},
-      data
-    }
+      data,
+    };
 
-    expect(profileReducer(
-      state as ProfileSchema,
-      profileActions.cancelEdit()
-    )).toEqual({
+    expect(
+      profileReducer(state as ProfileSchema, profileActions.cancelEdit())
+    ).toEqual({
       data,
       readonly: true,
       formValidationErrors: initialFormRequiredFields,
-      form: data
-    })
-  })
+      form: data,
+    });
+  });
 
-  test('update profile', () => {
+  test("update profile", () => {
     const state: DeepPartial<ProfileSchema> = {
       data,
-      form: data
-    }
+      form: data,
+    };
 
     const updateData = {
-      [formStructure.FIRSTNAME]: 'UpdateName',
-      [formStructure.LASTNAME]: 'UpdateLastName'
-    }
+      [formStructure.ID]: "2",
+      [formStructure.FIRSTNAME]: "UpdateName",
+      [formStructure.LASTNAME]: "UpdateLastName",
+    };
 
-    expect(profileReducer(
-      state as ProfileSchema,
-      profileActions.updateProfile(updateData)
-    )).toEqual({
+    expect(
+      profileReducer(
+        state as ProfileSchema,
+        profileActions.updateProfile(updateData)
+      )
+    ).toEqual({
       data,
       form: {
         ...data,
-        ...updateData
-      }
-    })
-  })
+        ...updateData,
+      },
+    });
+  });
 
-  test('test update profile service thunk pending', () => {
+  test("test update profile service thunk pending", () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoadingUpdateProfile: false,
-      updateError: '',
-      successUpdate: undefined
-    }
+      updateError: "",
+      successUpdate: undefined,
+    };
 
-    expect(profileReducer(
-      state as ProfileSchema,
-      updateProfileData.pending as any
-    )).toEqual({
+    expect(
+      profileReducer(state as ProfileSchema, updateProfileData.pending as any)
+    ).toEqual({
       isLoadingUpdateProfile: true,
-      updateError: '',
-      successUpdate: undefined
-    })
-  })
+      updateError: "",
+      successUpdate: undefined,
+    });
+  });
 
-  test('test update profile service thunk fulfield', () => {
+  test("test update profile service thunk fulfield", () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoadingUpdateProfile: true,
       successUpdate: undefined,
-      updateError: undefined
-    }
+      updateError: undefined,
+    };
 
-    const responseMessage = 'success'
+    const responseMessage = "success";
 
-    expect(profileReducer(
-      state as ProfileSchema,
-      updateProfileData.fulfilled({ message: responseMessage }, '')
-    )).toEqual({
+    expect(
+      profileReducer(
+        state as ProfileSchema,
+        updateProfileData.fulfilled({ message: responseMessage }, "", "")
+      )
+    ).toEqual({
       isLoadingUpdateProfile: false,
-      updateError: '',
-      successUpdate: responseMessage
-    })
-  })
-})
+      updateError: "",
+      successUpdate: responseMessage,
+    });
+  });
+});
