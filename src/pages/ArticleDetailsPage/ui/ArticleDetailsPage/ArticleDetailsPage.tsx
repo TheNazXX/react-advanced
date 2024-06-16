@@ -31,6 +31,7 @@ import { fetchCommentsByArticleId } from "pages/ArticleDetailsPage/model/service
 import cls from "./ArticleDetailsPage.module.scss";
 import { postCommentForArticle } from "pages/ArticleDetailsPage/model/services/postCommentForArticle";
 import { AddCommentForm } from "features/AuthByUsername/ui/AddCommentForm";
+import { Page } from "shared/ui";
 
 interface ArtcleDetailsPageProps {
   className?: string;
@@ -66,10 +67,12 @@ const ArtcleDetailsPage: FC<ArtcleDetailsPageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-      <ArticleDetails _id={id} />
-      <div className={cls.title}>{t("Comments")}</div>
-      <AddCommentForm onSendComment={onSendComment} />
-      <CommentList comments={comments} isLoading={isLoading} />
+      <Page>
+        <ArticleDetails _id={id} />
+        <div className={cls.title}>{t("Comments")}</div>
+        <AddCommentForm onSendComment={onSendComment} />
+        <CommentList comments={comments} isLoading={isLoading} />
+      </Page>
     </DynamicModuleLoader>
   );
 };

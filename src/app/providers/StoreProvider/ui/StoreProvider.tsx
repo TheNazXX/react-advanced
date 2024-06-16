@@ -16,13 +16,12 @@ export const StoreProvider: FC<StoreProviderProps> = ({
   initialState,
   asyncReducers,
 }) => {
-  const navigate = useNavigate();
+  console.log("render");
 
   const storeRef = useRef(
     createReduxStore(
       initialState as StateSchema,
-      asyncReducers as ReducersMapObject<StateSchema>,
-      navigate
+      asyncReducers as ReducersMapObject<StateSchema>
     )
   );
 

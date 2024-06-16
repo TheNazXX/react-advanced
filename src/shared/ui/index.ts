@@ -8,3 +8,4 @@ export { AppLink } from "./AppLink/AppLink";
 export { Button, TypeButton } from "./Button/Button";
 export { Modal } from "./Modal/Modal";
 export { Skeleton } from "./Skeleton/Skeleton";
+export { Page } from "./Page/Page";

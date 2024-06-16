@@ -37,6 +37,7 @@ export interface ReducerManager {
   reduce: (state: StateSchema, action: UnknownAction) => any;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
+  getMountedReducers: () => OptionalRecord<StateSchemaKey, boolean>;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {

@@ -4,6 +4,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     ".eslintrc.js",
+    "tailwind.config.js",
+    "postcss.confi.js",
     "webpack.config.ts",
     "config/jest/jest.config.ts",
     "config/jest/setupTests.ts",

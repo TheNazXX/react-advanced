@@ -3,21 +3,972 @@
     {
       "id": "1",
       "title": "Javascript news",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
       "subtitle": "JavaScript continues to evolve with exciting new updates. The latest ECMAScript version introduces several new features, including enhanced pattern matching and top-level await. These changes aim to make asynchronous code easier to write and more readable. Additionally, popular frameworks like React and Vue are also receiving updates to improve performance and developer experience. As JavaScript remains one of the most widely used programming languages, these advancements are highly anticipated by the developer community. Stay tuned for more updates as the language continues to grow and adapt to modern development needs.",
-      "views": 1022,
+      "views": 1024,
       "createAt": "2023-02-02",
-      "type": [
-        "IT",
-        "Course"
-      ],
+      "userId": "1",
+      "type": ["IT", "Course"],
       "blocks": [
         {
           "id": "1",
           "type": "TEXT",
           "title": "Title",
-          "text": [
-            "Some text"
-          ]
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Python 3.10 Released",
+      "img": "https://www.python.org/static/community_logos/python-logo.png",
+      "subtitle": "Python 3.10 introduces pattern matching, better error messages, and performance improvements. The new version aims to enhance the developer experience and make the language more intuitive and faster.",
+      "views": 2048,
+      "createAt": "2023-03-15",
+      "userId": "2",
+      "type": ["IT", "Course"],
+      "blocks": [
+        {
+          "id": "2",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "React 18 Overview",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      "subtitle": "React 18 brings concurrent rendering, automatic batching, and new hooks. These features aim to improve performance and simplify complex state management in modern web applications.",
+      "views": 1536,
+      "createAt": "2023-04-10",
+      "userId": "3",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "3",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Vue 3: What's New",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png",
+      "subtitle": "Vue 3 has been rewritten from the ground up using TypeScript. It includes a new composition API, improved TypeScript support, and significant performance enhancements.",
+      "views": 1820,
+      "createAt": "2023-05-05",
+      "userId": "4",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "4",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Django 4.0 Updates",
+      "img": "https://www.djangoproject.com/m/img/logos/django-logo-negative.png",
+      "subtitle": "Django 4.0 focuses on simplification and modernization of the framework. It includes async views, a new template-based email backend, and more.",
+      "views": 1450,
+      "createAt": "2023-06-01",
+      "userId": "5",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "5",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Angular 13 Features",
+      "img": "https://angular.io/assets/images/logos/angular/angular.svg",
+      "subtitle": "Angular 13 introduces dynamic component creation, improved error messages, and better TypeScript support. The update aims to enhance developer productivity and application performance.",
+      "views": 1320,
+      "createAt": "2023-07-10",
+      "userId": "6",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "6",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Flask 2.0 Enhancements",
+      "img": "https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png",
+      "subtitle": "Flask 2.0 brings async views, WebSocket support, and improved template rendering. These updates make it easier to build modern, real-time web applications.",
+      "views": 1200,
+      "createAt": "2023-08-15",
+      "userId": "7",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "7",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Rust Programming Growth",
+      "img": "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
+      "subtitle": "Rust continues to gain popularity due to its performance and safety features. The latest updates include better async support and improved compiler diagnostics.",
+      "views": 2100,
+      "createAt": "2023-09-05",
+      "userId": "8",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "8",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Swift 5.5 Updates",
+      "img": "https://developer.apple.com/swift/images/swift-og.png",
+      "subtitle": "Swift 5.5 introduces async/await, structured concurrency, and actors. These features aim to simplify concurrent programming and improve code readability.",
+      "views": 1950,
+      "createAt": "2023-10-01",
+      "userId": "9",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "9",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Kotlin 1.6 Release",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png",
+      "subtitle": "Kotlin 1.6 focuses on performance improvements and new language features. These include sealed interfaces, new standard library functions, and better JVM support.",
+      "views": 1800,
+      "createAt": "2023-11-15",
+      "userId": "10",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "10",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Go 1.18 Introduces Generics",
+      "img": "https://golang.org/lib/godoc/images/go-logo-blue.svg",
+      "subtitle": "Go 1.18 brings long-awaited generics support, enabling more reusable and type-safe code. The update also includes improved performance and new standard library features.",
+      "views": 1750,
+      "createAt": "2023-12-01",
+      "userId": "11",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "11",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Ruby on Rails 7.0",
+      "img": "https://rubyonrails.org/images/rails-logo.svg",
+      "subtitle": "Rails 7.0 focuses on modernizing the framework with Hotwire, new default front-end tooling, and improved performance. The update aims to streamline development workflows.",
+      "views": 1600,
+      "createAt": "2024-01-05",
+      "userId": "12",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "12",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "SvelteKit 1.0 Released",
+      "img": "https://svelte.dev/svelte-logo-horizontal.svg",
+      "subtitle": "SvelteKit 1.0 offers a powerful framework for building fast, modern web applications. It includes new routing capabilities, improved performance, and better developer experience.",
+      "views": 1900,
+      "createAt": "2024-02-15",
+      "userId": "13",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "13",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "TypeScript 4.5",
+      "img": "https://www.typescriptlang.org/assets/images/icons/apple-touch-icon-180x180.png",
+      "subtitle": "TypeScript 4.5 introduces new features such as the Awaited type, template string types, and more. These enhancements aim to improve developer productivity and type safety.",
+      "views": 1750,
+      "createAt": "2024-03-10",
+      "userId": "14",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "14",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Elixir 1.13 Enhancements",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/66/Elixir_logo.png",
+      "subtitle": "Elixir 1.13 brings improvements to the language's performance and tooling. New features include the `mix release` tool for easier deployment and enhanced error messages.",
+      "views": 1850,
+      "createAt": "2024-04-01",
+      "userId": "15",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "15",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "GraphQL Trends in 2024",
+      "img": "https://graphql.org/img/logo.svg",
+      "subtitle": "GraphQL continues to gain traction for its efficiency in handling complex queries and its flexibility. New tools and libraries are emerging to support GraphQL development.",
+      "views": 1700,
+      "createAt": "2024-05-15",
+      "userId": "16",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "16",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Next.js 12 Features",
+      "img": "https://nextjs.org/static/favicon/favicon.ico",
+      "subtitle": "Next.js 12 brings performance improvements, better error handling, and new middleware capabilities. These updates aim to streamline the development of React applications.",
+      "views": 1900,
+      "createAt": "2024-06-10",
+      "userId": "17",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "17",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "ASP.NET Core 6",
+      "img": "https://dotnet.microsoft.com/static/images/redesign/social/aspnetcore.png",
+      "subtitle": "ASP.NET Core 6 focuses on performance improvements, minimal APIs, and better support for modern development workflows. The update aims to enhance the framework's usability and efficiency.",
+      "views": 1800,
+      "createAt": "2024-07-01",
+      "userId": "18",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "18",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Machine Learning with TensorFlow 2.7",
+      "img": "https://www.tensorflow.org/images/tf_logo_social.png",
+      "subtitle": "TensorFlow 2.7 introduces new tools and improvements for machine learning developers. The update includes better model deployment options and performance enhancements.",
+      "views": 2000,
+      "createAt": "2024-08-15",
+      "userId": "19",
+      "type": ["IT", "AI"],
+      "blocks": [
+        {
+          "id": "19",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Docker and Kubernetes in 2024",
+      "img": "https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png",
+      "subtitle": "Docker and Kubernetes continue to dominate the container orchestration space. New updates focus on simplifying deployments and improving cluster management.",
+      "views": 1750,
+      "createAt": "2024-09-01",
+      "userId": "20",
+      "type": ["IT", "DevOps"],
+      "blocks": [
+        {
+          "id": "20",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Java 17 LTS Released",
+      "img": "https://www.oracle.com/a/ocom/img/cb71-java-logo-001.jpg",
+      "subtitle": "Java 17, the latest long-term support release, includes new language features, deprecations, and performance enhancements. The update aims to ensure Java's continued relevance and usability.",
+      "views": 1850,
+      "createAt": "2024-10-15",
+      "userId": "21",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "21",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "title": "AI Advancements in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Artificial_Intelligence_Logo.svg",
+      "subtitle": "Artificial intelligence continues to evolve with advancements in natural language processing, computer vision, and autonomous systems. New research and tools are pushing the boundaries of what's possible.",
+      "views": 1950,
+      "createAt": "2024-11-01",
+      "userId": "22",
+      "type": ["IT", "AI"],
+      "blocks": [
+        {
+          "id": "22",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Blockchain Technology Trends",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/1/10/Blockchain_logo.png",
+      "subtitle": "Blockchain technology continues to grow with new applications in finance, supply chain, and beyond. Innovations in scalability and security are key areas of focus.",
+      "views": 2100,
+      "createAt": "2024-12-15",
+      "userId": "23",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "23",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Big Data in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/05/Big_Data_Icon.svg",
+      "subtitle": "Big data continues to revolutionize industries with new tools for analysis and visualization. The focus is on making data processing more efficient and accessible.",
+      "views": 1850,
+      "createAt": "2025-01-01",
+      "userId": "24",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "24",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Cybersecurity in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/63/Cybersecurity_Logo.jpg",
+      "subtitle": "Cybersecurity remains a critical focus with new threats emerging. Advances in AI and machine learning are being leveraged to enhance security measures and protect against attacks.",
+      "views": 1900,
+      "createAt": "2025-02-15",
+      "userId": "25",
+      "type": ["IT", "Security"],
+      "blocks": [
+        {
+          "id": "25",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "React 18 Overview",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      "subtitle": "React 18 brings concurrent rendering, automatic batching, and new hooks. These features aim to improve performance and simplify complex state management in modern web applications.",
+      "views": 1536,
+      "createAt": "2023-04-10",
+      "userId": "3",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "3",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Vue 3: What's New",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png",
+      "subtitle": "Vue 3 has been rewritten from the ground up using TypeScript. It includes a new composition API, improved TypeScript support, and significant performance enhancements.",
+      "views": 1820,
+      "createAt": "2023-05-05",
+      "userId": "4",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "4",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Django 4.0 Updates",
+      "img": "https://www.djangoproject.com/m/img/logos/django-logo-negative.png",
+      "subtitle": "Django 4.0 focuses on simplification and modernization of the framework. It includes async views, a new template-based email backend, and more.",
+      "views": 1450,
+      "createAt": "2023-06-01",
+      "userId": "5",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "5",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Angular 13 Features",
+      "img": "https://angular.io/assets/images/logos/angular/angular.svg",
+      "subtitle": "Angular 13 introduces dynamic component creation, improved error messages, and better TypeScript support. The update aims to enhance developer productivity and application performance.",
+      "views": 1320,
+      "createAt": "2023-07-10",
+      "userId": "6",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "6",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Flask 2.0 Enhancements",
+      "img": "https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png",
+      "subtitle": "Flask 2.0 brings async views, WebSocket support, and improved template rendering. These updates make it easier to build modern, real-time web applications.",
+      "views": 1200,
+      "createAt": "2023-08-15",
+      "userId": "7",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "7",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Rust Programming Growth",
+      "img": "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
+      "subtitle": "Rust continues to gain popularity due to its performance and safety features. The latest updates include better async support and improved compiler diagnostics.",
+      "views": 2100,
+      "createAt": "2023-09-05",
+      "userId": "8",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "8",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Swift 5.5 Updates",
+      "img": "https://developer.apple.com/swift/images/swift-og.png",
+      "subtitle": "Swift 5.5 introduces async/await, structured concurrency, and actors. These features aim to simplify concurrent programming and improve code readability.",
+      "views": 1950,
+      "createAt": "2023-10-01",
+      "userId": "9",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "9",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Kotlin 1.6 Release",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png",
+      "subtitle": "Kotlin 1.6 focuses on performance improvements and new language features. These include sealed interfaces, new standard library functions, and better JVM support.",
+      "views": 1800,
+      "createAt": "2023-11-15",
+      "userId": "10",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "10",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Go 1.18 Introduces Generics",
+      "img": "https://golang.org/lib/godoc/images/go-logo-blue.svg",
+      "subtitle": "Go 1.18 brings long-awaited generics support, enabling more reusable and type-safe code. The update also includes improved performance and new standard library features.",
+      "views": 1750,
+      "createAt": "2023-12-01",
+      "userId": "11",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "11",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Ruby on Rails 7.0",
+      "img": "https://rubyonrails.org/images/rails-logo.svg",
+      "subtitle": "Rails 7.0 focuses on modernizing the framework with Hotwire, new default front-end tooling, and improved performance. The update aims to streamline development workflows.",
+      "views": 1600,
+      "createAt": "2024-01-05",
+      "userId": "12",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "12",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "SvelteKit 1.0 Released",
+      "img": "https://svelte.dev/svelte-logo-horizontal.svg",
+      "subtitle": "SvelteKit 1.0 offers a powerful framework for building fast, modern web applications. It includes new routing capabilities, improved performance, and better developer experience.",
+      "views": 1900,
+      "createAt": "2024-02-15",
+      "userId": "13",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "13",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "TypeScript 4.5",
+      "img": "https://www.typescriptlang.org/assets/images/icons/apple-touch-icon-180x180.png",
+      "subtitle": "TypeScript 4.5 introduces new features such as the Awaited type, template string types, and more. These enhancements aim to improve developer productivity and type safety.",
+      "views": 1750,
+      "createAt": "2024-03-10",
+      "userId": "14",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "14",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Elixir 1.13 Enhancements",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/66/Elixir_logo.png",
+      "subtitle": "Elixir 1.13 brings improvements to the language's performance and tooling. New features include the `mix release` tool for easier deployment and enhanced error messages.",
+      "views": 1850,
+      "createAt": "2024-04-01",
+      "userId": "15",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "15",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "GraphQL Trends in 2024",
+      "img": "https://graphql.org/img/logo.svg",
+      "subtitle": "GraphQL continues to gain traction for its efficiency in handling complex queries and its flexibility. New tools and libraries are emerging to support GraphQL development.",
+      "views": 1700,
+      "createAt": "2024-05-15",
+      "userId": "16",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "16",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Next.js 12 Features",
+      "img": "https://nextjs.org/static/favicon/favicon.ico",
+      "subtitle": "Next.js 12 brings performance improvements, better error handling, and new middleware capabilities. These updates aim to streamline the development of React applications.",
+      "views": 1900,
+      "createAt": "2024-06-10",
+      "userId": "17",
+      "type": ["IT", "Framework"],
+      "blocks": [
+        {
+          "id": "17",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "ASP.NET Core 6",
+      "img": "https://dotnet.microsoft.com/static/images/redesign/social/aspnetcore.png",
+      "subtitle": "ASP.NET Core 6 focuses on performance improvements, minimal APIs, and better support for modern development workflows. The update aims to enhance the framework's usability and efficiency.",
+      "views": 1800,
+      "createAt": "2024-07-01",
+      "userId": "18",
+      "type": ["IT", "Backend"],
+      "blocks": [
+        {
+          "id": "18",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Machine Learning with TensorFlow 2.7",
+      "img": "https://www.tensorflow.org/images/tf_logo_social.png",
+      "subtitle": "TensorFlow 2.7 introduces new tools and improvements for machine learning developers. The update includes better model deployment options and performance enhancements.",
+      "views": 2000,
+      "createAt": "2024-08-15",
+      "userId": "19",
+      "type": ["IT", "AI"],
+      "blocks": [
+        {
+          "id": "19",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Docker and Kubernetes in 2024",
+      "img": "https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png",
+      "subtitle": "Docker and Kubernetes continue to dominate the container orchestration space. New updates focus on simplifying deployments and improving cluster management.",
+      "views": 1750,
+      "createAt": "2024-09-01",
+      "userId": "20",
+      "type": ["IT", "DevOps"],
+      "blocks": [
+        {
+          "id": "20",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Java 17 LTS Released",
+      "img": "https://www.oracle.com/a/ocom/img/cb71-java-logo-001.jpg",
+      "subtitle": "Java 17, the latest long-term support release, includes new language features, deprecations, and performance enhancements. The update aims to ensure Java's continued relevance and usability.",
+      "views": 1850,
+      "createAt": "2024-10-15",
+      "userId": "21",
+      "type": ["IT", "Programming Language"],
+      "blocks": [
+        {
+          "id": "21",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "title": "AI Advancements in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Artificial_Intelligence_Logo.svg",
+      "subtitle": "Artificial intelligence continues to evolve with advancements in natural language processing, computer vision, and autonomous systems. New research and tools are pushing the boundaries of what's possible.",
+      "views": 1950,
+      "createAt": "2024-11-01",
+      "userId": "22",
+      "type": ["IT", "AI"],
+      "blocks": [
+        {
+          "id": "22",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Blockchain Technology Trends",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/1/10/Blockchain_logo.png",
+      "subtitle": "Blockchain technology continues to grow with new applications in finance, supply chain, and beyond. Innovations in scalability and security are key areas of focus.",
+      "views": 2100,
+      "createAt": "2024-12-15",
+      "userId": "23",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "23",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Big Data in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/05/Big_Data_Icon.svg",
+      "subtitle": "Big data continues to revolutionize industries with new tools for analysis and visualization. The focus is on making data processing more efficient and accessible.",
+      "views": 1850,
+      "createAt": "2025-01-01",
+      "userId": "24",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "24",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Cybersecurity in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/63/Cybersecurity_Logo.jpg",
+      "subtitle": "Cybersecurity remains a critical focus with new threats emerging. Advances in AI and machine learning are being leveraged to enhance security measures and protect against attacks.",
+      "views": 1900,
+      "createAt": "2025-02-15",
+      "userId": "25",
+      "type": ["IT", "Security"],
+      "blocks": [
+        {
+          "id": "25",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "title": "5G and Beyond",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/0a/5G_logo.jpg",
+      "subtitle": "The rollout of 5G technology continues to expand globally, with new applications and innovations. The focus is on improving connectivity and enabling new use cases.",
+      "views": 2000,
+      "createAt": "2025-03-01",
+      "userId": "26",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "26",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Edge Computing in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/4/48/Edge_Computing_Icon.png",
+      "subtitle": "Edge computing continues to grow, with more processing happening closer to the data source. This trend aims to reduce latency and improve real-time data analysis.",
+      "views": 1750,
+      "createAt": "2025-04-15",
+      "userId": "27",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "27",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "title": "AR and VR in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/cf/AR_VR_Logo.jpg",
+      "subtitle": "Augmented reality and virtual reality technologies continue to advance, with new applications in gaming, education, and industry. The focus is on improving user experiences and interaction.",
+      "views": 1900,
+      "createAt": "2025-05-01",
+      "userId": "28",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "28",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "title": "Quantum Computing Progress",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/05/Quantum_Computer_Logo.png",
+      "subtitle": "Quantum computing continues to make strides with new breakthroughs and research. The focus is on making quantum computers more practical and accessible for real-world applications.",
+      "views": 2000,
+      "createAt": "2025-06-15",
+      "userId": "29",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "29",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "title": "IoT Trends in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/07/IoT_Icon.png",
+      "subtitle": "The Internet of Things continues to grow with new applications in smart homes, healthcare, and industry. The focus is on improving connectivity and interoperability.",
+      "views": 1950,
+      "createAt": "2025-07-01",
+      "userId": "30",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "30",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Cloud Computing in 2024",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Cloud_Computing_Icon.png",
+      "subtitle": "Cloud computing continues to evolve with new services and capabilities. The focus is on improving scalability, security, and cost-efficiency for businesses of all sizes.",
+      "views": 1850,
+      "createAt": "2025-08-15",
+      "userId": "31",
+      "type": ["IT", "Technology"],
+      "blocks": [
+        {
+          "id": "31",
+          "type": "TEXT",
+          "title": "Title",
+          "text": ["Some text"]
         }
       ]
     }

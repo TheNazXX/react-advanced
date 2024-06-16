@@ -30,7 +30,7 @@ export const RoutePathes: Record<AppRoutes, string> = {
   [AppRoutes.REPEAT]: "/repeat",
   [AppRoutes.WORDS]: "/words",
   [AppRoutes.ARTICLES]: "/articles/", // + :id
-  [AppRoutes.ARTICLE_DETAILS]: "/article-details/:id",
+  [AppRoutes.ARTICLE_DETAILS]: "/article-details/",
   [AppRoutes.WORD]: "/words/:word",
   [AppRoutes.PAGE_NOT_FOUND]: "*",
 };
@@ -62,7 +62,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <ArticlesPage />,
   },
   [AppRoutes.ARTICLE_DETAILS]: {
-    path: RoutePathes.article_details,
+    path: RoutePathes.article_details + ":id",
     element: <ArticleDetailsPage />,
   },
   [AppRoutes.PAGE_NOT_FOUND]: {

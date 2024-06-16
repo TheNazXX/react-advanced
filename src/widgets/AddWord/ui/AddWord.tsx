@@ -294,7 +294,9 @@ export const AddWord: FC<AddWordProps> = ({ className }) => {
               </div>
 
               <div className={cls.group}>
-                <label htmlFor="en_word">{t("Synonyms")}</label>
+                <div className={cls.group_head}>
+                  <label htmlFor="en_word">{t("Synonyms")}</label>
+                </div>
                 <Input
                   onChange={setSynonymsWordValue}
                   value={synonymsWordValue}
