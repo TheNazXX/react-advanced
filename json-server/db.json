@@ -8,7 +8,7 @@
       "views": 1024,
       "createAt": "2023-02-02",
       "userId": "1",
-      "type": ["IT", "Course"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "1",
@@ -26,7 +26,7 @@
       "views": 2048,
       "createAt": "2023-03-15",
       "userId": "2",
-      "type": ["IT", "Course"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "2",
@@ -44,7 +44,7 @@
       "views": 1536,
       "createAt": "2023-04-10",
       "userId": "3",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "3",
@@ -62,7 +62,7 @@
       "views": 1820,
       "createAt": "2023-05-05",
       "userId": "4",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "4",
@@ -80,7 +80,7 @@
       "views": 1450,
       "createAt": "2023-06-01",
       "userId": "5",
-      "type": ["IT", "Backend"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "5",
@@ -98,7 +98,7 @@
       "views": 1320,
       "createAt": "2023-07-10",
       "userId": "6",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "6",
@@ -116,7 +116,7 @@
       "views": 1200,
       "createAt": "2023-08-15",
       "userId": "7",
-      "type": ["IT", "Backend"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "7",
@@ -134,7 +134,7 @@
       "views": 2100,
       "createAt": "2023-09-05",
       "userId": "8",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "8",
@@ -152,7 +152,7 @@
       "views": 1950,
       "createAt": "2023-10-01",
       "userId": "9",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "9",
@@ -170,7 +170,7 @@
       "views": 1800,
       "createAt": "2023-11-15",
       "userId": "10",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "10",
@@ -188,7 +188,7 @@
       "views": 1750,
       "createAt": "2023-12-01",
       "userId": "11",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "11",
@@ -206,7 +206,7 @@
       "views": 1600,
       "createAt": "2024-01-05",
       "userId": "12",
-      "type": ["IT", "Backend"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "12",
@@ -224,7 +224,7 @@
       "views": 1900,
       "createAt": "2024-02-15",
       "userId": "13",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "13",
@@ -242,7 +242,7 @@
       "views": 1750,
       "createAt": "2024-03-10",
       "userId": "14",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "14",
@@ -260,7 +260,7 @@
       "views": 1850,
       "createAt": "2024-04-01",
       "userId": "15",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "15",
@@ -278,7 +278,7 @@
       "views": 1700,
       "createAt": "2024-05-15",
       "userId": "16",
-      "type": ["IT", "Technology"],
+      "type": ["Technology"],
       "blocks": [
         {
           "id": "16",
@@ -296,7 +296,7 @@
       "views": 1900,
       "createAt": "2024-06-10",
       "userId": "17",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "17",
@@ -314,7 +314,7 @@
       "views": 1800,
       "createAt": "2024-07-01",
       "userId": "18",
-      "type": ["IT", "Backend"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "18",
@@ -332,7 +332,7 @@
       "views": 2000,
       "createAt": "2024-08-15",
       "userId": "19",
-      "type": ["IT", "AI"],
+      "type": ["AI"],
       "blocks": [
         {
           "id": "19",
@@ -350,7 +350,7 @@
       "views": 1750,
       "createAt": "2024-09-01",
       "userId": "20",
-      "type": ["IT", "DevOps"],
+      "type": ["DevOps"],
       "blocks": [
         {
           "id": "20",
@@ -368,7 +368,7 @@
       "views": 1850,
       "createAt": "2024-10-15",
       "userId": "21",
-      "type": ["IT", "Programming Language"],
+      "type": ["Language"],
       "blocks": [
         {
           "id": "21",
@@ -386,7 +386,7 @@
       "views": 1950,
       "createAt": "2024-11-01",
       "userId": "22",
-      "type": ["IT", "AI"],
+      "type": ["AI"],
       "blocks": [
         {
           "id": "22",
@@ -404,7 +404,7 @@
       "views": 2100,
       "createAt": "2024-12-15",
       "userId": "23",
-      "type": ["IT", "Technology"],
+      "type": ["Technology"],
       "blocks": [
         {
           "id": "23",
@@ -422,7 +422,7 @@
       "views": 1850,
       "createAt": "2025-01-01",
       "userId": "24",
-      "type": ["IT", "Technology"],
+      "type": ["IT"],
       "blocks": [
         {
           "id": "24",
@@ -440,7 +440,7 @@
       "views": 1900,
       "createAt": "2025-02-15",
       "userId": "25",
-      "type": ["IT", "Security"],
+      "type": ["Security"],
       "blocks": [
         {
           "id": "25",
@@ -451,14 +451,14 @@
       ]
     },
     {
-      "id": "3",
+      "id": "26",
       "title": "React 18 Overview",
       "img": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
       "subtitle": "React 18 brings concurrent rendering, automatic batching, and new hooks. These features aim to improve performance and simplify complex state management in modern web applications.",
       "views": 1536,
       "createAt": "2023-04-10",
       "userId": "3",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "3",
@@ -469,14 +469,14 @@
       ]
     },
     {
-      "id": "4",
+      "id": "27",
       "title": "Vue 3: What's New",
       "img": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png",
       "subtitle": "Vue 3 has been rewritten from the ground up using TypeScript. It includes a new composition API, improved TypeScript support, and significant performance enhancements.",
       "views": 1820,
       "createAt": "2023-05-05",
       "userId": "4",
-      "type": ["IT", "Framework"],
+      "type": ["Framework"],
       "blocks": [
         {
           "id": "4",

@@ -39,7 +39,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
             ArticlesListView.TILE === view
               ? "flex justify-center flex-wrap gap-6"
               : "flex flex-col gap-8"
-          }`}
+          } ${className}`}
         >
           {articles.length > 0 ? articles.map(renderItems) : null}
         </div>

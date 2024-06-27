@@ -12,20 +12,26 @@ import { type UserSchema } from "entities/User";
 import { type WordsSchema } from "entities/Words";
 import { type LoginSchema } from "features/AuthByUsername";
 import { type ArticlesSchema } from "pages/ArticlesPage/model/types/ArticlesSchema";
-import { type ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
+import {
+  ArticleRecommendationSchema,
+  type ArticleDetailsCommentsSchema,
+} from "pages/ArticleDetailsPage";
 import { type To, type NavigateOptions } from "react-router-dom";
 import { type AddCommentFormSchema } from "features/AuthByUsername/ui/AddCommentForm";
+import { type SaveScrollSchema } from "features/SaveScroll/model/types/SaveScroll";
 
 export interface StateSchema {
   user: UserSchema;
   words: WordsSchema;
   repeatWords: RepeatWordsSchema;
+  saveScroll: SaveScrollSchema;
 
   // Async reducers
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
   articles?: ArticlesSchema;
   articleDetails?: ArticleDetailsSchema;
+  articlesRecommendations?: ArticleRecommendationSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
 }

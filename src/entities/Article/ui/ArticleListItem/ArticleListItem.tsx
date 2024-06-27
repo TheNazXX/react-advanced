@@ -12,7 +12,6 @@ import { useHover } from "shared/libs/hooks/useHover/useHover";
 import { Button, TypeButton } from "shared/ui";
 import { useNavigate } from "react-router";
 import { RoutePathes } from "shared/config/routeConfig/routeConfig";
-import { motion } from "framer-motion";
 
 interface ArticleView {
   article: Article;

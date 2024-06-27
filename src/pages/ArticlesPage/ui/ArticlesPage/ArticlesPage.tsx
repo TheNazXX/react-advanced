@@ -1,6 +1,13 @@
 import { classNames } from "shared/libs/classNames/classNames";
 import cls from "./ArticlesPage.module.scss";
-import { memo, useCallback, useEffect, type FC, type ReactNode } from "react";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  type FC,
+  type ReactNode,
+} from "react";
 import { useTranslation } from "react-i18next";
 import {
   DynamicModuleLoader,
@@ -19,12 +26,18 @@ import {
   getArticlesListView,
   getArticlesPageHasMore,
   getArticlesPageNum,
+  getArticlesType,
 } from "pages/ArticlesPage/model/selectors/getArticlesData";
 import { useSelector } from "react-redux";
-import { Loader, Page } from "shared/ui";
 import { ArticleList } from "entities/Article/ui/ArticleList/ArticleList";
-import { ArticlesListView } from "entities/Article/model/types/article";
-import { ArticlesPageHeader } from "./ArticlesPageHeader/ArticlesPageHeader";
+import {
+  ArticleType,
+  ArticlesListView,
+} from "entities/Article/model/types/article";
+import { ArticlesPageHeader } from "../ArticlesPageHeader/ArticlesPageHeader";
+import { Page } from "widgets/Page/ui/Page";
+import { useSearchParams } from "react-router-dom";
+import { Tabs, type TabItem } from "shared/ui/Tabs/Tabs";
 
 const reducers: ReducersList = {
   articles: articlesReducer,
@@ -44,27 +57,80 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
   const page = useSelector(getArticlesPageNum);
   const hasMore = useSelector(getArticlesPageHasMore);
   const _inited = useSelector(getArticlesInited);
+  const [searchParams] = useSearchParams();
+  const type = useSelector(getArticlesType);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!_inited) {
-      dispatch(articlesActions.init());
-      dispatch(fetchArticles({ page: 1 }));
+      dispatch(
+        articlesActions.init({
+          search: searchParams.get("search") || "",
+          order: searchParams.get("order") || "",
+          sort: searchParams.get("sort") || "",
+        })
+      );
+      dispatch(fetchArticles({}));
     }
   }, []);
 
   const onLoadNextPart = useCallback(() => {
     if (hasMore && data.length > 0 && !isLoading) {
       dispatch(articlesActions.setPage(page + 1));
-      dispatch(fetchArticles({ page: page + 1 }));
+      dispatch(fetchArticles({}));
     }
   }, [dispatch, page, data]);
+
+  const tabs = useMemo<TabItem[]>(
+    () => [
+      {
+        value: ArticleType.ALL,
+        content: "All",
+      },
+      {
+        value: ArticleType.IT,
+        content: "IT",
+      },
+      {
+        value: ArticleType.COURSE,
+        content: "Course",
+      },
+      {
+        value: ArticleType.DEVOPS,
+        content: "DevOps",
+      },
+      {
+        value: ArticleType.FRAMEWORK,
+        content: "Framework",
+      },
+      {
+        value: ArticleType.AI,
+        content: "AI",
+      },
+      {
+        value: ArticleType.LANGUAGE,
+        content: "Programing Language",
+      },
+    ],
+    []
+  );
+
+  const onChageTab = (tab: TabItem) => {
+    dispatch(articlesActions.setType(tab.value as ArticleType));
+    dispatch(fetchArticles({ replace: true }));
+  };
 
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page onScrollEnd={onLoadNextPart}>
-        <ArticlesPageHeader className="" />
+        <ArticlesPageHeader />
+        <Tabs
+          className="mb-10"
+          tabs={tabs}
+          value={type}
+          onChangeTab={onChageTab}
+        />
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
           <ArticleList
             articles={data}

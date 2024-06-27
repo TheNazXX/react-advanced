@@ -6,6 +6,7 @@ import { createReducerManager } from "./reducerManager";
 import { repeatWordsReducer } from "entities/RepeatWords/model/slice/repeatWordsSlice";
 import { $api } from "shared/api/api";
 import { type NavigateOptions, type To } from "react-router-dom";
+import { saveScrollReducer } from "features/SaveScroll/model/slice/saveScrollSlice";
 
 export function createReduxStore(
   initialState?: StateSchema,
@@ -16,6 +17,7 @@ export function createReduxStore(
     user: userReducer,
     words: wordsReducer,
     repeatWords: repeatWordsReducer,
+    saveScroll: saveScrollReducer,
   };
 
   const extraArg: ThunkExtraArgs = {

@@ -1,9 +1,6 @@
-import { getUserAuthData } from "entities/User";
 import { type FC, Suspense, useCallback } from "react";
-import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
-  AppRoutes,
   type AppRoutesProps,
   routeConfig,
 } from "shared/config/routeConfig/routeConfig";
